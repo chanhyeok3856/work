@@ -1,0 +1,17 @@
+/*
+ * 
+ * 
+ * */
+
+package min.java.test;
+import java.util.Date; 
+
+public class A {
+	//dsfasdfsdafsadf
+	public static void main(String[] args) {
+		
+		Date name = new Date();
+		System.out.println(name);
+}
+
+}
