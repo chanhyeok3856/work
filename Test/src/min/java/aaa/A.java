@@ -1,7 +1,10 @@
-package min;
-
-public class Hi {
-	public static void main(String[ ] args) {
+package min.java.aaa;
+public class A {
+	public static void main(String[] args) {
+		
+		
+	
+	
 	
 		float f = 1.0f / 3.0f;
 		
@@ -16,3 +19,5 @@ public class Hi {
 		
 		
 		}
+
+
