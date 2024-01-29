@@ -8,6 +8,13 @@ System.out.println(b);
  int age = 0;
  age =33;
 System.out.println(age); 
- }	
+ }
+
+public char[] age;
+
+public void age() {
+	// TODO Auto-generated method stub
+	
+}	
 	
 }
