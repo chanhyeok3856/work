@@ -33,7 +33,7 @@ public static void main(String[] args) {
 	weekday = (date+1) % 7;
 	for (i = 0;  i< mon; i++) {
 System.out.print("\t"+"");
-	}
+	}	
 	
 	for (i = 0;  i<=month[mon]; i++) {
 		System.out.printf("%d\t",i);
