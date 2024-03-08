@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>break문의 호출</title>
+<script type="text/javascript">
+i=0;
+while (i<=10) {
+	document.write(i+".파이팅!"+"<br>");
+	i++;
+	if (i==4) {
+		BREAK;
+	}
+}
+</script>
+</head>
+<body>
+</body>
+</html>

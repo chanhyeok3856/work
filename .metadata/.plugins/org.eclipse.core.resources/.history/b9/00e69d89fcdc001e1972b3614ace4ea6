@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>GET 메서드</title>
+<script type="text/javascript">
+const a = {
+		one : 1,
+		two : 2,
+};
+let b = a;
+b.one = 3;
+console.log("a 객체의 변경된 결괏값 : ",a);
+console.log("b 객체의 변경된 결괏값 : ",b);
+</script>
+</head>
+<body>
+
+웹 브라우저의 콘솔로 확인한다.
+</body>
+</html>

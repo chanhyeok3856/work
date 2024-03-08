@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>합계</title>
+</head>
+<body>
+<script type="text/javascript">
+var a;
+a=50;
+b=50;
+total=a+b;
+document.write("합계:"+total);
+</script>
+</body>
+</html>

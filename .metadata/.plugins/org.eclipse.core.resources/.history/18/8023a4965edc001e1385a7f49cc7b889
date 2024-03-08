@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>익명 함수 호출</title>
+<script type="text/javascript">
+str = "10*10";
+document.write("문자열의 정수 계산 : "+eval(str));
+</script>
+</head>	
+<body>
+
+</body>
+</html>

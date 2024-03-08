@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>익명 함수 호출</title>
+<script type="text/javascript">
+conf = confirm("문제가 발생하였습니다. 계속하겠습니까?");
+if (conf==true) {
+	document.write("계속 진행합니다.");
+}else{
+	document.write("취소 되었습니다.");
+}
+</script>
+</head>	
+<body>
+</body>
+</html>

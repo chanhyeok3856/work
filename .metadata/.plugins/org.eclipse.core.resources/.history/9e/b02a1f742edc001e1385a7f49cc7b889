@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>테이블 구성</title>
+</head>
+<body>
+<table border="1">
+<caption> 월 매출액</caption>
+<colgroup>
+<col style = "background-color : red">
+<col style = "background-color : yellow">
+</colgroup>
+<thead>
+<tr><th>월</th><th>금액</th></tr>
+</thead>
+<tfoot>
+<tr><td>합계</td><td> 34,000,000,000원 </td></tr>
+</tfoot>
+<tbody>
+<tr><td>1월</td><td>10,000,000,000원</td></tr>
+<tr><td>2월</td><td>24,000,000,000원</td></tr>
+
+
+</tbody>
+
+
+
+
+</table>
+</body>
+</html>

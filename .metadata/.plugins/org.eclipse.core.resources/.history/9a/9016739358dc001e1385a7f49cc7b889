@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>레이블 break문의 호출</title>
+<script type="text/javascript">
+gugudan;
+for (var i = 2; i <= 9; i++) {
+	for (var j = 1; j <=9; j++) {
+		if (j==9) {
+			break gugudan;
+		}
+		document.write(i+ "*"+j+"="+(i*j)+"<br>");
+	}	
+}
+</script>
+</head>
+<body>
+</body>
+</html>

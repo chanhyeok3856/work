@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>스크립트 호출</title>
+<script type="text/javascript">
+integer = 12345;
+float = 3.145;
+string = "홍길동";
+console.log(integer);
+console.log(float);
+console.log(string);
+</script>
+</head>
+<body>
+웹 브라우저의 콘솔로 확인한다.
+
+</body>
+</html>

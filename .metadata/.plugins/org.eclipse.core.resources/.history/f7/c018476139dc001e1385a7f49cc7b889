@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>변수의 초기화</title>
+</head>
+<body>
+<canvas id = "myCanvas" width="200" height = "100"></canvas>
+<script type = "text/javascript">
+var canvas = document.getElementById("myCanvas");
+var drawing = canvas.getContext("2d");
+drawing.font = "30px Arial";
+drawing.fillText("JavaScript", 10, 50);
+</script>
+</body>
+</html>

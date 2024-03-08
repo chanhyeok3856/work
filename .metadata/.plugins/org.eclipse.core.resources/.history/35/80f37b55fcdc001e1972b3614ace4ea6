@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>GET 메서드</title>
+<script type="text/javascript">
+se = {};
+se.name = "홍길동";
+se.age = 33;
+se.date = "2002";
+console.log(se);
+</script>
+</head>
+<body>
+<script type="text/javascript">
+</script>
+<p></p>
+</body>
+</html>

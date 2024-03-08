@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>GET 메서드</title>
+</head>
+<body>
+<form action="./action.html" method="get" enctype = "application/x-www-form-urlencoded">
+이름 : <input type="text" name ="user"><br>
+나이 : <input type="text" name ="age"><br><br>
+<input type = "submit" value ="전송">
+</form>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>파라미터 호출</title>
+<script type="text/javascript">
+function sum(a,b){
+	c=a+b;
+	document.write("합한 값:"+c);
+}
+</script>
+</head>	
+<body>
+<script type="text/javascript">
+sum(50,50);
+</script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>insert title here</title>
+</head>
+<body>
+
+<script type="text/javascript">
+var a
+console.log(typeof a)
+document.write(a)
+</script>
+</body>
+</html>
