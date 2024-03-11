@@ -1,3 +1,36 @@
 
 3월 07, 2024 09:51:59.172 NEW SESSION
 3월 07, 2024 09:51:59.172 INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+
+3월 11, 2024 09:50:25.331 NEW SESSION
+3월 11, 2024 09:50:25.331 INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+3월 11, 2024 10:44:50.274 [9364:9812:0311/104450.274:ERROR:cert_verify_proc_builtin.cc(874)] CertVerifyProcBuiltin for interface.interworksmedia.co.kr failed:
+3월 11, 2024 10:44:50.275 ----- Certificate i=0 (CN=*.interworksmedia.co.kr) -----
+3월 11, 2024 10:44:50.276 ERROR: Time is after notAfter
+3월 11, 2024 10:44:50.276 
+3월 11, 2024 10:44:50.276 
+3월 11, 2024 11:26:48.343 [9364:9812:0311/112648.343:ERROR:cert_verify_proc_builtin.cc(874)] CertVerifyProcBuiltin for interface.interworksmedia.co.kr failed:
+3월 11, 2024 11:26:48.344 ----- Certificate i=0 (CN=*.interworksmedia.co.kr) -----
+3월 11, 2024 11:26:48.344 ERROR: Time is after notAfter
+3월 11, 2024 11:26:48.344 
+3월 11, 2024 11:26:48.344 
+3월 11, 2024 12:42:06.94 [9364:9812:0311/124206.093:ERROR:cert_verify_proc_builtin.cc(874)] CertVerifyProcBuiltin for interface.interworksmedia.co.kr failed:
+3월 11, 2024 12:42:06.94 ----- Certificate i=0 (CN=*.interworksmedia.co.kr) -----
+3월 11, 2024 12:42:06.94 ERROR: Time is after notAfter
+3월 11, 2024 12:42:06.95 
+3월 11, 2024 12:42:06.95 
+3월 11, 2024 16:28:33.632 [9364:9792:0311/162833.631:ERROR:page_load_metrics_update_dispatcher.cc(179)] Invalid first_paint 0.176 s for first_image_paint 0.168 s
+3월 11, 2024 16:28:33.967 [9364:9792:0311/162833.967:ERROR:page_load_metrics_update_dispatcher.cc(179)] Invalid first_paint 0.176 s for first_image_paint 0.168 s
+3월 11, 2024 16:28:34.112 [9364:9792:0311/162834.112:ERROR:page_load_metrics_update_dispatcher.cc(179)] Invalid first_paint 0.176 s for first_image_paint 0.168 s
+3월 11, 2024 16:28:34.261 [9364:9792:0311/162834.261:ERROR:page_load_metrics_update_dispatcher.cc(179)] Invalid first_paint 0.176 s for first_image_paint 0.168 s
+3월 11, 2024 16:28:34.580 [9364:9792:0311/162834.579:ERROR:page_load_metrics_update_dispatcher.cc(179)] Invalid first_paint 0.176 s for first_image_paint 0.168 s
+3월 11, 2024 16:28:34.702 [9364:9792:0311/162834.702:ERROR:page_load_metrics_update_dispatcher.cc(179)] Invalid first_paint 0.176 s for first_image_paint 0.168 s
+3월 11, 2024 16:28:34.877 [9364:9792:0311/162834.877:ERROR:page_load_metrics_update_dispatcher.cc(179)] Invalid first_paint 0.176 s for first_image_paint 0.168 s
+3월 11, 2024 16:28:34.985 [9364:9792:0311/162834.985:ERROR:page_load_metrics_update_dispatcher.cc(179)] Invalid first_paint 0.176 s for first_image_paint 0.168 s
+3월 11, 2024 16:28:35.244 [9364:9792:0311/162835.243:ERROR:page_load_metrics_update_dispatcher.cc(179)] Invalid first_paint 0.176 s for first_image_paint 0.168 s
+3월 11, 2024 16:28:36.22 [9364:9792:0311/162836.022:ERROR:page_load_metrics_update_dispatcher.cc(179)] Invalid first_paint 0.176 s for first_image_paint 0.168 s
+3월 11, 2024 16:28:36.173 [9364:9792:0311/162836.172:ERROR:page_load_metrics_update_dispatcher.cc(179)] Invalid first_paint 0.176 s for first_image_paint 0.168 s
+3월 11, 2024 16:28:36.307 [9364:9792:0311/162836.307:ERROR:page_load_metrics_update_dispatcher.cc(179)] Invalid first_paint 0.176 s for first_image_paint 0.168 s
+3월 11, 2024 16:28:36.410 [9364:9792:0311/162836.410:ERROR:page_load_metrics_update_dispatcher.cc(179)] Invalid first_paint 0.176 s for first_image_paint 0.168 s
+3월 11, 2024 16:28:36.471 [9364:9792:0311/162836.470:ERROR:page_load_metrics_update_dispatcher.cc(179)] Invalid first_paint 0.176 s for first_image_paint 0.168 s
+3월 11, 2024 17:12:54.04 [9364:9792:0311/171254.004:ERROR:interface_endpoint_client.cc(707)] Message 0 rejected by interface blink.mojom.WidgetHost

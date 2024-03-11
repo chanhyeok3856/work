@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src = "./js/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+<p id = "hello"></p>
+<!--  모든 JS파일 중에 제일 먼저 선언한다 -->
+<script type="text/javascript">
+function se(){
+	call = document.getElementById("hello");
+	call.innerHTML = "안녕";
+}
+jQuery(se);
+</script>
+
+</body>
+</html>

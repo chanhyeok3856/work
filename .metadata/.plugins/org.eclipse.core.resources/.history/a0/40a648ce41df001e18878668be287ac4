@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+function validate(){
+	x=document.forms["form_test"]["age"].value;
+	if(x==null||x==""){
+		alert("이름을 적어주세요");
+		//매우 중요!
+		return false;
+	}
+	
+}
+</script>
+</head>
+<body>
+<form action="#" name="form_test" onsubmit="return validate()" method="get">
+<input type = "text" name = "age" id = "age">
+</form>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>객체 반복 접근</title>
+</head>
+<body>
+<p id = "access"></p>
+<script>
+var obj, x;
+obj = {
+		"name": "홍길동",
+		"age": 33,
+		"car": null
+};
+for (x in obj) {
+document.getElementById("access").innerHTML += x+": "+ obj[x]+"<br>";	
+}
+</script>
+</body>
+</html>

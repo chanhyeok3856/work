@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head> <meta charset="UTF-8"> <title> 회원가입 </title>
+<script type="text/javascript">
+function joinMember( ) {
+//폼의 name 속성값인 join을 호출하고 할당한다. 
+frm = document.join;
+//text 속성값의 입력 여부를 확인하고 name 속성값으로 전달한다. 
+if(!frm.username.value) {
+alert("이름을 입력하세요.");
+frm.username.focus( ); return false;
+}
+//radio 속성값의 체크 여부에 대한 선택을 배열의 인덱스로 확인하고 name 속성값으로 전달한다. 
+if(!frm.gender[0].checked && !frm.gender[1].checked) {
+alert("성별을 선택해 주세요."); 
+frm.gender[0].focus( ); return false;
+}
+// select 속성값의 선택 여부를 인덱스로 선택 위치에서 몇 번째 항목이 선택되었는지를 확인하고 name 속성값으로 전달한다. 
+if(frm.job.selectedIndex < 1) {
+alert("직업을 선택해 주세요."); 
+frm.job.focus( ); return false;
+}
+chk = false;
+// checkbox 속성값의 체크 여부에 대한 선택을 배열의 인덱스로 확인하고 name 속성값으로 전달한다. for(i = 0; i < frm.hobby.length; i++) {
+if(frm.hobby[i].checked) {
+chk = true;
+break;
+}
+}
+if(!chk) {
+alert("취미를 선택해 주세요."); 
+frm.hobby[0].focus( ); return false;
+}
+if(confirm("회원 가입을 하시겠습니까?")) {
+//폼의 파라미터를 전송한다. frm.submit( );
+}
+}
+</script>
+</head>
+<body>
+<form name="join" action="#" method="get">
+<!--폼을 정밀하게 구조화한다.--->
+<fieldset>
+<!-- 그룹화한 범위의 이름을 캡션으로 표시한다.-->
+<legend> 회원가입 </legend>
+<p>
+<!--전송할 이름을 입력한다.-->
+<label for="username"> 이름 </label>
+<input type="text" name="username" id="username">
+</p>
+<p>
+<!--전송할 성별을 선택한다.-->
+<label for="gender"> 성별 </label>
+<input type="radio" name="gender" id="gender" value="M"> 남자 
+<input type="radio" name="gender" id="gender" value="F"> 여자
+</p>
+<p>
+<!--전송할 직업을 선택한다.-->
+<label for="job"> 직업 </label>
+<select name="job" id="job">
+<option> ----- 선택하세요 ----- </option>
+<option value="dev"> 웹 프로그래머 </option>
+<option value="pub"> 웹 퍼블리셔 </option>
+</select>
+</p>
+<p>
+<!--전송할 취미를 선택한다.-->
+<label for="hobby"> 취미 </label>
+<input type="checkbox" value="축구" name="hobby" id="hobby"> 축구
+<input type="checkbox" value="야구" name="hobby" id="hobby"> 야구
+<input type="checkbox" value="농구" name="hobby" id="hobby"> 농구
+</p>
+<p>
+<button type="button" onclick="joinMember( )"> 회원가입 </button>
+<button type="reset"> 회원취소 </button>
+</p>
+</fieldset>
+</form>
+</body>
+</html>
