@@ -34,3 +34,18 @@
 3월 11, 2024 16:28:36.410 [9364:9792:0311/162836.410:ERROR:page_load_metrics_update_dispatcher.cc(179)] Invalid first_paint 0.176 s for first_image_paint 0.168 s
 3월 11, 2024 16:28:36.471 [9364:9792:0311/162836.470:ERROR:page_load_metrics_update_dispatcher.cc(179)] Invalid first_paint 0.176 s for first_image_paint 0.168 s
 3월 11, 2024 17:12:54.04 [9364:9792:0311/171254.004:ERROR:interface_endpoint_client.cc(707)] Message 0 rejected by interface blink.mojom.WidgetHost
+
+3월 12, 2024 10:02:34.25 NEW SESSION
+3월 12, 2024 10:02:34.25 INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+3월 12, 2024 12:11:28.412 [11676:9904:0312/121128.412:ERROR:interface_endpoint_client.cc(707)] Message 0 rejected by interface blink.mojom.WidgetHost
+3월 12, 2024 14:01:32.709 [11676:9904:0312/140132.709:ERROR:interface_endpoint_client.cc(707)] Message 5 rejected by interface blink.mojom.WidgetHost
+3월 12, 2024 14:01:36.832 [11676:4260:0312/140136.832:ERROR:cert_verify_proc_builtin.cc(874)] CertVerifyProcBuiltin for interface.interworksmedia.co.kr failed:
+3월 12, 2024 14:01:36.833 ----- Certificate i=0 (CN=*.interworksmedia.co.kr) -----
+3월 12, 2024 14:01:36.833 ERROR: Time is after notAfter
+3월 12, 2024 14:01:36.833 
+3월 12, 2024 14:01:36.833 
+3월 12, 2024 14:37:19.423 [11676:4260:0312/143719.421:ERROR:cert_verify_proc_builtin.cc(874)] CertVerifyProcBuiltin for interface.interworksmedia.co.kr failed:
+3월 12, 2024 14:37:19.423 ----- Certificate i=0 (CN=*.interworksmedia.co.kr) -----
+3월 12, 2024 14:37:19.424 ERROR: Time is after notAfter
+3월 12, 2024 14:37:19.424 
+3월 12, 2024 14:37:19.425 
