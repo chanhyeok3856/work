@@ -109,4 +109,9 @@
 	</list>
 	<section name="NewWizardAction">
 	</section>
+	<section name="BasicNewProjectResourceWizard">
+	</section>
+	<section name="org.eclipse.ui.internal.ide.dialogs.ProjectContentsLocationArea">
+		<item key="OUTSIDE_LOCATION" value="C:\Users\TJ\Downloads\CRM1.0.4-servlet-1"/>
+	</section>
 </section>

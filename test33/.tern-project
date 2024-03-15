@@ -1,0 +1,20 @@
+{
+  "ecmaVersion": 5,
+  "libs": [
+    "jquery"
+  ],
+  "plugins": {
+    "bootstrap": {
+      
+    },
+    "jquery-extension": {
+      
+    },
+    "jquery-ui1-12": {
+      
+    },
+    "jquery-mobile1.5": {
+      
+    }
+  }
+}
