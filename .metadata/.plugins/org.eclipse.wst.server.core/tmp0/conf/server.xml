@@ -160,7 +160,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="C:\JspWorkspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ROOT" path="" reloadable="false"/><Context docBase="C:\JspWorkspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\Test" path="/Test" reloadable="true" source="org.eclipse.jst.jee.server:Test"/><Context docBase="C:\JspWorkspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\Chan" path="/Chan" reloadable="true" source="org.eclipse.jst.jee.server:Chan"/></Host>
+      <Context docBase="C:\JspWorkspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ROOT" path="" reloadable="false"/><Context docBase="C:\JspWorkspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\Test" path="/Test" reloadable="true" source="org.eclipse.jst.jee.server:Test"/><Context docBase="C:\JspWorkspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\Chan" path="/Chan" reloadable="true" source="org.eclipse.jst.jee.server:Chan"/><Context docBase="C:\JspWorkspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\Chan123" path="/Chan123" reloadable="true" source="org.eclipse.jst.jee.server:Chan123"/></Host>
     </Engine>
   </Service>
 </Server>
