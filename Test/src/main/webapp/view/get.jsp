@@ -7,8 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="../Get">
-<input type = "text" name = "name">
+<form action="./GetPost" method="get">
+
 <input type = "text" name = "age">
 <input type="submit">
 </form>

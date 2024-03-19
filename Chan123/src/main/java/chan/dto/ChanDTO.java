@@ -2,6 +2,7 @@ package chan.dto;
 
 public class ChanDTO {
 	private String name;
+	private int age;
 	private String id;
 	private String password;
 	private String gender;
@@ -11,6 +12,12 @@ public class ChanDTO {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	public int getAge() {
+		return age;
+	}
+	public void setAge(int age) {
+		this.age = age;
 	}
 	public String getId() {
 		return id;
@@ -38,8 +45,8 @@ public class ChanDTO {
 	}
 	@Override
 	public String toString() {
-		return "ChanDTO [name=" + name + ", id=" + id + ", password=" + password + ", gender=" + gender + ", hobby="
-				+ hobby + "]";
+		return "ChanDTO [name=" + name + ", age=" + age + ", id=" + id + ", password=" + password + ", gender=" + gender
+				+ ", hobby=" + hobby + "]";
 	}
-
 }
+	

@@ -49,3 +49,6 @@
 3월 12, 2024 14:37:19.424 ERROR: Time is after notAfter
 3월 12, 2024 14:37:19.424 
 3월 12, 2024 14:37:19.425 
+
+3월 19, 2024 17:59:29.617 NEW SESSION
+3월 19, 2024 17:59:29.617 INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
