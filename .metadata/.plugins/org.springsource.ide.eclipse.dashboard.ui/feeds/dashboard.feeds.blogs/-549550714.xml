@@ -1,4 +1,816 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Spring]]></title><description><![CDATA[Level up your Java code and explore what Spring can do for you.]]></description><link>https://spring.io</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 19 Mar 2024 06:22:48 GMT</lastBuildDate><item><title><![CDATA[Spring for Apache Pulsar 1.0.4 available now]]></title><link>https://spring.io/blog/2024/03/18/spring-for-apache-pulsar-1-0-4-available-now</link><guid isPermaLink="true">https://spring.io/blog/2024/03/18/spring-for-apache-pulsar-1-0-4-available-now</guid><dc:creator><![CDATA[Chris Bono]]></dc:creator><pubDate>Mon, 18 Mar 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;On behalf of the team and everyone who has contributed, I’m happy to announce that Spring for Apache Pulsar &lt;code&gt;1.0.4&lt;/code&gt; has been released and is now available from Maven Central.&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Spring]]></title><description><![CDATA[Level up your Java code and explore what Spring can do for you.]]></description><link>https://spring.io</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 20 Mar 2024 07:06:25 GMT</lastBuildDate><item><title><![CDATA[Spring Tips: the Exposed ORM for Kotlin]]></title><link>https://spring.io/blog/2024/03/20/spring-tips-the-exposed-orm-for-kotlin</link><guid isPermaLink="true">https://spring.io/blog/2024/03/20/spring-tips-the-exposed-orm-for-kotlin</guid><dc:creator><![CDATA[Josh Long]]></dc:creator><pubDate>Wed, 20 Mar 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Hi, Spring fans! In this installment we look at the Exposed Object Relational Mapper framework for Kotlin. #Kotlin #Java #JDBC #springboot&lt;/p&gt;
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/4p5ovtFTHts?si=VKQvYbZYSrprNxVQ&quot; title=&quot;YouTube video player&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&quot; allowfullscreen&gt;&lt;/iframe&gt;</content:encoded></item><item><title><![CDATA[This Week in Spring - March 19th, 2024]]></title><link>https://spring.io/blog/2024/03/19/this-week-in-spring-march-19th-2024</link><guid isPermaLink="true">https://spring.io/blog/2024/03/19/this-week-in-spring-march-19th-2024</guid><dc:creator><![CDATA[Josh Long]]></dc:creator><pubDate>Tue, 19 Mar 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Hi, Spring fans! And happy Java 22 release day to those who celebrate! I just put out a &lt;em&gt;huge&lt;/em&gt; blog detailing many of the exciting new features in Java 22. Check &lt;a href=&quot;https://spring.io/blog/2024/03/19/hello-java-22&quot;&gt;it out&lt;/a&gt;!&lt;/p&gt;
+&lt;p&gt;As usual, we&apos;ve got a packed roundup to get through this week so let&apos;s dive right into it!&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;the &lt;a href=&quot;https://spring.io/blog/2024/03/19/spring-authorization-server-1-3-0-m3-available-now&quot;&gt;Spring Authorization Server 1.3.0-M3 is available!&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://spring.io/blog/2024/03/19/token-exchange-support-in-spring-security-6-3-0-m3&quot;&gt;the Token Exchange Support in Spring Security 6.3.0-M3&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://spring.io/blog/2024/03/19/spring-authorization-server-1-2-3-1-1-6-and-1-0-6-available-now-including&quot;&gt;the Spring Authorization Server 1.2.3, 1.1.6, and 1.0.6 are available now and include fixes for CVE-22258&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://spring.io/blog/2024/03/19/spring-for-apache-kafka-3-0-15-3-1-3-and-3-2-0-m2-available-now&quot;&gt;Spring for Apache Kafka 3.0.15, 3.1.3, and 3.2.0-M2 are available now&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://spring.io/blog/2024/03/18/spring-for-apache-pulsar-1-0-4-available-now&quot;&gt;Spring for Apache Pulsar 1.0.4 are available now&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://spring.io/blog/2024/03/18/spring-security-6-3-0-m3-6-2-3-6-1-8-6-0-10-5-8-11-and-5-7-12-are-now&quot;&gt;Spring Security 6.3.0-M3, 6.2.3, 6.1.8, 6.0.10, 5.8.11 and 5.7.12 are now available&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://spring.io/blog/2024/03/18/spring-for-apache-pulsar-1-1-0-m2-available-now&quot;&gt;Spring for Apache Pulsar 1.1.0-M2&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://spring.io/blog/2024/03/15/hypermedia-and-browser-enhancement&quot;&gt;Dr. Dave Syer wrote up an amazing look at hypermedia and browser enhancement technologies like HTMX and their relationship to Spring&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://spring.io/blog/2024/03/15/spring-data-2023-1-4-and-2023-0-10-released&quot;&gt;Spring Data 2023.1.4 and 2023.0.10 are available&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://spring.io/blog/2024/03/15/spring-data-2024-0-0-m2-available&quot;&gt;Spring Data 2024.0.0-m2&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;in last week&apos;s installment of a Bootiful Podcast, &lt;a href=&quot;https://spring.io/blog/2024/03/15/spring-boot-testjars-founder-rob-winch&quot;&gt;I talked to Spring Boot Testjars creator and Spring Security lead Rob Winch&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://spring.io/blog/2024/03/14/spring-hateoas-2-1-4-2-2-1-and-2-3-m1-released&quot;&gt;Spring HATEOAS 2.1.4, 2.2.1, and 2.3 M1 have been released&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Spring Framework 6.1.5, 6.0.18, and 5.3.33 &lt;a href=&quot;https://spring.io/blog/2024/03/14/spring-framework-6-1-5-6-0-18-and-5-3-33-available-now-including-fixes-for&quot;&gt;are available including fixes for CVE 2024-22259&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;in last week&apos;s installment of &lt;em&gt;Spring Tips&lt;/em&gt;, &lt;a href=&quot;https://spring.io/blog/2024/03/13/spring-tips-spring-batch-remote-partitioning-your-easy-button-for-data-scale&quot;&gt;I looked at Spring Batch remote partitioning&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://spring.io/blog/2024/03/13/spring-tools-4-22-0-released&quot;&gt;Spring Tools 4.22.0 has been released&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://spring.io/blog/2024/03/18/spring-security-6-3-0-m3-6-2-3-6-1-8-6-0-10-5-8-11-and-5-7-12-are-now&quot;&gt;Spring Security 6.3.0-M3, 6.2.3, 6.1.8, 6.0.10, 5.8.11 and 5.7.12 are now available &lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;the Webjars project needs your help! Try out this new Webjars locator implementation, contributed by our very own Dr. Syer, &lt;a href=&quot;https://twitter.com/_JamesWard/status/1769769144772079827?s=12&amp;#x26;t=n-UflcIbnx1lage-TBk0Cg&quot;&gt;to make webjars even more performant&lt;/a&gt; when used in the context of something like  a Spring Boot application.&lt;/li&gt;
+&lt;li&gt;the Java Technie blog has a nice video &lt;a href=&quot;https://www.youtube.com/watch?v=oHPNpgy21Rk&quot;&gt;on Spring Boot Apache Pular&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;A propos: if you&apos;re running Java 8 onward on macOS 14.4 on Apple Silicon, then you may be susceptible to a regression in macOS that&apos;ll manifest as apparent and sudden quit outs of your Java process. There is no fix yet, so Oracle advise considering delaying your upgrade.&lt;/li&gt;
+&lt;li&gt;Our friend Joris Kuipers over on the TRIFORK blog has a &lt;a href=&quot;https://trifork.nl/blog/spring-boot-observability-database/&quot;&gt;nice pokst on Spring Boot Observability for database interactions&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Hey, did I mention I&apos;ll &lt;a href=&quot;https://twitter.com/GoogleCloudTech/status/1765808389936889875&quot;&gt;be keynoting Google Cloud Tech in Las Vegas? I hope to see you there!&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;the Netflix tech blog shares an amazing &lt;a href=&quot;https://netflixtechblog.com/bending-pause-times-to-your-will-with-generational-zgc-256629c9386b&quot;&gt;look at their garbage collection numbers here in this blog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;I know Java 22 just dropped, but for those who &lt;a href=&quot;https://thenewstack.io/we-can-have-nice-things-upgrading-to-java-21-is-worth-it/&quot;&gt;haven&apos;t heard it, you should be at least on Java 21! &lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[Hello, Java 22!]]></title><link>https://spring.io/blog/2024/03/19/hello-java-22</link><guid isPermaLink="true">https://spring.io/blog/2024/03/19/hello-java-22</guid><dc:creator><![CDATA[Josh Long]]></dc:creator><pubDate>Tue, 19 Mar 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Hi, Spring fans! Happy &lt;a href=&quot;https://blogs.oracle.com/java/post/the-arrival-of-java-22&quot;&gt;Java 22&lt;/a&gt; release day, to those who
+celebrate! Did you get the bits already? Go, go, go! Java 22 is a &lt;em&gt;significant&lt;/em&gt; improvement that I think is a worthy
+upgrade for everyone. There are some big, final released features, like Project Panama, and a slew of even-better
+preview features. I couldn&apos;t hope to cover them all, but I did want to touch on a few of my favorites. We&apos;re going to touch on a number of features. The code, if you want to follow along at home, &lt;a href=&quot;https://github.com/spring-tips/java22&quot;&gt;is  here (&lt;code&gt;https://github.com/spring-tips/java22&lt;/code&gt;)&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I love Java 22, and of course, I love GraalVM, and both have releases today! Java is of course our favorite runtime and
+language, and GraalVM is a high-performance JDK distribution that supports additional languages and allows
+ahead-of-time (AOT) compilation (they&apos;re called GraalVM native images). GraalVM includes all the niceties of the new
+Java 22 release, with some extra utilities, so I always recommend just downloading that one. I&apos;m interested,
+specifically, in the GraalVM native image capability. The resulting binaries start almost instantly and take
+considerably less RAM compared to their JRE cousins. GraalVM isn&apos;t new, but it&apos;s worth remembering that Spring Boot has
+a great engine to support turning your Spring Boot applications into GraalVM native images.&lt;/p&gt;
+&lt;h2 id=&quot;installation&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#installation&quot; aria-label=&quot;installation permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Installation&lt;/h2&gt;
+&lt;p&gt;Here&apos;s what I did.&lt;/p&gt;
+&lt;p&gt;I&apos;m using the fantastic &lt;a href=&quot;https://sdkman.io&quot;&gt;SDKMAN&lt;/a&gt; package manager for Java. I&apos;m also running on an Apple Silicon chip running macOS. This, and the fact that I like and encourage the use of GraalVM, will be somewhat important later, so don&apos;t forget. There&apos;ll be a test! I installed a pre-release download of the &lt;a href=&quot;https://www.graalvm.org/community/&quot;&gt;GraalVM Community Edition&lt;/a&gt;, which I downloaded &lt;a href=&quot;https://github.com/graalvm/oracle-graalvm-ea-builds/releases/tag/jdk-22.0.0-ea.07&quot;&gt;from here&lt;/a&gt;. GraalVM Community is the opensource version. GraalVM also have a commercial release, which is &lt;em&gt;free&lt;/em&gt;, but not opensource. I&apos;m not a lawyer, but my understanding is that you can use it as much as you like. The GraalVM team will remind you that it allows you to build even faster native images through technologies like profile guided optimization (PGO). I then unzipped it and installed it manually using the SDKMAN command line utility, like this: &lt;code&gt;sdk install java 22.07-graalce $HOME/bin/graalvm-jdk-22+36.1/Contents/Home&lt;/code&gt;.  Then I did: &lt;code&gt;sdk default java 22.07-graalce&lt;/code&gt; and opened up a new shell. Verify that everything is working by typing &lt;code&gt;javac --version&lt;/code&gt; and &lt;code&gt;java --version&lt;/code&gt; and &lt;code&gt;native-image --version&lt;/code&gt;. By the time you read this, however, you probably won&apos;t need to do any of this. It&apos;ll have been released on SDKMAN itself. Just do &lt;code&gt;sdk list java&lt;/code&gt; and if you see &lt;code&gt;22-graalce&lt;/code&gt; (or something like that), then install that: &lt;code&gt;sdk install java 22-graalce&lt;/code&gt;. Or, if you&apos;re reading this in the far-flung future  (do we have flying cars yet?) and there&apos;s &lt;code&gt;50-graalce&lt;/code&gt;, then by all the means install that! Bigger versions are better!&lt;/p&gt;
+&lt;h2 id=&quot;you-gotta-start-somewhere&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#you-gotta-start-somewhere&quot; aria-label=&quot;you gotta start somewhere permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;You Gotta Start Somewhere...&lt;/h2&gt;
+&lt;p&gt;At this point, I wanted to start building! So, I went to my second favorite place on the internet, the Spring Initializr - &lt;a href=&quot;https://start.spring.io&quot;&gt;start.spring.io&lt;/a&gt; - and generated a new project, using the following specifications:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;I selected the &lt;code&gt;3.3.0-snapshot&lt;/code&gt; version of Spring Boot. 3.3 is not yet GA, but it should be in a few short months. In the meantime, onward and upward! This release has better support for Java 22.&lt;/li&gt;
+&lt;li&gt;I selected &lt;code&gt;Maven&lt;/code&gt; as the build tool.&lt;/li&gt;
+&lt;li&gt;I added &lt;code&gt;GraalVM Native Support&lt;/code&gt; support, &lt;code&gt;H2 Database&lt;/code&gt;, and  &lt;code&gt;JDBC API&lt;/code&gt; support.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I opened the project in my IDE, like this: &lt;code&gt;idea pom.xml&lt;/code&gt;. Now I needed to configure a few of the Maven plugins to support both Java 22 and some of the preview features we&apos;re going to look at in this article. Here&apos;s my fully configured &lt;code&gt;pom.xml&lt;/code&gt;. It&apos;s a little dense, so I&apos;ll see you after the code for the walkthrough.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-pom&quot;&gt;&amp;#x3C;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&amp;#x3C;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+         xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
+    &amp;#x3C;modelVersion&gt;4.0.0&amp;#x3C;/modelVersion&gt;
+    &amp;#x3C;parent&gt;
+        &amp;#x3C;groupId&gt;org.springframework.boot&amp;#x3C;/groupId&gt;
+        &amp;#x3C;artifactId&gt;spring-boot-starter-parent&amp;#x3C;/artifactId&gt;
+        &amp;#x3C;version&gt;3.3.0-SNAPSHOT&amp;#x3C;/version&gt;
+        &amp;#x3C;relativePath/&gt; &amp;#x3C;!-- lookup parent from repository --&gt;
+    &amp;#x3C;/parent&gt;
+    &amp;#x3C;groupId&gt;com.example&amp;#x3C;/groupId&gt;
+    &amp;#x3C;artifactId&gt;demo&amp;#x3C;/artifactId&gt;
+    &amp;#x3C;version&gt;0.0.1-SNAPSHOT&amp;#x3C;/version&gt;
+    &amp;#x3C;name&gt;demo&amp;#x3C;/name&gt;
+    &amp;#x3C;description&gt;Demo project for Spring Boot&amp;#x3C;/description&gt;
+    &amp;#x3C;properties&gt;
+        &amp;#x3C;java.version&gt;22&amp;#x3C;/java.version&gt;
+    &amp;#x3C;/properties&gt;
+    &amp;#x3C;dependencies&gt;
+
+        &amp;#x3C;dependency&gt;
+            &amp;#x3C;groupId&gt;org.springframework.boot&amp;#x3C;/groupId&gt;
+            &amp;#x3C;artifactId&gt;spring-boot-starter-jdbc&amp;#x3C;/artifactId&gt;
+        &amp;#x3C;/dependency&gt;
+        &amp;#x3C;dependency&gt;
+            &amp;#x3C;groupId&gt;com.h2database&amp;#x3C;/groupId&gt;
+            &amp;#x3C;artifactId&gt;h2&amp;#x3C;/artifactId&gt;
+            &amp;#x3C;scope&gt;runtime&amp;#x3C;/scope&gt;
+        &amp;#x3C;/dependency&gt;
+        &amp;#x3C;dependency&gt;
+            &amp;#x3C;groupId&gt;org.springframework.boot&amp;#x3C;/groupId&gt;
+            &amp;#x3C;artifactId&gt;spring-boot-starter&amp;#x3C;/artifactId&gt;
+        &amp;#x3C;/dependency&gt;
+        &amp;#x3C;dependency&gt;
+            &amp;#x3C;groupId&gt;org.graalvm.sdk&amp;#x3C;/groupId&gt;
+            &amp;#x3C;artifactId&gt;graal-sdk&amp;#x3C;/artifactId&gt;
+            &amp;#x3C;version&gt;23.1.2&amp;#x3C;/version&gt;
+        &amp;#x3C;/dependency&gt;
+        &amp;#x3C;dependency&gt;
+            &amp;#x3C;groupId&gt;org.graalvm.nativeimage&amp;#x3C;/groupId&gt;
+            &amp;#x3C;artifactId&gt;svm&amp;#x3C;/artifactId&gt;
+
+ &amp;#x3C;version&gt;23.1.2&amp;#x3C;/version&gt;
+            &amp;#x3C;scope&gt;provided&amp;#x3C;/scope&gt;
+        &amp;#x3C;/dependency&gt;
+        &amp;#x3C;dependency&gt;
+            &amp;#x3C;groupId&gt;org.springframework.boot&amp;#x3C;/groupId&gt;
+            &amp;#x3C;artifactId&gt;spring-boot-starter-test&amp;#x3C;/artifactId&gt;
+            &amp;#x3C;scope&gt;test&amp;#x3C;/scope&gt;
+        &amp;#x3C;/dependency&gt;
+    &amp;#x3C;/dependencies&gt;
+    &amp;#x3C;build&gt;
+        &amp;#x3C;plugins&gt;
+            &amp;#x3C;plugin&gt;
+                &amp;#x3C;groupId&gt;org.graalvm.buildtools&amp;#x3C;/groupId&gt;
+                &amp;#x3C;artifactId&gt;native-maven-plugin&amp;#x3C;/artifactId&gt;
+                &amp;#x3C;version&gt;0.10.1&amp;#x3C;/version&gt;
+                &amp;#x3C;configuration&gt;
+                    &amp;#x3C;buildArgs&gt;
+                        &amp;#x3C;buildArg&gt; --features=com.example.demo.DemoFeature&amp;#x3C;/buildArg&gt;
+                        &amp;#x3C;buildArg&gt; --enable-native-access=ALL-UNNAMED &amp;#x3C;/buildArg&gt;
+                        &amp;#x3C;buildArg&gt; -H:+ForeignAPISupport&amp;#x3C;/buildArg&gt;
+                        &amp;#x3C;buildArg&gt; -H:+UnlockExperimentalVMOptions&amp;#x3C;/buildArg&gt;
+                        &amp;#x3C;buildArg&gt; --enable-preview&amp;#x3C;/buildArg&gt;
+                    &amp;#x3C;/buildArgs&gt;
+                &amp;#x3C;/configuration&gt;
+            &amp;#x3C;/plugin&gt;
+            &amp;#x3C;plugin&gt;
+                &amp;#x3C;groupId&gt;org.apache.maven.plugins&amp;#x3C;/groupId&gt;
+                &amp;#x3C;artifactId&gt;maven-surefire-plugin&amp;#x3C;/artifactId&gt;
+                &amp;#x3C;configuration&gt;
+                    &amp;#x3C;argLine&gt;--enable-preview&amp;#x3C;/argLine&gt;
+                &amp;#x3C;/configuration&gt;
+            &amp;#x3C;/plugin&gt;
+            &amp;#x3C;plugin&gt;
+                &amp;#x3C;groupId&gt;org.apache.maven.plugins&amp;#x3C;/groupId&gt;
+                &amp;#x3C;artifactId&gt;maven-compiler-plugin&amp;#x3C;/artifactId&gt;
+                &amp;#x3C;configuration&gt;
+                    &amp;#x3C;enablePreview&gt;true&amp;#x3C;/enablePreview&gt;
+                &amp;#x3C;/configuration&gt;
+            &amp;#x3C;/plugin&gt;
+            &amp;#x3C;plugin&gt;
+                &amp;#x3C;groupId&gt;org.springframework.boot&amp;#x3C;/groupId&gt;
+                &amp;#x3C;artifactId&gt;spring-boot-maven-plugin&amp;#x3C;/artifactId&gt;
+                &amp;#x3C;configuration&gt;
+                    &amp;#x3C;compilerArguments&gt; --enable-preview &amp;#x3C;/compilerArguments&gt;
+                    &amp;#x3C;jvmArguments&gt; --enable-preview&amp;#x3C;/jvmArguments&gt;
+                &amp;#x3C;/configuration&gt;
+            &amp;#x3C;/plugin&gt;
+            &amp;#x3C;plugin&gt;
+			&amp;#x3C;groupId&gt;io.spring.javaformat&amp;#x3C;/groupId&gt;
+			&amp;#x3C;artifactId&gt;spring-javaformat-maven-plugin&amp;#x3C;/artifactId&gt;
+			&amp;#x3C;version&gt;0.0.41&amp;#x3C;/version&gt;
+			&amp;#x3C;executions&gt;
+				&amp;#x3C;execution&gt;
+					&amp;#x3C;phase&gt;validate&amp;#x3C;/phase&gt;
+					&amp;#x3C;inherited&gt;true&amp;#x3C;/inherited&gt;
+					&amp;#x3C;goals&gt;
+						&amp;#x3C;goal&gt;validate&amp;#x3C;/goal&gt;
+					&amp;#x3C;/goals&gt;
+				&amp;#x3C;/execution&gt;
+			&amp;#x3C;/executions&gt;
+		&amp;#x3C;/plugin&gt;
+        &amp;#x3C;/plugins&gt;
+    &amp;#x3C;/build&gt;
+    &amp;#x3C;repositories&gt;
+    &amp;#x3C;repository&gt;
+            &amp;#x3C;id&gt;spring-milestones&amp;#x3C;/id&gt;
+            &amp;#x3C;name&gt;Spring Milestones&amp;#x3C;/name&gt;
+            &amp;#x3C;url&gt;https://repo.spring.io/milestone&amp;#x3C;/url&gt;
+            &amp;#x3C;snapshots&gt;
+                &amp;#x3C;enabled&gt;false&amp;#x3C;/enabled&gt;
+            &amp;#x3C;/snapshots&gt;
+        &amp;#x3C;/repository&gt;
+        &amp;#x3C;repository&gt;
+            &amp;#x3C;id&gt;spring-snapshots&amp;#x3C;/id&gt;
+            &amp;#x3C;name&gt;Spring Snapshots&amp;#x3C;/name&gt;
+            &amp;#x3C;url&gt;https://repo.spring.io/snapshot&amp;#x3C;/url&gt;
+            &amp;#x3C;releases&gt;
+                &amp;#x3C;enabled&gt;false&amp;#x3C;/enabled&gt;
+            &amp;#x3C;/releases&gt;
+        &amp;#x3C;/repository&gt;
+    &amp;#x3C;/repositories&gt;
+    &amp;#x3C;pluginRepositories&gt;
+        &amp;#x3C;pluginRepository&gt;
+            &amp;#x3C;id&gt;spring-milestones&amp;#x3C;/id&gt;
+            &amp;#x3C;name&gt;Spring Milestones&amp;#x3C;/name&gt;
+            &amp;#x3C;url&gt;https://repo.spring.io/milestone&amp;#x3C;/url&gt;
+            &amp;#x3C;snapshots&gt;
+                &amp;#x3C;enabled&gt;false&amp;#x3C;/enabled&gt;
+            &amp;#x3C;/snapshots&gt;
+        &amp;#x3C;/pluginRepository&gt;
+        &amp;#x3C;pluginRepository&gt;
+            &amp;#x3C;id&gt;spring-snapshots&amp;#x3C;/id&gt;
+            &amp;#x3C;name&gt;Spring Snapshots&amp;#x3C;/name&gt;
+            &amp;#x3C;url&gt;https://repo.spring.io/snapshot&amp;#x3C;/url&gt;
+            &amp;#x3C;releases&gt;
+                &amp;#x3C;enabled&gt;false&amp;#x3C;/enabled&gt;
+            &amp;#x3C;/releases&gt;
+        &amp;#x3C;/pluginRepository&gt;
+    &amp;#x3C;/pluginRepositories&gt;
+&amp;#x3C;/project&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;I know, I know! There&apos;s a lot! But, not really. This &lt;code&gt;pom.xml&lt;/code&gt; is almost identical to what I got from the Spring Initializr. The main changes are:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;I redefined the &lt;code&gt;maven-surefire-plugin&lt;/code&gt; and &lt;code&gt;maven-compiler-plugin&lt;/code&gt; to support preview features.&lt;/li&gt;
+&lt;li&gt;I added the &lt;code&gt;spring-javaformat-maven-plugin&lt;/code&gt; to support formatting my source code.&lt;/li&gt;
+&lt;li&gt;I added two new dependencies: &lt;code&gt;org.graalvm.sdk:graal-sdk:23.1.2&lt;/code&gt; and &lt;code&gt;org.graalvm.nativeimage:svm:23.1.2&lt;/code&gt;, both of which are exclusively for the creation of the GraalVM &lt;code&gt;Feature&lt;/code&gt; implementation that we will need later.&lt;/li&gt;
+&lt;li&gt;I added configuration stanzas to the &lt;code&gt;&amp;#x3C;configuration&gt;&lt;/code&gt; sections of the &lt;code&gt;native-maven-plugin&lt;/code&gt;, and the &lt;code&gt;spring-boot-maven-plugin&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;In no time at all, Spring Boot 3.3 will be GA and support Java 22, and so maybe half of this build file will disappear. (Talk about &lt;em&gt;Spring cleaning&lt;/em&gt;!)&lt;/p&gt;
+&lt;h2 id=&quot;a-quick-programming-note&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#a-quick-programming-note&quot; aria-label=&quot;a quick programming note permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;A Quick Programming Note&lt;/h2&gt;
+&lt;p&gt;Throughout this article, I&apos;m going to refer to a functional interface type called &lt;code&gt;LanguageDemonstrationRunner&lt;/code&gt;. It&apos;s just a functional interface I created that is declared to throw a &lt;code&gt;Throwable&lt;/code&gt;, so that I don&apos;t have to worry about it.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;package com.example.demo;
+
+@FunctionalInterface
+interface LanguageDemonstrationRunner {
+
+    void run() throws Throwable;
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;I have an &lt;code&gt;ApplicationRunner&lt;/code&gt; which in turn injects all implementations of my functional interface and then invokes their &lt;code&gt;run&lt;/code&gt; method, catching and handling &lt;code&gt;Throwable&lt;/code&gt;.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;
+    // ...	
+    @Bean
+	ApplicationRunner demo(Map&amp;#x3C;String, LanguageDemonstrationRunner&gt; demos) {
+		return _ -&gt; demos.forEach((_, demo) -&gt; {
+			try {
+				demo.run();
+			} //
+			catch (Throwable e) {
+				throw new RuntimeException(e);
+			}
+		});
+	}
+    // ...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;OK, that established.. onward!&lt;/p&gt;
+&lt;h2 id=&quot;bye-jni&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#bye-jni&quot; aria-label=&quot;bye jni permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Bye, JNI!&lt;/h2&gt;
+&lt;p&gt;This release sees the long-awaited release of &lt;a href=&quot;https://openjdk.org/projects/panama&quot;&gt;Project Panama&lt;/a&gt;. This is one of the three features I&apos;ve most been waiting for. The other two features, virtual threads and GraalVM native images, have been a reality for at least six months now.  Project Panama is  the thing that lets us leverage the galaxy of C, C++ code that&apos;s been so long denied us. Come to think of it, it probably supports  basically any kind of binary if it supports &lt;a href=&quot;https://en.wikipedia.org/wiki/Executable_and_Linkable_Format&quot;&gt;ELF&lt;/a&gt;, I&apos;d imagine. Rust programs and Go programs can be compiled to C-compatible binaries, for example, so I imagine (but haven&apos;t tried) that this means easy enough interop with those languages, too. Broadly, in this section, when I talk about &quot;native code,&quot; I&apos;m talking about binaries that are compiled in such a way that they can be invoked like a C library might.&lt;/p&gt;
+&lt;p&gt;Historically, Java has been very insular. It has &lt;em&gt;not&lt;/em&gt; been easy for Java developers to repurpose native C and C++ code. It makes sense. Native, operating system-specific code would only serve to undermine Java&apos;s promise of &lt;em&gt;Write Once, Run Anywhere&lt;/em&gt;. It&apos;s always been a bit taboo. But I don&apos;t see why it should be.  To be fair, we&apos;ve done alright, despite the absence of easy native code interop. There is &lt;a href=&quot;https://en.wikipedia.org/wiki/Java_Native_Interface&quot;&gt;JNI&lt;/a&gt;, which stands for &lt;em&gt;Joylessly Navigating the Inferno&lt;/em&gt;, I&apos;m pretty sure. In order to use JNI, you must write more, &lt;em&gt;new&lt;/em&gt; C/C++ code to glue together whatever language you want to use with Java. (How is this productive? Who thought this was a good idea?) Most people &lt;em&gt;want&lt;/em&gt; to use JNI like they &lt;em&gt;want&lt;/em&gt; a root canal!&lt;/p&gt;
+&lt;p&gt;Most people don&apos;t. We&apos;ve simply had to reinvent everything in an idiomatic, Java-style way.  For nearly anything you could want to do, there is probably   a pure Java solution out there that runs anywhere Java does. It works fine  until  it doesn&apos;t. Java has missed out on key opportunities here. Imagine if Kubernetes had been built in Java? Imagine if the current AI revolution was powered by Java? There are a lot of reasons why these two notions would&apos;ve been inconceivable when Numpy, Scipy, and Kubernetes were first created, but today? Today, they released Project Panama.&lt;/p&gt;
+&lt;p&gt;Project Panama introduces an easy way to link into native code. There are two levels of support. You can, in a rather low-level way, manipulate memory and pass data back and forth into native code. I said &quot;back and forth,&quot; but I probably should&apos;ve said &quot;down and up&quot; to native code. Project Panama supports &quot;downcalls,&quot; calls into native code from Java, and &quot;upcalls,&quot; calls from native code into Java. You can invoke functions, allocate and free memory, read and update fields in &lt;code&gt;struct&lt;/code&gt;s, etc.&lt;/p&gt;
+&lt;p&gt;Let&apos;s take a look at a simple example. The code uses the new &lt;code&gt;java.lang.foreign.*&lt;/code&gt; APIs to look up a symbol called &lt;code&gt;printf&lt;/code&gt; (which is basically &lt;code&gt;System.out.print()&lt;/code&gt;), allocate memory (sort of like &lt;code&gt;malloc&lt;/code&gt;) buffer, and then pass that buffer to the &lt;code&gt;printf&lt;/code&gt; function.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;
+package com.example.demo;
+
+import org.springframework.stereotype.Component;
+
+import java.lang.foreign.Arena;
+import java.lang.foreign.FunctionDescriptor;
+import java.lang.foreign.Linker;
+import java.lang.foreign.SymbolLookup;
+import java.util.Objects;
+
+import static java.lang.foreign.ValueLayout.ADDRESS;
+import static java.lang.foreign.ValueLayout.JAVA_INT;
+
+@Component
+class ManualFfi implements LanguageDemonstrationRunner {
+
+    // this is package private because we&apos;ll need it later
+	static final FunctionDescriptor PRINTF_FUNCTION_DESCRIPTOR =
+            FunctionDescriptor.of(JAVA_INT, ADDRESS);
+
+	private final SymbolLookup symbolLookup;
+
+    // SymbolLookup is a Panama API, but I have an implementation I&apos;m injecting
+	ManualFfi(SymbolLookup symbolLookup) {
+		this.symbolLookup = symbolLookup;
+	}
+
+	@Override
+	public void run() throws Throwable {
+		var symbolName = &quot;printf&quot;;
+		var nativeLinker = Linker.nativeLinker();
+		var methodHandle = this.symbolLookup.find(symbolName)
+			.map(symbolSegment -&gt; nativeLinker.downcallHandle(symbolSegment, PRINTF_FUNCTION_DESCRIPTOR))
+			.orElse(null);
+		try (var arena = Arena.ofConfined()) {
+			var cString = arena.allocateFrom(&quot;hello, Panama!&quot;);
+			Objects.requireNonNull(methodHandle).invoke(cString);
+		}
+	}
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Here&apos;s the definition for the &lt;code&gt;SymbolLookup&lt;/code&gt; that I put together. It is a sort of composite, trying one &lt;code&gt;SymbolLookup&lt;/code&gt;,
+and then another if the first should fail.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;
+@Bean
+SymbolLookup symbolLookup() {
+    var loaderLookup = SymbolLookup.loaderLookup();
+    var stdlibLookup = Linker.nativeLinker().defaultLookup();
+    return name -&gt; loaderLookup.find(name).or(() -&gt; stdlibLookup.find(name));
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Run this, and you&apos;ll see it prints out &lt;code&gt;hello, Panama!&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;You might be wondering why I didn&apos;t pick something more interesting as an example. It turns out that there&apos;s precious
+little that you can both take for granted across all operating systems &lt;em&gt;and&lt;/em&gt; perceive as having done something on your
+computer. IO seemed to be about all I could think of, and console IO is even easier to follow.&lt;/p&gt;
+&lt;p&gt;But what about GraalVM native images? It doesn&apos;t support &lt;em&gt;every&lt;/em&gt; thing you might want to do. And, at least for the
+moment, it doesn&apos;t run on Apple Silicon, only x86 chips. I developed this example and
+set &lt;a href=&quot;https://raw.githubusercontent.com/spring-tips/java22/main/.github/workflows/maven.yml&quot;&gt;up a GitHub Action&lt;/a&gt; to see
+the results in an x86 Linux environment. It&apos;s a bit of a pity for us Mac developers who are not using Intel chips, but
+most of us aren&apos;t deploying to Apple devices in production, we&apos;re deploying to Linux and x86, so it&apos;s not a dealbreaker.&lt;/p&gt;
+&lt;p&gt;There are some
+other &lt;a href=&quot;https://github.com/oracle/graal/blob/master/docs/reference-manual/native-image/ForeignInterface.md&quot;&gt;limitations, too&lt;/a&gt;.
+For example, GraalVM native images only support the first &lt;code&gt;SymbolLookup&lt;/code&gt;, &lt;code&gt;loaderLookup&lt;/code&gt;, in our composite. If that one
+doesn&apos;t work, then neither of them will work.&lt;/p&gt;
+&lt;p&gt;GraalVM wants to know about some of the dynamic things you&apos;re going to do at runtime, including foreign function
+invocation. You need to tell it ahead of time. For most other things about which it needs such information, like
+reflection, serialization, resource loading, and more, you need to write a &lt;code&gt;.json&lt;/code&gt; configuration file (or let Spring&apos;s
+AOT engine write them for you). This feature is so new that you have to go down a few abstraction levels and write a
+GraalVM &lt;code&gt;Feature&lt;/code&gt; class. A &lt;code&gt;Feature&lt;/code&gt;  has callback methods that get invoked during GraalVM&apos;s native compilation
+lifecycle. You&apos;ll tell
+GraalVM the signature, the &lt;em&gt;shape&lt;/em&gt;, of the native function that we&apos;ll eventually invoke at runtime. Here&apos;s
+the &lt;code&gt;Feature&lt;/code&gt;.
+There&apos;s only one line of value.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;package com.example.demo;
+
+import org.graalvm.nativeimage.hosted.Feature;
+import org.graalvm.nativeimage.hosted.RuntimeForeignAccess;
+
+import static com.example.demo.ManualFfi.PRINTF_FUNCTION_DESCRIPTOR;
+
+public class DemoFeature implements Feature {
+
+	@Override
+	public void duringSetup(DuringSetupAccess access) {
+        // this is the only line that&apos;s important. NB: we&apos;re sharing 
+        // the PRINTF_FUNCTION_DESCRIPTOR from our ManualFfi bean from earlier. 
+		RuntimeForeignAccess.registerForDowncall(PRINTF_FUNCTION_DESCRIPTOR);
+	}
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;And then we need to wire up the feature, telling GraalVM about it, by passing in the &lt;code&gt;--features&lt;/code&gt; attribute to the GraalVM native image Maven plugin configuration. We also need to unlock the foreign API support and unlock experimental stuff. (I don&apos;t know why this is experimental in GraalVM native images when it&apos;s not experimental any longer in Java 22 itself). Also, we need to tell GraalVM to allow native access for all unnamed types. So, altogether, here&apos;s the final Maven plugin configuration.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-xml&quot;&gt;
+&amp;#x3C;plugin&gt;
+    &amp;#x3C;groupId&gt;org.graalvm.buildtools&amp;#x3C;/groupId&gt;
+    &amp;#x3C;artifactId&gt;native-maven-plugin&amp;#x3C;/artifactId&gt;
+    &amp;#x3C;version&gt;0.10.1&amp;#x3C;/version&gt;
+    &amp;#x3C;configuration&gt;
+        &amp;#x3C;buildArgs&gt;
+            &amp;#x3C;buildArg&gt;--features=com.example.demo.DemoFeature&amp;#x3C;/buildArg&gt;
+            &amp;#x3C;buildArg&gt;--enable-native-access=ALL-UNNAMED&amp;#x3C;/buildArg&gt;
+            &amp;#x3C;buildArg&gt;-H:+ForeignAPISupport&amp;#x3C;/buildArg&gt;
+            &amp;#x3C;buildArg&gt;-H:+UnlockExperimentalVMOptions&amp;#x3C;/buildArg&gt;
+            &amp;#x3C;buildArg&gt;--enable-preview&amp;#x3C;/buildArg&gt;
+        &amp;#x3C;/buildArgs&gt;
+    &amp;#x3C;/configuration&gt;
+&amp;#x3C;/plugin&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This is an awesome result. I compiled the code in this example into a GraalVM native image running on GitHub Actions
+runners and then executed it. The application, which - I remind you - has the Spring JDBC support, a complete and
+embedded SQL 99 compliant Java database called H2, and everything on the classpath - executes in 0.031 seconds (31
+milliseconds, or 31 thousandths of a second), takes tens of megabytes of RAM, and invokes the native C code, from the
+GraalVM native image!&lt;/p&gt;
+&lt;p&gt;I&apos;m so happy, y&apos;all. I&apos;ve waited for this day for so long.&lt;/p&gt;
+&lt;p&gt;But this does feel a little low-level. At the end of the day, you are using a Java API to programmatically create and
+maintain structures in native code. It&apos;s sort of like using SQL from JDBC. JDBC lets you manipulate SQL database records
+in Java, but you&apos;re not writing SQL in Java and compiling it in Java and executing it in SQL. There&apos;s an abstraction
+delta; you&apos;re sending strings into the SQL engine and then getting records back out as &lt;code&gt;ResultSet&lt;/code&gt; objects. The same is
+true for the low-level API in Panama. It works, but you&apos;re not invoking native code, your looking up symbols with
+strings and manipulating memory.&lt;/p&gt;
+&lt;p&gt;So, they released a separate but related tool called &lt;code&gt;jextract&lt;/code&gt;. You can point it at a C header file, like &lt;code&gt;stdio.h&lt;/code&gt;, in
+which the &lt;code&gt;printf&lt;/code&gt; function is defined, and it&apos;ll generate Java code that mimics the call signature of the underlying C
+code. I didn&apos;t use it in this example because the resulting Java code ends up being tied to the underlying platform. I
+pointed it to &lt;code&gt;stdio.h&lt;/code&gt; and got a lot of macOS specific definitions. I could hide all of that behind a runtime check for
+the operating system and then dynamically load a particular implementation, but, eh, this blog&apos;s already too long. If
+you want to see how to run &lt;code&gt;jextract&lt;/code&gt;, here&apos;s the bash script I used that worked for macOS and Linux. Your mileage may
+vary.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;#!/usr/bin/env bash
+LINUX=https://download.java.net/java/early_access/jextract/22/3/openjdk-22-jextract+3-13_linux-x64_bin.tar.gz
+MACOS=https://download.java.net/java/early_access/jextract/22/3/openjdk-22-jextract+3-13_macos-x64_bin.tar.gz
+
+OS=$(uname)
+
+DL=&quot;&quot;
+STDIO=&quot;&quot;
+
+if [ &quot;$OS&quot; = &quot;Darwin&quot; ]; then
+    DL=&quot;$MACOS&quot;
+    STDIO=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/stdio.h
+elif [ &quot;$OS&quot; = &quot;Linux&quot; ]; then
+    DL=$LINUX
+    STDIO=/usr/include/stdio.h
+else
+    echo &quot;Are you running on Windows? This might work inside the Windows Subsystem for Linux, but I haven&apos;t tried it yet..&quot;
+fi
+
+LOCAL_TGZ=tmp/jextract.tgz
+REMOTE_TGZ=$DL
+JEXTRACT_HOME=jextract-22
+
+mkdir -p &quot;$(
+
+ dirname  $LOCAL_TGZ )&quot;
+wget -O $LOCAL_TGZ $REMOTE_TGZ
+tar -zxf &quot;$LOCAL_TGZ&quot; -C .
+export PATH=$PATH:$JEXTRACT_HOME/bin
+
+jextract  --output src/main/java  -t com.example.stdio $STDIO
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Just think about it. We have easy foreign function interop, virtual threads giving us amazing scalability, and
+statically linked, lightning fast, RAM efficient, self-contained GraalVM native image binaries. Tell me why you&apos;d start
+a new project in Go, again? :-)&lt;/p&gt;
+&lt;h2 id=&quot;a-brave-new-world&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#a-brave-new-world&quot; aria-label=&quot;a brave new world permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;A Brave New World&lt;/h2&gt;
+&lt;p&gt;Java 22 is an amazing new release. It brings with it a bevy of huge features and quality of life improvements. Just
+remember, it can&apos;t always be this good! Nobody can introduce paradigm-changing new features consistently every six
+months. It&apos;s just not possible. So, let&apos;s be thankful and enjoy it while we can, shall we? :) The last release, Java 21,
+was, in my estimation, maybe the single biggest release I&apos;ve seen since perhaps Java 5, maybe even earlier. It might be
+the biggest ever!&lt;/p&gt;
+&lt;p&gt;There are a ton of features there that are well worth your attention, including &lt;em&gt;data-oriented programming&lt;/em&gt; and &lt;em&gt;virtual threads&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;I covered this, and a lot more, in a blog I did to support the release six months ago, &lt;a href=&quot;https://spring.io/blog/2023/09/20/hello-java-21&quot;&gt;&lt;em&gt;Hello, Java 21&lt;/em&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&quot;virtual-threads-structured-concurrency-and-scoped-values&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#virtual-threads-structured-concurrency-and-scoped-values&quot; aria-label=&quot;virtual threads structured concurrency and scoped values permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Virtual Threads, Structured Concurrency, and Scoped Values&lt;/h2&gt;
+&lt;p&gt;Virtual threads are the really important bit, though. Read the blog I just linked you to, towards the bottom. (Don&apos;t be
+like &lt;a href=&quot;https://www.youtube.com/watch?v=w87od6DjzAg&quot;&gt;the Primeagen&lt;/a&gt;, who read the article but managed to sort of move on
+before even getting to the best part - the virtual threads! My friend... Why??)&lt;/p&gt;
+&lt;p&gt;Virtual threads are a way to squeeze more out of your cloud infrastructure spend, your hardware, etc., if you&apos;re running
+IO-bound services. They make it so that you can take existing code written against the blocking IO APIs in &lt;code&gt;java.io&lt;/code&gt;,
+switch to virtual threads, and handle much better scale. The effect, usually, is that your system is no longer
+constantly waiting for threads to be available so the average response time goes down, and, even nicer, you will see the
+system handle many more requests at the same time! I can&apos;t stress this enough. Virtual threads are &lt;em&gt;awesome&lt;/em&gt;! And if
+you&apos;re using Spring Boot 3.2, you need only specify &lt;code&gt;spring.threads.virtual.enabled=true&lt;/code&gt; to benefit from them!&lt;/p&gt;
+&lt;p&gt;Virtual threads are part of a slate of new features, which have been more than half a decade in coming, designed to make
+Java the lean, mean scale machine we all knew it deserved to be. And it&apos;s working! Virtual threads was one of three
+features, designed to work together. Virtual threads are the only feature that has been delivered in a release form, as
+yet.&lt;/p&gt;
+&lt;p&gt;Structured concurrency and scoped values have both yet to land. Structured concurrency gives you a more elegant
+programming model for building concurrent code, and scoped values give you an efficient and more versatile alternative
+to &lt;code&gt;ThreadLocal&amp;#x3C;T&gt;&lt;/code&gt;, particularly useful in the context of virtual threads, where you can now realistically have
+&lt;em&gt;millions&lt;/em&gt; of threads. Imagine having duplicated data for each of those!&lt;/p&gt;
+&lt;p&gt;These features are in preview in Java 22. I don&apos;t know that they&apos;re worth showing, just yet. Virtual threads are the magic piece, in my mind, and they are so magic precisely because you don&apos;t really need to know about them! Just set that one property, and you&apos;re off.&lt;/p&gt;
+&lt;p&gt;Virtual threads give you the amazing scale of something like &lt;code&gt;async&lt;/code&gt;/&lt;code&gt;await&lt;/code&gt; in Python, Rust, C#, TypeScript, JavaScript, or &lt;code&gt;suspend&lt;/code&gt; in Kotlin, but without the inherent verbosity of code and busy work required to use those language features. It&apos;s one of the few times where, save for maybe Go&apos;s implementation, Java is just straight-up better in the result. Go&apos;s implementation is ideal, but only because they had this baked in to the 1.0 version. Indeed, Java&apos;s implementation is more remarkable precisely because it coexists with the older platform threads model.&lt;/p&gt;
+&lt;h2 id=&quot;implicitly-declared-classes-and-instance-main-methods&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#implicitly-declared-classes-and-instance-main-methods&quot; aria-label=&quot;implicitly declared classes and instance main methods permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Implicitly Declared Classes and Instance Main Methods&lt;/h2&gt;
+&lt;p&gt;This preview feature is huge quality-of-life win, even though the resulting code is smaller, and I warmly welcome it.
+Unfortunately doesn&apos;t really work with Spring Boot, at the moment. The basic idea is that one day you&apos;ll be able to just
+have a top-level main method, without all the ceremony inherent in Java today. Wouldn&apos;t this be nice as the entry point
+to your application? No &lt;code&gt;class&lt;/code&gt; definition, no &lt;code&gt;public static void&lt;/code&gt;, no unneeded &lt;code&gt;String[]&lt;/code&gt; args.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;void main() {
+    System.out.println(&quot;Hello, world!&quot;);
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&quot;statements-before-super&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#statements-before-super&quot; aria-label=&quot;statements before super permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Statements Before Super&lt;/h2&gt;
+&lt;p&gt;This is a nice quality of life feature. Basically, Java doesn&apos;t let you access &lt;code&gt;this&lt;/code&gt; before invoking the super
+constructor in a subclass. The goal was to avoid a class of bugs related to invalid state. But it&apos;s a bit heavy handed,
+and forced developers to resort to &lt;code&gt;private static&lt;/code&gt;  auxillary methods whenever they wanted to do any sort of
+non-trivial computation before invoking the super method. Here&apos;s an example of the gymanastics sometimes required. I
+stole this example from &lt;a href=&quot;https://openjdk.org/jeps/447&quot;&gt;the JEP&lt;/a&gt; page itself:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;class Sub extends Super {
+
+    Sub(Certificate certificate) {
+        super(prepareByteArray(certificate));
+    }
+
+    // Auxiliary method
+    private static byte[] prepareByteArray(Certificate certificate) {
+        var publicKey = certificate.getPublicKey();
+        if (publicKey == null)
+            throw new IllegalArgumentException(&quot;null certificate&quot;);
+        return switch (publicKey) {
+            case RSAKey rsaKey -&gt; ///...
+            case DSAPublicKey dsaKey -&gt; ...
+            //...
+            default -&gt; //...
+        };
+    }
+
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;You can see the problem. This new JEP, a preview feature for now, would allow you to inline that method in the
+constructor itself, promoting readability and defeating code sprawl.&lt;/p&gt;
+&lt;h2 id=&quot;unnamed-variables-and-patterns&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#unnamed-variables-and-patterns&quot; aria-label=&quot;unnamed variables and patterns permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Unnamed Variables and Patterns&lt;/h2&gt;
+&lt;p&gt;Unnamed variables and patterns are another quality-of-life feature. This one, however, is already delivered.&lt;/p&gt;
+&lt;p&gt;When you&apos;re creating threads, or working with Java 8 streams and collectors, you&apos;re going to be creating lots of
+lambdas. Indeed, there are plenty of situations in Spring where you&apos;ll be working with lambdas. Just think of all
+the &lt;code&gt;*Template&lt;/code&gt; objects, and their callback-centric methods. &lt;code&gt;JdbcClient&lt;/code&gt; and &lt;code&gt;RowMapper&amp;#x3C;T&gt;&lt;/code&gt;, eh... &lt;em&gt;spring&lt;/em&gt; to mind,
+too!&lt;/p&gt;
+&lt;p&gt;Fun fact: Lambdas were first introduced in 2014&apos;s Java 8 release. (Yes, that was a &lt;em&gt;decade&lt;/em&gt; ago! People were doing the
+ice bucket challenges, the world was obsessed with selfie sticks, &lt;em&gt;Frozen&lt;/em&gt;, and &lt;em&gt;Flappy Bird&lt;/em&gt;.), but they had the
+amazing quality that the almost 20 years of Java code that came before them could participate in lambdas overnight if
+methods expected a single method interface implementation.&lt;/p&gt;
+&lt;p&gt;Lambdas are amazing. They introduce a new unit of reuse in the Java language. And the best part is that they were
+designed in such a way as to sort of graft onto the existing rules of the runtime, including adapting so-called
+&lt;em&gt;functional interfaces&lt;/em&gt; or SAMs (single abstract method) interfaces automatically to lambdas. My only complaint with
+them is that it was annoying having to make things final that were referenced from within the lambda that belong to a
+containing scope. That&apos;s since been fixed. And it is annoying having to spell out every parameter to a lambda even if I
+have no intention of using it, and now, with Java 22, that too has been fixed! Here is a verbose example just to
+demonstrate the use of the &lt;code&gt;_&lt;/code&gt; character in two places. Because I can.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;package com.example.demo;
+
+import org.springframework.jdbc.core.simple.JdbcClient;
+import org.springframework.stereotype.Component;
+
+import javax.sql.DataSource;
+
+@Component
+class AnonymousLambdaParameters implements LanguageDemonstrationRunner {
+
+	private final JdbcClient db;
+
+	AnonymousLambdaParameters(DataSource db) {
+		this.db = JdbcClient.create(db);
+	}
+
+	record Customer(Integer id, String name) {
+	}
+
+	@Override
+	public void run() throws Throwable {
+		var allCustomers = this.db.sql(&quot;select * from customer &quot;)
+                // here! 
+			.query((rs, _) -&gt; new Customer(rs.getInt(&quot;id&quot;), rs.getString(&quot;name&quot;)))
+			.list();
+		System.out.println(&quot;all: &quot; + allCustomers);
+	}
+
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;That class uses Spring&apos;s &lt;code&gt;JdbcClient&lt;/code&gt; to query the underlying database. It pages through the results, one by one, and
+then involves our lambda, which conforms to the type &lt;code&gt;RowMapper&amp;#x3C;Customer&gt;&lt;/code&gt; to help in adapting our results into records
+that line up with my domain model. The &lt;code&gt;RowMapper&amp;#x3C;T&gt;&lt;/code&gt; interface , to which our lambda conforms, has a single
+method &lt;code&gt;T mapRow(ResultSet rs, int rowNum) throws SQLException&lt;/code&gt; that expects two parameters: the &lt;code&gt;ResultSet&lt;/code&gt;, which I&apos;ll
+need, and the &lt;code&gt;rowNum&lt;/code&gt;, which I&apos;ll almost never need. Now, thanks to Java 22, I don&apos;t need to specify it. Just plug
+in &lt;code&gt;_&lt;/code&gt;, like in Kotlin or TypeScript. Nice!&lt;/p&gt;
+&lt;h2 id=&quot;gatherers&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#gatherers&quot; aria-label=&quot;gatherers permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Gatherers&lt;/h2&gt;
+&lt;p&gt;Gatherers are another nice feature that is also in preview. You may know my
+friend &lt;a href=&quot;https://twitter.com/viktorklang&quot;&gt;Viktor Klang&lt;/a&gt; from his amazing work
+on  &lt;a href=&quot;https://doc.akka.io/docs/akka/current/typed/actors.html&quot;&gt;Akka&lt;/a&gt;  and for his contributions to Scala futures whilst
+he was at Lightbend. These days, he&apos;s a Java language architect at Oracle, and one of the things he&apos;s been working on is
+the new Gatherer API. The Stream API, which was also introduced in Java 8, by the way - gave Java developers a chance,
+along with lambdas, to greatly simplify and modernize their existing code, and to move in a more
+functional-programming-centric direction. It models a set of transformations on a stream of values. But, there are cracks in the abstraction. The Streams API has a number of very
+convenient operators that work for 99% of the scenarios, but when you find something for which a convenient operator
+doesn&apos;t exist, it can be frustrating because there was no easy way to plug one in. There have been countless proposals for new operator additions to the Streams API in
+the intervening ten years, and there were even discussions and concessions made in the original proposal for lambdas
+that the programming model be
+flexible &lt;a href=&quot;https://cr.openjdk.org/~vklang/Gatherers.html&quot;&gt;enough to support introducing new operators&lt;/a&gt;. It&apos;s finally
+arrived, albeit as a preview feature. Gatherers provide a slightly more low-level abstraction that gives you the ability to plug in all sorts of new
+operations on Streams, without having to materialize the &lt;code&gt;Stream&lt;/code&gt; as a &lt;code&gt;Collection&lt;/code&gt; at any point. Here&apos;s an example I
+stole directly, and unabashedly, &lt;a href=&quot;https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/util/stream/Gatherer.html&quot;&gt;from Viktor and the team&lt;/a&gt;.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;package com.example.demo;
+
+import org.springframework.stereotype.Component;
+
+import java.util.Locale;
+import java.util.function.BiFunction;
+import java.util.function.Supplier;
+import java.util.stream.Gatherer;
+import java.util.stream.Stream;
+
+@Component
+class Gatherers implements LanguageDemonstrationRunner {
+
+    private static &amp;#x3C;T, R&gt; Gatherer&amp;#x3C;T, ?, R&gt; scan(
+            Supplier&amp;#x3C;R&gt; initial,
+             BiFunction&amp;#x3C;? super R, ? super T, ? extends R&gt; scanner) {
+
+        class State {
+            R current = initial.get();
+        }
+        return Gatherer.&amp;#x3C;T, State, R&gt;ofSequential(State::new,
+                Gatherer.Integrator.ofGreedy((state, element, downstream) -&gt; {
+                    state.current = scanner.apply(state.current, element);
+                    return downstream.push(state.current);
+                }));
+    }
+
+    @Override
+    public void run() {
+        var listOfNumberStrings = Stream
+                .of(1, 2, 3, 4, 5, 6, 7, 8, 9)
+                .gather(scan(() -&gt; &quot;&quot;, (string, number) -&gt; string + number)
+                        .andThen(java.util.stream.Gatherers.mapConcurrent(10, s -&gt; s.toUpperCase(Locale.ROOT)))
+                )
+                .toList();
+        System.out.println(listOfNumberStrings);
+    }
+
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The main thrust of that code is that there&apos;s a method here, &lt;code&gt;scan&lt;/code&gt;, which returns an implementation of &lt;code&gt;Gatherer&amp;#x3C;T,?,R&gt;&lt;/code&gt;. Each &lt;code&gt;Gatherer&amp;#x3C;T,O,R&gt;&lt;/code&gt; expects an initializer and an integrator. It&apos;ll come with a default combiner and a default finisher, though you can override both. This implementation reads through all those number entries  and builds up a string for each entry that then accumulates after every successive string. The result is that you get &lt;code&gt;1&lt;/code&gt;, then &lt;code&gt;12&lt;/code&gt;, then &lt;code&gt;123&lt;/code&gt;, then &lt;code&gt;1234&lt;/code&gt;, etc.&lt;/p&gt;
+&lt;p&gt;The example above demonstrates that gatherers are also composable. We actually have two &lt;code&gt;Gatherer&lt;/code&gt; in play: the one that does the scanning, and the one that maps every item to uppercase, and it does it concurrently.&lt;/p&gt;
+&lt;p&gt;Still don&apos;t quite understand? I get the feeling that&apos;s going to be okay. This is a bit in the weeds for most folks, I&apos;d imagine. Most of us don&apos;t need to write our own Gatherers. But you &lt;em&gt;can&lt;/em&gt;. My friend &lt;a href=&quot;https://www.morling.dev/blog/zipping-gatherer/&quot;&gt;Gunnar Morling&lt;/a&gt; did just that the other day, in fact. The genius of the Gatherers approach is that now the community can scratch its own itch. I wonder what this implies for awesome projects like Eclipse Collections or Apache Commons Collections or Guava? Will they ship Gatherers? What other projects might?   I&apos;d love to see a lot of common sense gatherers, eh, well, &lt;em&gt;gathered&lt;/em&gt; into one place.&lt;/p&gt;
+&lt;h2 id=&quot;class-parsing-api&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#class-parsing-api&quot; aria-label=&quot;class parsing api permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Class Parsing API&lt;/h2&gt;
+&lt;p&gt;Yet another really nice preview feature, this new addition to the JDK is really tuned to framework and infrastructure
+folks. It answers questions like how do I build up a &lt;code&gt;.class&lt;/code&gt; file, and how do I read a &lt;code&gt;.class&lt;/code&gt; file? Right now the
+market is saturated with good, albeit incompatible and alway, by definition, ever so slightly out of date options like
+ASM (the 800 lb. gorilla in the space), ByteBuddy, CGLIB, etc. The JDK itself has three such solutions in its own
+codebase! These sorts of libraries are everywhere, and critical for developers who are building frameworks like Spring
+that generate classes at runtime to support your business logical. Think of this as a sort of reflection API, but
+for &lt;code&gt;.class&lt;/code&gt; files - the literal bytecode on the disk. Not an object loaded into the JVM.&lt;/p&gt;
+&lt;p&gt;Here&apos;s a trivial example that loads a &lt;code&gt;.class&lt;/code&gt; file into a &lt;code&gt;byte[]&lt;/code&gt; array and then introspects it.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;
+package com.example.demo;
+
+import org.springframework.aot.hint.RuntimeHints;
+import org.springframework.aot.hint.RuntimeHintsRegistrar;
+import org.springframework.context.annotation.ImportRuntimeHints;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
+import org.springframework.stereotype.Component;
+
+import java.lang.classfile.ClassFile;
+import java.lang.classfile.FieldModel;
+import java.lang.classfile.MethodModel;
+
+@Component
+@ImportRuntimeHints(ClassParsing.Hints.class)
+class ClassParsing implements LanguageDemonstrationRunner {
+
+    static class Hints implements RuntimeHintsRegistrar {
+
+        @Override
+        public void registerHints(RuntimeHints hints, ClassLoader classLoader) {
+            hints.resources().registerResource(DEFAULT_CUSTOMER_SERVICE_CLASS);
+        }
+
+    }
+
+    private final byte[] classFileBytes;
+
+    private static final Resource DEFAULT_CUSTOMER_SERVICE_CLASS = new ClassPathResource(
+            &quot;/simpleclassfile/DefaultCustomerService.class&quot;);
+
+    ClassParsing() throws Exception {
+        this.classFileBytes = DEFAULT_CUSTOMER_SERVICE_CLASS.getContentAsByteArray();
+    }
+
+    @Override
+    public void run() {
+        // this is the important logic
+        var classModel = ClassFile.of().parse(this.classFileBytes);
+        for (var classElement : classModel) {
+            switch (classElement) {
+                case MethodModel mm -&gt; System.out.printf(&quot;Method %s%n&quot;, mm.methodName().stringValue());
+                case FieldModel fm -&gt; System.out.printf(&quot;Field %s%n&quot;, fm.fieldName().stringValue());
+                default -&gt; {
+                    // ... 
+                }
+            }
+        }
+    }
+
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This example is made a bit more complicated because I am reading a resource at runtime, so I implemented a Spring
+AOT &lt;code&gt;RuntimeHintsRegistrar&lt;/code&gt; that results in a &lt;code&gt;.json&lt;/code&gt; file with information about which resource I am reading,
+the &lt;code&gt;DefaultCustomerService.class&lt;/code&gt; file itself. Ignore all that. It&apos;s just for the GraalVM native image compilation.&lt;/p&gt;
+&lt;p&gt;The interesting bit is at the bottom, where we enumerate the &lt;code&gt;ClassElement&lt;/code&gt; instances and then use some pattern matching
+to tease out individual elements. Nice!&lt;/p&gt;
+&lt;h2 id=&quot;string-templates&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#string-templates&quot; aria-label=&quot;string templates permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;String Templates&lt;/h2&gt;
+&lt;p&gt;Yet another preview feature, String templates bring String interpolation to Java! We&apos;ve had multiline Java &lt;code&gt;String&lt;/code&gt;
+values for a while. This new feature lets the language interpose variables available in scope in the compiled &lt;code&gt;String&lt;/code&gt;
+value. The best part? In theory, the mechanism itself is pluggable! Don&apos;t like this syntax? Write your own.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;package com.example.demo;
+
+import org.springframework.stereotype.Component;
+
+@Component
+class StringTemplates implements LanguageDemonstrationRunner {
+
+    @Override
+    public void run() throws Throwable {
+        var name = &quot;josh&quot;;
+        System.out.println(STR.&quot;&quot;&quot; 
+            name: \{name.toUpperCase()}
+            &quot;&quot;&quot;);
+    }
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&quot;conclusion&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#conclusion&quot; aria-label=&quot;conclusion permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;There&apos;s never been a better time to be a Java and Spring developer! I say it all the time. I feel like we&apos;re being given a brand new language and runtime, and it&apos;s being done - miraculously - in such a way as to not break backwards compatibility. This is one of the most ambitious software projects I&apos;ve ever seen the Java community embark on, and we are lucky to be here to reap the rewards. I&apos;ll be using Java 22 and GraalVM support Java 22 for everything from now on, and I hope you will too. Thanks for reading along, and I hope if you liked it that you&apos;ll feel free to check out our Youtube channel and my &lt;em&gt;Spring Tips&lt;/em&gt; playlist where I will for sure &lt;a href=&quot;https://bit.ly/spring-tips-playlist&quot;&gt;be covering Java 22 and  much more&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Thanks, also, to my friend and &lt;a href=&quot;http://twitter.com/alina_yurenko/status/1587102593851052032?s=61&amp;#x26;t=ahaeq7OhMUteRPzmYqDtKA&quot;&gt;GraalVM developer advocate extraordinaiire Alina Yurenko (@http://twitter.com/alina_yurenko/status/1587102593851052032?s=61&amp;#x26;t=ahaeq7OhMUteRPzmYqDtKA) for helping me get some of these details right&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Spring Authorization Server 1.3.0-M3 available now]]></title><link>https://spring.io/blog/2024/03/19/spring-authorization-server-1-3-0-m3-available-now</link><guid isPermaLink="true">https://spring.io/blog/2024/03/19/spring-authorization-server-1-3-0-m3-available-now</guid><dc:creator><![CDATA[Steve Riesenberg]]></dc:creator><pubDate>Tue, 19 Mar 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;On behalf of the team and everyone who has contributed, it is my pleasure to announce the release of Spring Authorization Server 1.3.0-M3! The milestone release of Spring Authorization Server contains a few noteworthy new features:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Add PKI Mutual-TLS client authentication method (&lt;code&gt;tls_client_auth&lt;/code&gt;) &lt;a href=&quot;https://github.com/spring-projects/spring-authorization-server/issues/1558&quot;&gt;#1558&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Implement OAuth 2.0 Token Exchange &lt;a href=&quot;https://github.com/spring-projects/spring-authorization-server/pull/1525&quot;&gt;#1525&lt;/a&gt; (see related &lt;a href=&quot;https://spring.io/blog/2024/03/19/token-exchange-support-in-spring-security-6-3-0-m3&quot;&gt;blog post&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;See the &lt;a href=&quot;https://github.com/spring-projects/spring-authorization-server/releases/tag/1.3.0-M3&quot;&gt;1.3.0-M3&lt;/a&gt; release notes for complete details.&lt;/p&gt;
+&lt;p&gt;To get started using Spring Authorization Server, see the &lt;a href=&quot;https://docs.spring.io/spring-authorization-server/reference/getting-started.html&quot;&gt;Getting Started&lt;/a&gt; chapter of the reference documentation and the &lt;a href=&quot;https://github.com/spring-projects/spring-authorization-server/tree/main/samples&quot;&gt;samples&lt;/a&gt; to become familiar with setup and configuration.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://spring.io/projects/spring-authorization-server&quot;&gt;Project Page&lt;/a&gt; | &lt;a href=&quot;https://github.com/spring-projects/spring-authorization-server/issues&quot;&gt;GitHub Issues&lt;/a&gt; | &lt;a href=&quot;https://github.com/orgs/spring-projects/projects/8/views/21&quot;&gt;Project Board&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Token Exchange support in Spring Security 6.3.0-M3]]></title><link>https://spring.io/blog/2024/03/19/token-exchange-support-in-spring-security-6-3-0-m3</link><guid isPermaLink="true">https://spring.io/blog/2024/03/19/token-exchange-support-in-spring-security-6-3-0-m3</guid><dc:creator><![CDATA[Steve Riesenberg]]></dc:creator><pubDate>Tue, 19 Mar 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;I&apos;m excited to share that the there will be support for the OAuth 2.0 Token Exchange Grant (&lt;a href=&quot;https://datatracker.ietf.org/doc/html/rfc8693&quot; title=&quot;OAuth 2.0 Token Exchange&quot;&gt;RFC 8693&lt;/a&gt;) in Spring Security 6.3, which is available for preview now in the latest milestone (&lt;a href=&quot;https://github.com/spring-projects/spring-security/releases/tag/6.3.0-M3&quot;&gt;6.3.0-M3&lt;/a&gt;). This support provides the ability to use Token Exchange with &lt;a href=&quot;https://docs.spring.io/spring-security/reference/servlet/oauth2/index.html&quot;&gt;OAuth2 Client&lt;/a&gt;. Similarly, server-side support is also shipping with &lt;a href=&quot;https://docs.spring.io/spring-authorization-server/reference/index.html&quot;&gt;Spring Authorization Server&lt;/a&gt; in 1.3 and is available for preview now in the latest milestone (&lt;a href=&quot;https://github.com/spring-projects/spring-authorization-server/releases/tag/1.3.0-M3&quot;&gt;1.3.0-M3&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;OAuth2 Client features of Spring Security allow us to easily make protected resources requests to an API secured with OAuth2 bearer tokens. Similarly, OAuth2 Resource Server features of Spring Security allow us to secure an API with OAuth2. Let&apos;s take a look at how we can use the new support to build OAuth2 flows with Token Exchange.&lt;/p&gt;
+&lt;h2 id=&quot;an-example&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#an-example&quot; aria-label=&quot;an example permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;An example&lt;/h2&gt;
+&lt;p&gt;Let&apos;s imagine we have a resource server called &lt;code&gt;user-service&lt;/code&gt; providing an API to access user information. In order to make requests to &lt;code&gt;user-service&lt;/code&gt;, clients must provide an access token. Let&apos;s assume tokens must have an audience (&lt;code&gt;aud&lt;/code&gt; claim) of &lt;code&gt;user-service&lt;/code&gt;. This might look like the following as Spring Boot configuration properties:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-yaml&quot;&gt;spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://my-auth-server.com
+          audiences: user-service
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now let&apos;s imagine we want to introduce a new resource server called &lt;code&gt;message-service&lt;/code&gt; and call it from &lt;code&gt;user-service&lt;/code&gt;. Let&apos;s assume then that tokens for this new service must have an audience of &lt;code&gt;message-service&lt;/code&gt;. Clearly we can&apos;t re-use the token from a request to &lt;code&gt;user-service&lt;/code&gt; in a request to &lt;code&gt;message-service&lt;/code&gt;. However, we&apos;d like the identity of the user from the original request to be preserved. How would we accomplish this?&lt;/p&gt;
+&lt;p&gt;In order to obtain the necessary access token for &lt;code&gt;message-service&lt;/code&gt;, the resource server &lt;code&gt;user-service&lt;/code&gt; must become a client and exchange an existing token for a new one that retains the identity (user) of the original token. This is called &lt;a href=&quot;https://datatracker.ietf.org/doc/html/rfc8693#name-delegation-vs-impersonation&quot;&gt;&quot;impersonation&quot;&lt;/a&gt; and is exactly the kind of scenario OAuth 2.0 Token Exchange is designed for.&lt;/p&gt;
+&lt;h2 id=&quot;configuring-the-resource-server-as-a-client&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#configuring-the-resource-server-as-a-client&quot; aria-label=&quot;configuring the resource server as a client permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Configuring the resource server as a client&lt;/h2&gt;
+&lt;p&gt;To enable Token Exchange, we need to configure &lt;code&gt;user-service&lt;/code&gt; to act as both a resource server &lt;em&gt;and&lt;/em&gt; a client that can use Token Exchange, as the following Spring Boot configuration properties show:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-yaml&quot;&gt;spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://my-auth-server.com
+          audiences: user-service
+      client:
+        registration:
+          my-token-exchange-client:
+            provider: my-auth-server
+            client-id: token-client
+            client-secret: token
+            authorization-grant-type: urn:ietf:params:oauth:grant-type:token-exchange
+            client-authentication-method: client_secret_basic
+            scope:
+                - message.read
+        provider:
+          my-auth-server:
+            issuer-uri: https://my-auth-server.com
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We also need to enable the use of the new grant type in Spring Security, which we can do by publishing the following bean:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;    @Bean
+    public OAuth2AuthorizedClientProvider tokenExchange() {
+        return new TokenExchangeOAuth2AuthorizedClientProvider();
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This is all that is required to begin using Token Exchange. However, if we want to request a specific &lt;code&gt;audience&lt;/code&gt; or &lt;code&gt;resource&lt;/code&gt; value, we need to configure additional parameters as part of the token request, as the following example shows:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;    @Bean
+    public OAuth2AuthorizedClientProvider tokenExchange() {
+        var requestEntityConverter = new TokenExchangeGrantRequestEntityConverter();
+        requestEntityConverter.addParametersConverter((grantRequest) -&gt; {
+            var parameters = new LinkedMultiValueMap&amp;#x3C;String, String&gt;();
+            parameters.add(OAuth2ParameterNames.AUDIENCE, &quot;message-service&quot;);
+            parameters.add(OAuth2ParameterNames.RESOURCE, &quot;https://example.com/messages&quot;);
+
+            return parameters;
+        });
+
+        var accessTokenResponseClient = new DefaultTokenExchangeTokenResponseClient();
+        accessTokenResponseClient.setRequestEntityConverter(requestEntityConverter);
+
+        var authorizedClientProvider = new TokenExchangeOAuth2AuthorizedClientProvider();
+        authorizedClientProvider.setAccessTokenResponseClient(accessTokenResponseClient);
+
+        return authorizedClientProvider;
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;With this configuration in place, we can obtain an access token in one resource server and use it as a &lt;code&gt;Bearer&lt;/code&gt; token in a protected resources request to another resource server. The original bearer token passed to the resource server in the &lt;code&gt;Authorization&lt;/code&gt; header will be used by default to obtain the new access token.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;TIP&lt;/strong&gt;: See &lt;a href=&quot;https://docs.spring.io/spring-security/reference/servlet/oauth2/client/authorized-clients.html&quot;&gt;Authorized Client Features&lt;/a&gt; in the reference documentation for more information on how to obtain an access token and make a protected resources request with this configuration.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;enabling-token-exchange-on-the-server&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#enabling-token-exchange-on-the-server&quot; aria-label=&quot;enabling token exchange on the server permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Enabling Token Exchange on the server&lt;/h2&gt;
+&lt;p&gt;To complete the picture, let&apos;s build a brand new authorization server application with Spring Authorization Server to support this flow.&lt;/p&gt;
+&lt;p&gt;Using &lt;a href=&quot;https://start.spring.io/&quot;&gt;Spring Initializr&lt;/a&gt; with the &lt;a href=&quot;https://start.spring.io/#!type=gradle-project&amp;#x26;language=java&amp;#x26;packaging=jar&amp;#x26;groupId=com.example&amp;#x26;artifactId=auth-server&amp;#x26;name=auth-server&amp;#x26;description=Demo%20Spring%20Authorization%20Server%20project&amp;#x26;packageName=com.example&amp;#x26;dependencies=oauth2-authorization-server&quot;&gt;OAuth2 Authorization Server&lt;/a&gt; dependency, we can configure a fully functional authorization server using the following Spring Boot configuration properties:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-yaml&quot;&gt;spring:
+  security:
+    user:
+      name: sally
+      password: password
+    oauth2:
+      authorizationserver:
+        client:
+          test-client:
+            registration:
+              client-id: test-client
+              client-secret: {noop}secret
+              client-authentication-methods:
+                - client_secret_basic
+              authorization-grant-types:
+                - authorization_code
+                - refresh_token
+              scopes:
+                - user.read
+          token-client:
+            registration:
+              client-id: token-client
+              client-secret: {noop}token
+              client-authentication-methods:
+                - client_secret_basic
+              authorization-grant-types:
+                - urn:ietf:params:oauth:grant-type:token-exchange
+              scopes:
+                - message.read
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;As with the client, we may want to support specific request parameters for Token Exchange such as &lt;code&gt;audience&lt;/code&gt; or &lt;code&gt;resource&lt;/code&gt;. The &lt;code&gt;audience&lt;/code&gt; parameter is supported out of the box. To support other parameters such as the &lt;code&gt;resource&lt;/code&gt; parameter, we can publish the following bean:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;	@Bean
+	public OAuth2TokenCustomizer&amp;#x3C;JwtEncodingContext&gt; accessTokenCustomizer() {
+		return (context) -&gt; {
+			if (context.getPrincipal() instanceof OAuth2TokenExchangeAuthenticationToken tokenExchangeRequest) {
+				var resources = tokenExchangeRequest.getResources();
+				// TODO: Validate resource value(s) and map to the
+				// appropriate audience value(s) if needed...
+
+				context.getClaims().audience(...);
+			}
+		};
+	}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;With this configuration in place, the authorization server supports the Token Exchange grant with the optional &lt;code&gt;resource&lt;/code&gt; parameter of the OAuth 2.0 Token Request, and is able to issue tokens allowing a resource server to act as a client and impersonate an end user.&lt;/p&gt;
+&lt;h2 id=&quot;conclusion&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#conclusion&quot; aria-label=&quot;conclusion permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;In this blog post, we have discussed the &quot;impersonation&quot; use case for Token Exchange and explored a simple configuration for both a resource server (acting as a client) and an authorization server.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;TIP&lt;/strong&gt;: See &lt;a href=&quot;https://datatracker.ietf.org/doc/html/rfc8693#section-appendix.a&quot;&gt;Appendix A&lt;/a&gt; of &lt;a href=&quot;https://datatracker.ietf.org/doc/html/rfc8693&quot;&gt;RFC 8693&lt;/a&gt; for additional examples including an example of an additional use case called &quot;delegation&quot; which is also supported.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;I hope you are as excited as I am about this new support! I encourage you to try out the &lt;a href=&quot;https://github.com/spring-projects/spring-authorization-server/tree/main/samples&quot;&gt;samples&lt;/a&gt; in Spring Authorization Server which includes a working example of this blog post. Please also try the milestones of both Spring Security and Spring Authorization Server in your own project. We would love your feedback!&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Spring Authorization Server 1.2.3, 1.1.6 and 1.0.6 Available Now Including Fixes for CVE-2024-22258]]></title><link>https://spring.io/blog/2024/03/19/spring-authorization-server-1-2-3-1-1-6-and-1-0-6-available-now-including</link><guid isPermaLink="true">https://spring.io/blog/2024/03/19/spring-authorization-server-1-2-3-1-1-6-and-1-0-6-available-now-including</guid><dc:creator><![CDATA[Joe Grandja]]></dc:creator><pubDate>Tue, 19 Mar 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;On behalf of the team and everyone who has contributed, it is my pleasure to announce the general availability of Spring Authorization Server 1.2.3, 1.1.6 and 1.0.6.&lt;/p&gt;
+&lt;p&gt;The releases address &lt;a href=&quot;https://spring.io/security/cve-2024-22258&quot;&gt;CVE-2024-22258&lt;/a&gt; for PKCE Downgrade in Spring Authorization Server.&lt;/p&gt;
+&lt;h2 id=&quot;tanzu-spring-runtime&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#tanzu-spring-runtime&quot; aria-label=&quot;tanzu spring runtime permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Tanzu Spring Runtime&lt;/h2&gt;
+&lt;p&gt;Commercial customers using Spring Boot 2.7 or 3.0 can make use of the new Spring Boot Hotfix release mechanism, providing versions 2.7.20.2 and 3.0.15.2. Spring Boot Hotfix releases are timely releases that patch dependency management to use the latest Spring artifacts when a CVE fix is released. The hotfix versions released today are available on the Spring commercial artifact repository and can be accessed with a Spring Enterprise Subscription.&lt;/p&gt;
+&lt;p&gt;Commercial customers and OSS users of Spring Boot 3.1 and 3.2 should manually upgrade to Spring Authorization Server 1.1.6 and 1.2.3 now, and to Spring Boot 3.1.10 and 3.2.4 later this week when those become available.&lt;/p&gt;
+&lt;p&gt;Stay tuned for more details on hotfix releases and our plans in that space.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://spring.io/projects/spring-authorization-server&quot;&gt;Project Page&lt;/a&gt; | &lt;a href=&quot;https://github.com/spring-projects/spring-authorization-server/issues&quot;&gt;GitHub Issues&lt;/a&gt; | &lt;a href=&quot;https://github.com/orgs/spring-projects/projects/8/views/21&quot;&gt;Project Board&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Spring for Apache Kafka 3.0.15, 3.1.3 and 3.2.0-M2 Available Now]]></title><link>https://spring.io/blog/2024/03/19/spring-for-apache-kafka-3-0-15-3-1-3-and-3-2-0-m2-available-now</link><guid isPermaLink="true">https://spring.io/blog/2024/03/19/spring-for-apache-kafka-3-0-15-3-1-3-and-3-2-0-m2-available-now</guid><dc:creator><![CDATA[Soby Chacko]]></dc:creator><pubDate>Tue, 19 Mar 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;On behalf of the entire team and everyone in the community who contributed, we are pleased to announce the general availability of Spring for Apache Kafka &lt;code&gt;3.0.15&lt;/code&gt; and &lt;code&gt;3.1.3&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Spring for Apache Kafka &lt;code&gt;3.0.15&lt;/code&gt; includes a &lt;a href=&quot;https://github.com/spring-projects/spring-kafka/releases/tag/v3.0.15&quot;&gt;few improvements and bug fixes&lt;/a&gt;. In addition, this version now supports the ability to call the &lt;code&gt;enforceRebalance&lt;/code&gt; on the Kafka consumer.  This release will be included as part of the upcoming &lt;a href=&quot;https://github.com/spring-projects/spring-boot/milestone/337&quot;&gt;Spring Boot 3.1.10 release&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Spring for Apache Kafka &lt;code&gt;3.1.3&lt;/code&gt; ships with &lt;a href=&quot;https://github.com/spring-projects/spring-kafka/releases/tag/v3.1.3&quot;&gt;some new features, enhancements, bug fixes and documentation improvements&lt;/a&gt;. This release will be part of the upcoming &lt;a href=&quot;https://github.com/spring-projects/spring-boot/milestone/338&quot;&gt;Spring Boot 3.2.4 release&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;We also released the second milestone for Spring for Apache Kafka 3.2.0 (&lt;code&gt;3.2.0-M2&lt;/code&gt;). This milestone release includes a number of new additions as &lt;a href=&quot;https://github.com/spring-projects/spring-kafka/releases/tag/v3.2.0-M2&quot;&gt;features, enhancements, bug fixes and documentation changes&lt;/a&gt;. Some notable improvements are the support for non-blocking retries when using &lt;code&gt;KafkaListener&lt;/code&gt; as a class-level annotation, a new seek API based on offsets computed from a user-provided function, more enhancements in the Kafka Stream interactive query support, etc. This milestone release will be included in the upcoming &lt;a href=&quot;https://github.com/spring-projects/spring-boot/milestone/330&quot;&gt;Spring Boot 3.3.0-M3 release&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;We want to thank everyone who contributed to these releases.&lt;/p&gt;
+&lt;h4 id=&quot;staying-in-touch-with-the-project&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#staying-in-touch-with-the-project&quot; aria-label=&quot;staying in touch with the project permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Staying in touch with the project&lt;/h4&gt;
+&lt;p&gt;Following are the usual avenues where you can engage with the project.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/spring-projects/spring-kafka&quot;&gt;GitHub&lt;/a&gt; | &lt;a href=&quot;https://github.com/spring-projects/spring-kafka/issues&quot;&gt;Issues&lt;/a&gt; | &lt;a href=&quot;https://docs.spring.io/spring-kafka/reference&quot;&gt;Documentation&lt;/a&gt; | &lt;a href=&quot;https://stackoverflow.com/tags/spring-kafka&quot;&gt;Stack Overflow&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Spring for Apache Pulsar 1.0.4 available now]]></title><link>https://spring.io/blog/2024/03/18/spring-for-apache-pulsar-1-0-4-available-now</link><guid isPermaLink="true">https://spring.io/blog/2024/03/18/spring-for-apache-pulsar-1-0-4-available-now</guid><dc:creator><![CDATA[Chris Bono]]></dc:creator><pubDate>Mon, 18 Mar 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;On behalf of the team and everyone who has contributed, I’m happy to announce that Spring for Apache Pulsar &lt;code&gt;1.0.4&lt;/code&gt; has been released and is now available from Maven Central.&lt;/p&gt;
 &lt;p&gt;This release will be included in the upcoming Spring Boot &lt;a href=&quot;https://github.com/spring-projects/spring-boot/milestone/338&quot;&gt;3.2.4&lt;/a&gt; release.&lt;/p&gt;
 &lt;p&gt;This release includes documentation improvements, bug fixes, and dependency upgrades.&lt;/p&gt;
 &lt;p&gt;Please see the &lt;a href=&quot;https://github.com/spring-projects/spring-pulsar/releases/tag/v1.0.4&quot;&gt;release notes&lt;/a&gt; for more details.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Spring Security 6.3.0-M3, 6.2.3, 6.1.8, 6.0.10, 5.8.11 and 5.7.12 are now available]]></title><link>https://spring.io/blog/2024/03/18/spring-security-6-3-0-m3-6-2-3-6-1-8-6-0-10-5-8-11-and-5-7-12-are-now</link><guid isPermaLink="true">https://spring.io/blog/2024/03/18/spring-security-6-3-0-m3-6-2-3-6-1-8-6-0-10-5-8-11-and-5-7-12-are-now</guid><dc:creator><![CDATA[Marcus Hert Da Coregio]]></dc:creator><pubDate>Mon, 18 Mar 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;On behalf of the team and everyone who has contributed, I am pleased to announce that the third milestone of Spring Security 6.3 is released. This release brings several new features that you can check on the &lt;a href=&quot;https://github.com/spring-projects/spring-security/releases/tag/6.3.0-M3&quot;&gt;release page&lt;/a&gt; or on the &lt;a href=&quot;https://docs.spring.io/spring-security/reference/6.3-SNAPSHOT/whats-new.html&quot;&gt;What&apos;s New section of the 6.3 documentation&lt;/a&gt;.&lt;/p&gt;
@@ -15,220 +827,4 @@
 &lt;ul&gt;
 &lt;li&gt;New spring-pulsar-test module available w/ &lt;a href=&quot;https://docs.spring.io/spring-pulsar/docs/1.1.0-M2/reference/reference/testing-applications.html&quot;&gt;testing utilites&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Please see the &lt;a href=&quot;https://github.com/spring-projects/spring-pulsar/releases/tag/v1.1.0-M2&quot;&gt;release notes&lt;/a&gt; for more details.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Hypermedia and Browser Enhancement]]></title><link>https://spring.io/blog/2024/03/15/hypermedia-and-browser-enhancement</link><guid isPermaLink="true">https://spring.io/blog/2024/03/15/hypermedia-and-browser-enhancement</guid><dc:creator><![CDATA[Dave Syer]]></dc:creator><pubDate>Fri, 15 Mar 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Front end development these days is dominated by large JavaScript client side frameworks. There are plenty of good reasons for that, but it can be very inefficient for many use cases, and the framework engineering has become extremely complex. In this article, I want to explore a different approach, one that is more efficient and more flexible, built from smaller building blocks, and well-suited to server side application frameworks like Spring (or similar tools in a range of server side languages). The idea is to embrace the concept of hypermedia, imagine how a next-generation browser would make use of that, and use a small amount of JavaScript to enhance today&apos;s browser to that level. Modern browsers ignore custom elements and attributes in HTML, but they allow the author of that content to use JavaScript to define the behaviour for them. There are a few libraries already available that can help with this, and we will be looking at &lt;a href=&quot;https://htmx.org/&quot;&gt;HTMX&lt;/a&gt;, &lt;a href=&quot;https://unpoly.com&quot;&gt;Unpoly&lt;/a&gt; and &lt;a href=&quot;https://turbo.hotwired.dev&quot;&gt;Hotwired Turbo&lt;/a&gt;. We will also look at how to use these libraries with &lt;a href=&quot;https://spring.io/projects/spring-boot&quot;&gt;Spring Boot&lt;/a&gt;, and how to use them with a traditional server side framework like &lt;a href=&quot;https://www.thymeleaf.org/&quot;&gt;Thymeleaf&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;You can find the source code in GitHub (&lt;a href=&quot;https://github.com/dsyer/webmvc-thymeleaf&quot;&gt;dsyer/webmvc-thymeleaf&lt;/a&gt;). The &quot;main&quot; branch is the starting point, and there are branches for each of the libraries we will be exploring.&lt;/p&gt;
-&lt;h2 id=&quot;the-starting-point&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#the-starting-point&quot; aria-label=&quot;the starting point permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;The Starting Point&lt;/h2&gt;
-&lt;p&gt;As a starting point we are going to use a simple, but not trivial Spring Boot application using thymeleaf. It was created initially for performance testing of Thymeleaf and Spring Webmvc, so we wanted to have some &quot;real&quot; application features but there is no need for a database or any further dependencies. There are 2 tabs, one static (see &lt;code&gt;SampleController&lt;/code&gt;):&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;@GetMapping(path = &quot;/&quot;)
-String user(Map&amp;#x3C;String, Object&gt; model) {
-	model.put(&quot;message&quot;, &quot;Welcome&quot;);
-	model.put(&quot;time&quot;, new Date());
-	return &quot;index&quot;;
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&quot;//images.ctfassets.net/mnrwi97vnhts/6sp0ovxswmwLUJEN5S15Dx/e88b517a564aace531a80c791baf0428/home.jpg&quot; alt=&quot;Home Page&quot;&gt;&lt;/p&gt;
-&lt;p&gt;and one with a form that the user can submit to create a greeting:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;@PostMapping(path = &quot;/greet&quot;)
-String name(Map&amp;#x3C;String, Object&gt; model, @RequestParam String name) {
-	greet(model);
-	model.put(&quot;greeting&quot;, &quot;Hello &quot; + name);
-	model.put(&quot;name&quot;, name);
-	return &quot;greet&quot;;
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&quot;//images.ctfassets.net/mnrwi97vnhts/1HQoWWdgk5TzqeGYaRYPNm/b0f3a871410d0fddf0ab8b755a7d7966/greet.jpg&quot; alt=&quot;Greet Form&quot;&gt;&lt;/p&gt;
-&lt;p&gt;Both tabs are rendered as separate pages on the server, but they use a shared &lt;code&gt;layout.html&lt;/code&gt; template to display the header and footer. There is a &lt;code&gt;messages.properties&lt;/code&gt; file with some internationalizable content, although only the default English version is included so far.&lt;/p&gt;
-&lt;p&gt;The only JavaScript and CSS in the application is in the &lt;code&gt;layout.html&lt;/code&gt; template, and it is used to toggle the tab header on narrow screens. It is a simple example of progressive enhancement, and it is a good starting point for our exploration of hypermedia and browser enhancement.&lt;/p&gt;
-&lt;p&gt;To run the app in an IDE use the &lt;code&gt;main()&lt;/code&gt; method in &lt;code&gt;WebmvcApplicationTests&lt;/code&gt;, or on the command line use &lt;code&gt;./mvnw spring-boot:test-run&lt;/code&gt;.&lt;/p&gt;
-&lt;h2 id=&quot;htmx&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#htmx&quot; aria-label=&quot;htmx permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;HTMX&lt;/h2&gt;
-&lt;p&gt;We can start by adding HTMX to the application. HTMX is a small JavaScript library that allows you to use custom attributes in HTML to define the behaviour of the elements in the page. It is a bit like a modern version of the &lt;code&gt;onclick&lt;/code&gt; attribute, but it is more powerful and more flexible. It is also more efficient, because it uses the browser&apos;s built-in HTTP stack to make requests, and it can use the browser&apos;s built-in caching and history management. It is a good fit for server side frameworks like Spring Boot, because it allows you to use the server to generate the content and the behaviour of the page, and it allows you to use the browser&apos;s built-in features to manage the navigation and the history.&lt;/p&gt;
-&lt;p&gt;The simplest way to do that would be to grab it from a CDN and add it to the &lt;code&gt;layout.html&lt;/code&gt; template:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-html&quot;&gt;&amp;#x3C;script src=&apos;https://unpkg.com/htmx.org/dist/htmx.min.js&apos;&gt;&amp;#x3C;/script&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Instead of this, in the &quot;htmx&quot; branch of the sample code we used a &lt;a href=&quot;https://webjars.org&quot;&gt;Webjar&lt;/a&gt; to load the library into the classpath, so that would work as well. Spring can do some extra stuff to help the browser cache the library, and it can also help with version management.&lt;/p&gt;
-&lt;h3 id=&quot;form-processing&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#form-processing&quot; aria-label=&quot;form processing permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Form Processing&lt;/h3&gt;
-&lt;p&gt;One feature we can easily add is to use HTMX to submit the form without a full page reload. We can do that by adding a &lt;code&gt;hx-post&lt;/code&gt; attribute to the form element:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-html&quot;&gt;&amp;#x3C;form th:action=&quot;@{/greet}&quot; method=&quot;post&quot; hx-post=&quot;/greet&quot;&gt;
-	&amp;#x3C;input type=&quot;text&quot; name=&quot;name&quot; th:value=&quot;${name}&quot;/&gt;
-	&amp;#x3C;button type=&quot;submit&quot; class=&quot;btn btn-primary&quot;&gt;Greet&amp;#x3C;/button&gt;
-&amp;#x3C;/form&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;This will cause HTMX to intercept the submit action on the form and send the data to the server using an AJAX request. The server will process the request and return the result, and HTMX will replace the content of the form with the result.&lt;/p&gt;
-&lt;p&gt;That isn&apos;t what we want in this case because the form controls some content in a different (sibling) element on the page. We fix that by adding an &lt;code&gt;hx-target&lt;/code&gt; attribute to the form element:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-html&quot;&gt;&amp;#x3C;form th:action=&quot;@{/greet}&quot; th:hx-post=&quot;@{/greet}&quot; method=&quot;post&quot; hx-target=&quot;#content&quot;&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;where the &quot;content&quot; element has been identified by ID. Turning to that element, we need the ID and also an &lt;code&gt;hx-swap-oob&lt;/code&gt; attribute to tell HTMX that incoming content should replace the existing content (&quot;out of band&quot; from the original submit action):&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-html&quot;&gt;&amp;#x3C;div id=&quot;content&quot; class=&quot;col-md-12&quot; hx-swap-oob=&quot;true&quot;&gt;
-	&amp;#x3C;span th:text=&quot;${greeting}&quot;&gt;Hello, World&amp;#x3C;/span&gt;&amp;#x3C;br/&gt;
-	&amp;#x3C;span th:text=&quot;${time}&quot;&gt;21:00&amp;#x3C;/span&gt;
-&amp;#x3C;/div&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;With these two small changes in the &lt;code&gt;greet.html&lt;/code&gt; template, we have a form that submits to the server and updates the page without a full page reload. If you submit the form now, and look at the network activity in the browser developer tools, you will see that the server is re-rendering the whole page, but HTMX is extracting the &quot;content&quot; element and switching its content for us. The images and other static content are not reloaded, and the browser&apos;s history is updated to reflect the new state of the page.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;//images.ctfassets.net/mnrwi97vnhts/OSYW1Mt83RCo1069NpuH2/e1e3dacb0a8dc10f546022127cfd79fc/page.jpg&quot; alt=&quot;Greet Page&quot;&gt;&lt;/p&gt;
-&lt;p&gt;You may also notice that HTMX is adding a &lt;code&gt;hx-request&lt;/code&gt; header to the request to the server. This is a feature of HTMX that allows you to match requests in the server side code, and we will use that next.&lt;/p&gt;
-&lt;h3 id=&quot;using-a-fragment-template&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#using-a-fragment-template&quot; aria-label=&quot;using a fragment template permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Using a Fragment Template&lt;/h3&gt;
-&lt;p&gt;The server is still rendering the whole page for the form submission, but we can make it more efficient by using a fragment template. We can do that by adding a &lt;code&gt;th:fragment&lt;/code&gt; attribute to the &lt;code&gt;greet.html&lt;/code&gt; template:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-html&quot;&gt;&amp;#x3C;div id=&quot;content&quot; th:fragment=&quot;content&quot; class=&quot;col-md-12&quot; hx-swap-oob=&quot;true&quot;&gt;
-	&amp;#x3C;span th:text=&quot;${greeting}&quot;&gt;Hello, World&amp;#x3C;/span&gt;&amp;#x3C;br/&gt;
-	&amp;#x3C;span th:text=&quot;${time}&quot;&gt;21:00&amp;#x3C;/span&gt;
-&amp;#x3C;/div&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;and then we can use that fragment in a new mapping method in the &lt;code&gt;SampleController&lt;/code&gt; which only triggers when the request comes from HTMX (by matching the &lt;code&gt;hx-request&lt;/code&gt; header):&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;@PostMapping(path = &quot;/greet&quot;, headers = &quot;hx-request=true&quot;)
-String nameHtmx(Map&amp;#x3C;String, Object&gt; model, @RequestParam String name) {
-	greet(model);
-	return &quot;greet :: content&quot;;
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;(The &quot;::&quot; syntax is a Thymeleaf feature that allows you to render a fragment of a template. This one says, find the &quot;greet&quot; template and look for a fragment called &quot;content&quot;.)&lt;/p&gt;
-&lt;p&gt;If you submit the form now, and look at the network activity in the browser developer tools, you will see that the server is only returning the fragment of the page that is needed to update the content.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;//images.ctfassets.net/mnrwi97vnhts/1nxcdhdgLTH4jxn3uyxLpL/e9ebe78cbbe5367dfd0206cad9508d1b/network.jpg&quot; alt=&quot;Greet Fragment&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;lazy-loading&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#lazy-loading&quot; aria-label=&quot;lazy loading permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Lazy Loading&lt;/h3&gt;
-&lt;p&gt;Another common use case is to load content from the server when the page first loads, and maybe even to tailor it to the user&apos;s preferences. We can do that with HTMX by adding a &lt;code&gt;hx-get&lt;/code&gt; attribute to the element that we want to trigger the request. We can experiment with the logo in the &lt;code&gt;layout.html&lt;/code&gt; template. Instead of statically including the image:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-html&quot;&gt;&amp;#x3C;div class=&quot;row&quot;&gt;
-	&amp;#x3C;div class=&quot;col-12&quot;&gt;
-	&amp;#x3C;img src=&quot;../static/images/spring-logo.svg&quot; th:src=&quot;@{/images/spring-logo.svg}&quot; alt=&quot;Logo&quot; style=&quot;width:200px;&quot; loading=&quot;lazy&quot;&gt;
-	&amp;#x3C;/div&gt;
-&amp;#x3C;/div&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;we can use a placeholder:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-html&quot;&gt;&amp;#x3C;div class=&quot;row&quot;&gt;
-	&amp;#x3C;div class=&quot;col-12&quot;&gt;
-	&amp;#x3C;span class=&quot;fa fa-spin fa-spinner&quot; style=&quot;width:200px; text-align:center;&quot;&gt;
-	&amp;#x3C;/div&gt;
-&amp;#x3C;/div&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;and then get HTMX to load it dynamically:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-html&quot;&gt;&amp;#x3C;div class=&quot;row&quot;&gt;
-	&amp;#x3C;div class=&quot;col-12&quot; hx-get=&quot;/logo&quot; hx-trigger=&quot;load&quot;&gt;
-	&amp;#x3C;span class=&quot;fa fa-spin fa-spinner&quot; style=&quot;width:200px; text-align:center;&quot;&gt;
-	&amp;#x3C;/div&gt;
-&amp;#x3C;/div&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Note the addition of &lt;code&gt;hx-get&lt;/code&gt; and &lt;code&gt;hx-trigger&lt;/code&gt;. The &lt;code&gt;hx-trigger&lt;/code&gt; attribute tells HTMX to trigger the request when the page loads. The default is to trigger on click.&lt;/p&gt;
-&lt;p&gt;The &lt;code&gt;hx-get&lt;/code&gt; attribute tells HTMX to make a GET request to the server to get the content for the element. So we need a new mapping in &lt;code&gt;SampleController&lt;/code&gt;:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;@GetMapping(path = &quot;/logo&quot;)
-String logo() {
-	return &quot;layout :: logo&quot;;
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;which is just rendering the fragment of the &lt;code&gt;layout.html&lt;/code&gt; template that contains the image. The &lt;code&gt;layout.html&lt;/code&gt; template has to be modified to include the &lt;code&gt;th:fragment&lt;/code&gt; attribute:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-html&quot;&gt;&amp;#x3C;div class=&quot;row&quot; th:remove=&quot;all&quot;&gt;
-	&amp;#x3C;div class=&quot;col-12&quot; th:fragment=&quot;logo&quot;&gt;
-	&amp;#x3C;img src=&quot;../static/images/spring-logo.svg&quot; th:src=&quot;@{/images/spring-logo.svg}&quot; alt=&quot;Logo&quot;
-		style=&quot;width:200px;&quot; loading=&quot;lazy&quot;&gt;
-	&amp;#x3C;/div&gt;
-&amp;#x3C;/div&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Note that we have to &lt;code&gt;th:remove&lt;/code&gt; the fragment from the template, because the placeholder is going to replace it on the initial render. If you run the app now, you will see that the spinner is replaced by the image when the page loads. This will be visible in the network activity in the browser developer tools.&lt;/p&gt;
-&lt;h3 id=&quot;spring-boot-htmx&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#spring-boot-htmx&quot; aria-label=&quot;spring boot htmx permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Spring Boot HTMX&lt;/h3&gt;
-&lt;p&gt;HTMX has more features that we don&apos;t have space to look at in detail here. It is worth mentioning that there is a Java library that can help with those features and it also has some Thymeleaf utilities: &lt;a href=&quot;https://github.com/wimdeblauwe/htmx-spring-boot&quot;&gt;Spring Boot HTMX&lt;/a&gt; by &lt;a href=&quot;https://github.com/wimdeblauwe&quot;&gt;Wim Deblauwe&lt;/a&gt;, available as a dependency in Maven Central. It can do the &lt;code&gt;hx-request&lt;/code&gt; header matching with a custom annotation, and it can also help with other features of HTMX.&lt;/p&gt;
-&lt;h2 id=&quot;other-libraries&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#other-libraries&quot; aria-label=&quot;other libraries permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Other Libraries&lt;/h2&gt;
-&lt;p&gt;There are other libraries that have similar goals to HTMX, but they have a different focus and a different set of features. We will look at two of them. With both it is very easy to get to the same point that we did with HTMX, but they also have some more complex features that we will leave you to explore on your own.&lt;/p&gt;
-&lt;h3 id=&quot;unpoly&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#unpoly&quot; aria-label=&quot;unpoly permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Unpoly&lt;/h3&gt;
-&lt;p&gt;The CDN link for Unpoly is:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-html&quot;&gt;&amp;#x3C;script src=&apos;https://unpkg.com/unpoly/unpoly.min.js&apos;&gt;&amp;#x3C;/script&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;and the &quot;unpoly&quot; branch in the sample code uses Webjars, as before. The basic (whole page rendering) form submission example looks like this:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-html&quot;&gt;&amp;#x3C;div class=&quot;col-md-12&quot;&gt;
-	&amp;#x3C;form th:action=&quot;@{/greet}&quot; method=&quot;post&quot; up-target=&quot;#content&quot;&gt;
-	&amp;#x3C;input type=&quot;text&quot; name=&quot;name&quot; th:value=&quot;${name}&quot;/&gt;
-	&amp;#x3C;button type=&quot;submit&quot; class=&quot;btn btn-primary&quot;&gt;Greet&amp;#x3C;/button&gt;
-	&amp;#x3C;/form&gt;
-&amp;#x3C;/div&gt;
-&amp;#x3C;div id=&quot;content&quot; class=&quot;col-md-12&quot;&gt;
-	&amp;#x3C;span th:text=&quot;${greeting}&quot;&gt;Hello, World&amp;#x3C;/span&gt;&amp;#x3C;br/&gt;
-	&amp;#x3C;span th:text=&quot;${time}&quot;&gt;21:00&amp;#x3C;/span&gt;
-&amp;#x3C;/div&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;so &lt;code&gt;hx-target&lt;/code&gt; becomes &lt;code&gt;up-target&lt;/code&gt; and the rest of the HTMX decorations are just the default in Unpoly.&lt;/p&gt;
-&lt;p&gt;To convert to a fragment template, we would need to follow the pattern from HTMX: add a &lt;code&gt;th:fragment&lt;/code&gt; and a controller method that matches a unique header from Unpoly, e.g. &lt;code&gt;X-Up-Context&lt;/code&gt;.&lt;/p&gt;
-&lt;h3 id=&quot;hotwired-turbo&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#hotwired-turbo&quot; aria-label=&quot;hotwired turbo permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Hotwired Turbo&lt;/h3&gt;
-&lt;p&gt;The CDN link for Hotwired Turbo is:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-html&quot;&gt;&amp;#x3C;script src=&apos;https://unpkg.com/@hotwired/turbo/dist/turbo.es2017-umd.js&apos;&gt;&amp;#x3C;/script&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;and the &quot;turbo&quot; branch in the sample code uses Webjars, as before. The basic form submission example looks like this:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-html&quot;&gt;&amp;#x3C;turbo-frame id=&quot;content&quot;&gt;
-	&amp;#x3C;div class=&quot;col-md-12&quot;&gt;
-	&amp;#x3C;form th:action=&quot;@{/greet}&quot; method=&quot;post&quot;&gt;
-		&amp;#x3C;input type=&quot;text&quot; name=&quot;name&quot; th:value=&quot;${name}&quot; /&gt;
-		&amp;#x3C;button type=&quot;submit&quot; class=&quot;btn btn-primary&quot;&gt;Greet&amp;#x3C;/button&gt;
-	&amp;#x3C;/form&gt;
-	&amp;#x3C;/div&gt;
-	&amp;#x3C;div class=&quot;col-md-12&quot;&gt;
-		&amp;#x3C;span th:text=&quot;${greeting}&quot;&gt;Hello, World&amp;#x3C;/span&gt;&amp;#x3C;br /&gt;
-		&amp;#x3C;span th:text=&quot;${time}&quot;&gt;21:00&amp;#x3C;/span&gt;
-	&amp;#x3C;/div&gt;
-&amp;#x3C;/turbo-frame&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Instead of custom attributes identifying the form processing interaction, Turbo uses a custom element (&lt;code&gt;turbo-frame&lt;/code&gt;) to identify the content that is going to be replaced. The rest of the form is unchanged.&lt;/p&gt;
-&lt;p&gt;To convert to a fragment template, we would need to add a &lt;code&gt;th:fragment&lt;/code&gt; declaration to the &lt;code&gt;&amp;#x3C;turbo-frame&gt;&lt;/code&gt; and a controller method that matches a unique header from Turbo, e.g. &lt;code&gt;Turbo-Frame&lt;/code&gt;.&lt;/p&gt;
-&lt;h2 id=&quot;conclusion&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#conclusion&quot; aria-label=&quot;conclusion permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Conclusion&lt;/h2&gt;
-&lt;p&gt;HTMX is very focused on simple hypermedia enhancements and, while it has evolved to include some extra features (mostly as plugins), it stays true to its original vision of simulating a next-generation browser and keeping the feature set as narrow as possible. It also has a very entertaining social media presence, if you like that sort of thing. The other two libraries are more ambitious and cover a lot more ground, but they share enough with HTMX that the examples we have looked at here are very similar. Any server side framework that can generate HTML can be used with these libraries, and they can be used to enhance the browser experience without the need for a large JavaScript framework. They are also a good fit for server side frameworks like Spring Boot, because they allow you to use the server to generate the content and the behaviour of the page. The templates are best rendered on the server with an engine that knows about fragments, so Thymeleaf was working fine, but there are other choices. There&apos;s also nothing stopping you from using HTMX (and friends) with a full JavaScript framework, and if you like it you can start to slowly replace framework components with hypermedia interactions.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Spring Data 2023.1.4 and 2023.0.10 released]]></title><link>https://spring.io/blog/2024/03/15/spring-data-2023-1-4-and-2023-0-10-released</link><guid isPermaLink="true">https://spring.io/blog/2024/03/15/spring-data-2023-1-4-and-2023-0-10-released</guid><dc:creator><![CDATA[Mark Paluch]]></dc:creator><pubDate>Fri, 15 Mar 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;On behalf of the team and everyone who has contributed, I’m pleased to announce the availability of &lt;code&gt;2023.1.4&lt;/code&gt; and &lt;code&gt;2023.0.10&lt;/code&gt; service releases. These releases ship with dependency upgrades, fixes for regressions and selected improvements.&lt;/p&gt;
-&lt;p&gt;The upcoming Spring Boot releases &lt;code&gt;3.2.4&lt;/code&gt;, respective &lt;code&gt;3.1.10&lt;/code&gt; will pick up the above releases by next week.&lt;/p&gt;
-&lt;h2 id=&quot;202314&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#202314&quot; aria-label=&quot;202314 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;2023.1.4&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Spring Data Commons &lt;code&gt;3.2.4&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/commons/docs/3.2.4/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/commons/reference/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-commons/releases/tag/3.2.4&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Spring Data JPA &lt;code&gt;3.2.4&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/jpa/docs/3.2.4/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/jpa/reference/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-jpa/releases/tag/3.2.4&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Spring Data for Apache Cassandra &lt;code&gt;4.2.4&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/cassandra/docs/4.2.4/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/cassandra/reference/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-cassandra/releases/tag/4.2.4&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Spring Data MongoDB &lt;code&gt;4.2.4&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/mongodb/docs/4.2.4/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/mongodb/reference/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-mongodb/releases/tag/4.2.4&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Spring Data KeyValue &lt;code&gt;3.2.4&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/keyvalue/docs/3.2.4/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/keyvalue/reference/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-keyvalue/releases/tag/3.2.4&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Spring Data Neo4j &lt;code&gt;7.2.4&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/neo4j/docs/7.2.4/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/neo4j/reference/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-neo4j/releases/tag/7.2.4&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Spring Data LDAP &lt;code&gt;3.2.4&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/ldap/docs/3.2.4/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/ldap/reference/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-ldap/releases/tag/3.2.4&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Spring Data REST &lt;code&gt;4.2.4&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/rest/docs/4.2.4/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/rest/reference/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-rest/releases/tag/4.2.4&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Spring Data Redis &lt;code&gt;3.2.4&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/redis/docs/3.2.4/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/redis/reference/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-redis/releases/tag/3.2.4&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Spring Data Elasticsearch &lt;code&gt;5.2.4&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/elasticsearch/docs/5.2.4/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/elasticsearch/reference/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-elasticsearch/releases/tag/5.2.4&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Spring Data Couchbase &lt;code&gt;5.2.4&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/couchbase/docs/5.2.4/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/couchbase/reference/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-couchbase/releases/tag/5.2.4&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Spring Data Relational &lt;code&gt;3.2.4&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/relational/docs/3.2.4/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/relational/reference/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-relational/releases/tag/3.2.4&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;2023010&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#2023010&quot; aria-label=&quot;2023010 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;2023.0.10&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Spring Data Commons &lt;code&gt;3.1.10&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/commons/docs/3.1.10/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/commons/docs/3.1.10/reference/html/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-commons/releases/tag/3.1.10&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Spring Data JPA &lt;code&gt;3.1.10&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/jpa/docs/3.1.10/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/jpa/docs/3.1.10/reference/html/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-jpa/releases/tag/3.1.10&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Spring Data for Apache Cassandra &lt;code&gt;4.1.10&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/cassandra/docs/4.1.10/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/cassandra/docs/4.1.10/reference/html/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-cassandra/releases/tag/4.1.10&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Spring Data MongoDB &lt;code&gt;4.1.10&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/mongodb/docs/4.1.10/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/mongodb/docs/4.1.10/reference/html/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-mongodb/releases/tag/4.1.10&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Spring Data KeyValue &lt;code&gt;3.1.10&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/keyvalue/docs/3.1.10/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/keyvalue/docs/3.1.10/reference/html/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-keyvalue/releases/tag/3.1.10&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Spring Data Neo4j &lt;code&gt;7.1.10&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/neo4j/docs/7.1.10/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/neo4j/docs/7.1.10/reference/html/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-neo4j/releases/tag/7.1.10&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Spring Data LDAP &lt;code&gt;3.1.10&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/ldap/docs/3.1.10/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/ldap/docs/3.1.10/reference/html/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-ldap/releases/tag/3.1.10&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Spring Data REST &lt;code&gt;4.1.10&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/rest/docs/4.1.10/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/rest/docs/4.1.10/reference/html/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-rest/releases/tag/4.1.10&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Spring Data Redis &lt;code&gt;3.1.10&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/redis/docs/3.1.10/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/redis/docs/3.1.10/reference/html/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-redis/releases/tag/3.1.10&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Spring Data Elasticsearch &lt;code&gt;5.1.10&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/elasticsearch/docs/5.1.10/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/elasticsearch/docs/5.1.10/reference/html/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-elasticsearch/releases/tag/5.1.10&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Spring Data Couchbase &lt;code&gt;5.1.10&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/couchbase/docs/5.1.10/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/couchbase/docs/5.1.10/reference/html/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-couchbase/releases/tag/5.1.10&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Spring Data Relational &lt;code&gt;3.1.10&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/jdbc/docs/3.1.10/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/jdbc/docs/3.1.10/reference/html/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-relational/releases/tag/3.1.10&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[Spring Data 2024.0.0-M2 available]]></title><link>https://spring.io/blog/2024/03/15/spring-data-2024-0-0-m2-available</link><guid isPermaLink="true">https://spring.io/blog/2024/03/15/spring-data-2024-0-0-m2-available</guid><dc:creator><![CDATA[Mark Paluch]]></dc:creator><pubDate>Fri, 15 Mar 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;On behalf of the team and everyone who has contributed, I’m pleased to announce the second milestone &lt;code&gt;2024.0.0-M2&lt;/code&gt; of the Spring Data 2024.0 release train.&lt;/p&gt;
-&lt;p&gt;Notable new features include:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;Predicate&lt;/code&gt; -based QueryEngine for KeyValue&lt;/li&gt;
-&lt;li&gt;Transaction option derivation for MongoDB based on &lt;code&gt;@Transactional&lt;/code&gt; labels.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Please see the &lt;a href=&quot;https://github.com/spring-projects/spring-data-commons/wiki/Spring-Data-2024.0-Release-Notes&quot;&gt;release notes&lt;/a&gt; for more details and upgrade instructions.&lt;/p&gt;
-&lt;p&gt;Thanks to all those who have contributed with issue reports and pull requests.&lt;/p&gt;
-&lt;p&gt;Finally, here are the links to the documentation and release notes:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Spring Data Commons &lt;code&gt;3.3 M2&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/commons/docs/3.3.0-M2/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/commons/reference/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-commons/releases/tag/3.3.0-M2&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Spring Data JPA &lt;code&gt;3.3 M2&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/jpa/docs/3.3.0-M2/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/jpa/reference/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-jpa/releases/tag/3.3.0-M2&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Spring Data for Apache Cassandra &lt;code&gt;4.3 M2&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/cassandra/docs/4.3.0-M2/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/cassandra/reference/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-cassandra/releases/tag/4.3.0-M2&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Spring Data MongoDB &lt;code&gt;4.3 M2&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/mongodb/docs/4.3.0-M2/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/mongodb/reference/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-mongodb/releases/tag/4.3.0-M2&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Spring Data KeyValue &lt;code&gt;3.3 M2&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/keyvalue/docs/3.3.0-M2/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/keyvalue/reference/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-keyvalue/releases/tag/3.3.0-M2&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Spring Data Neo4j &lt;code&gt;7.3 M2&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/neo4j/docs/7.3.0-M2/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/neo4j/reference/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-neo4j/releases/tag/7.3.0-M2&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Spring Data LDAP &lt;code&gt;3.3 M2&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/ldap/docs/3.3.0-M2/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/ldap/reference/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-ldap/releases/tag/3.3.0-M2&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Spring Data REST &lt;code&gt;4.3 M2&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/rest/docs/4.3.0-M2/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/rest/reference/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-rest/releases/tag/4.3.0-M2&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Spring Data Redis &lt;code&gt;3.3 M2&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/redis/docs/3.3.0-M2/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/redis/reference/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-redis/releases/tag/3.3.0-M2&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Spring Data Elasticsearch &lt;code&gt;5.3 M2&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/elasticsearch/docs/5.3.0-M2/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/elasticsearch/reference/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-elasticsearch/releases/tag/5.3.0-M2&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Spring Data Couchbase &lt;code&gt;5.3 M2&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/couchbase/docs/5.3.0-M2/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/couchbase/reference/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-couchbase/releases/tag/5.3.0-M2&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Spring Data Relational &lt;code&gt;3.3 M2&lt;/code&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/relational/docs/3.3.0-M2/api/&quot;&gt;Javadoc&lt;/a&gt; - &lt;a href=&quot;https://docs.spring.io/spring-data/relational/reference/&quot;&gt;Documentation&lt;/a&gt; - &lt;a href=&quot;https://github.com/spring-projects/spring-data-relational/releases/tag/3.3.0-M2&quot;&gt;Changelog&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[Spring Boot Testjars founder Rob Winch]]></title><link>https://spring.io/blog/2024/03/15/spring-boot-testjars-founder-rob-winch</link><guid isPermaLink="true">https://spring.io/blog/2024/03/15/spring-boot-testjars-founder-rob-winch</guid><dc:creator><![CDATA[Josh Long]]></dc:creator><pubDate>Fri, 15 Mar 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Hi, Spring fans! In this week&apos;s installment we talk Rob Winch, lead of Spring Security and founder of the exciting new project Spring Boot Testjars.&lt;/p&gt;
-&lt;iframe title=&quot;Spring Boot Testjars founder Rob Winch&quot; allowtransparency=&quot;true&quot; height=&quot;150&quot; width=&quot;100%&quot; style=&quot;border: none; min-width: min(100%, 430px);height:150px;&quot; scrolling=&quot;no&quot; data-name=&quot;pb-iframe-player&quot; src=&quot;https://www.podbean.com/player-v2/?i=dnuvw-15ade44-pb&amp;from=pb6admin&amp;share=1&amp;download=1&amp;rtl=0&amp;fonts=Arial&amp;skin=1&amp;font-color=&amp;logo_link=episode_page&amp;btn-skin=7&quot; loading=&quot;lazy&quot;&gt;&lt;/iframe&gt;</content:encoded></item><item><title><![CDATA[Spring HATEOAS 2.1.4, 2.2.1 and 2.3 M1 released]]></title><link>https://spring.io/blog/2024/03/14/spring-hateoas-2-1-4-2-2-1-and-2-3-m1-released</link><guid isPermaLink="true">https://spring.io/blog/2024/03/14/spring-hateoas-2-1-4-2-2-1-and-2-3-m1-released</guid><dc:creator><![CDATA[Oliver Drotbohm]]></dc:creator><pubDate>Thu, 14 Mar 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;I am happy to announce the availability of Spring HATEOAS 2.1.4, 2.2.1 and 2.3 M1. The releases primarily contain bug fixes and dependency upgrades.&lt;/p&gt;
-&lt;p&gt;For the 2.1.4 and 2.2.1 service releases we have deviated from our usual dependency upgrade policy which only allows bug fix upgrades of dependencies in bug fix releases. These branches had referenced a version of the JSONPath library that has &lt;a href=&quot;https://github.com/advisories/GHSA-pfh2-hfmq-phg5&quot;&gt;a CVE&lt;/a&gt; attached to it which was only fixed in a new minor release. We exceptionally decided to upgrade to that fixed version.&lt;/p&gt;
-&lt;p&gt;For a full list of changes, refer to the individual change logs of &lt;a href=&quot;https://github.com/spring-projects/spring-hateoas/releases/tag/2.2.1&quot;&gt;2.1.4&lt;/a&gt;, &lt;a href=&quot;https://github.com/spring-projects/spring-hateoas/releases/tag/2.2.1&quot;&gt;2.2.1&lt;/a&gt; and &lt;a href=&quot;https://github.com/spring-projects/spring-hateoas/releases/tag/2.3.0-M1&quot;&gt;2.3 M1&lt;/a&gt;.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Spring Framework 6.1.5, 6.0.18 and 5.3.33 Available Now Including Fixes for CVE-2024-22259]]></title><link>https://spring.io/blog/2024/03/14/spring-framework-6-1-5-6-0-18-and-5-3-33-available-now-including-fixes-for</link><guid isPermaLink="true">https://spring.io/blog/2024/03/14/spring-framework-6-1-5-6-0-18-and-5-3-33-available-now-including-fixes-for</guid><dc:creator><![CDATA[Brian Clozel]]></dc:creator><pubDate>Thu, 14 Mar 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;On behalf of the team and everyone who has contributed, I am pleased to announce that Spring Framework &lt;code&gt;6.1.5&lt;/code&gt;, &lt;code&gt;6.0.18&lt;/code&gt; and &lt;code&gt;5.3.33&lt;/code&gt; are available now.&lt;/p&gt;
-&lt;p&gt;Spring Framework &lt;code&gt;6.1.5&lt;/code&gt; ships with &lt;a href=&quot;https://github.com/spring-projects/spring-framework/releases/tag/v6.1.5&quot;&gt;45 fixes and documentation improvements&lt;/a&gt;. This version will be shipped with &lt;a href=&quot;https://github.com/spring-projects/spring-boot/milestone/338&quot;&gt;Spring Boot 3.2.4&lt;/a&gt;, to be released next week.&lt;/p&gt;
-&lt;p&gt;Spring Framework &lt;code&gt;6.0.18&lt;/code&gt; ships with &lt;a href=&quot;https://github.com/spring-projects/spring-framework/releases/tag/v6.0.18&quot;&gt;11 fixes and documentation improvements&lt;/a&gt;. This version will be shipped with &lt;a href=&quot;https://github.com/spring-projects/spring-boot/milestone/337&quot;&gt;Spring Boot 3.1.10&lt;/a&gt;, to be released next week.&lt;/p&gt;
-&lt;p&gt;Spring Framework &lt;code&gt;5.3.33&lt;/code&gt; ships with &lt;a href=&quot;https://github.com/spring-projects/spring-framework/releases/tag/v5.3.33&quot;&gt;10 fixes and documentation improvements&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;The releases address &lt;a href=&quot;https://spring.io/security/cve-2024-22259&quot;&gt;CVE-2024-22259&lt;/a&gt; for URL Parsing with Host Validation (2nd report).&lt;/p&gt;
-&lt;h2 id=&quot;tanzu-spring-runtime&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#tanzu-spring-runtime&quot; aria-label=&quot;tanzu spring runtime permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Tanzu Spring Runtime&lt;/h2&gt;
-&lt;p&gt;Commercial customers using Spring Boot 2.7 or 3.0 can make use of the new Spring Boot Hotfix release mechanism, providing versions 2.7.20.1 and 3.0.15.1. Spring Boot Hotfix releases are timely releases that patch dependency management to use the latest Spring artifacts when a CVE fix is released. The hotfix versions released today are available on the Spring commercial artifact repository and can be accessed with a &lt;a href=&quot;https://spring.vmware.com&quot;&gt;Spring Enterprise Subscription&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Commercial customers and OSS users of Spring Boot 3.1 and 3.2 should manually upgrade to Spring Framework 6.0.18 and 6.1.5 now, and to Spring Boot 3.1.10 and 3.2.4 next week when those become available.&lt;/p&gt;
-&lt;p&gt;Stay tuned for more details on hotfix releases and our plans in that space.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://spring.io/projects/spring-framework/&quot;&gt;Project Page&lt;/a&gt; | &lt;a href=&quot;https://github.com/spring-projects/spring-framework&quot;&gt;GitHub&lt;/a&gt; | &lt;a href=&quot;https://github.com/spring-projects/spring-framework/issues&quot;&gt;Issues&lt;/a&gt; | &lt;a href=&quot;https://docs.spring.io/spring-framework/reference/&quot;&gt;Documentation&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Spring Tips: Spring Batch Remote Partitioning, your easy button for data scale!]]></title><link>https://spring.io/blog/2024/03/13/spring-tips-spring-batch-remote-partitioning-your-easy-button-for-data-scale</link><guid isPermaLink="true">https://spring.io/blog/2024/03/13/spring-tips-spring-batch-remote-partitioning-your-easy-button-for-data-scale</guid><dc:creator><![CDATA[Josh Long]]></dc:creator><pubDate>Wed, 13 Mar 2024 00:00:00 GMT</pubDate><content:encoded>&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/dmdkJ3ZmT5E?si=Bk62Hu7AFLUr7uIU&quot; title=&quot;YouTube video player&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&quot; allowfullscreen&gt;&lt;/iframe&gt;
-&lt;p&gt;Hi, Spring fans! In this installment, Spring Developer Advocate Josh Long looks at how to use Spring Batch&apos;s remote partitioning support to easy-button your data processing scale out strategies.&lt;/p&gt;
-&lt;p&gt;#postgresql #ai #datascience #data #springboot #java #java21&lt;/p&gt;</content:encoded></item></channel></rss>
+&lt;p&gt;Please see the &lt;a href=&quot;https://github.com/spring-projects/spring-pulsar/releases/tag/v1.1.0-M2&quot;&gt;release notes&lt;/a&gt; for more details.&lt;/p&gt;</content:encoded></item></channel></rss>
