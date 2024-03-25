@@ -178,7 +178,6 @@ public class MemberDAO {
 			connection = dataSource.getConnection( );
 			String sql = "update member set  phonenumber = ?,company = ?, idnumber =?";
 			sql+=" where name=?";
-			
 		
 			preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setString(1, memberDTO.getPhonenumber( ));
@@ -216,16 +215,14 @@ public class MemberDAO {
 				Context context = new Context( );
 				DataSource dataSource = context.basicDataSource;
 				connection = dataSource.getConnection( );
-				String sql = "select * from member";
-				sql += " where name=? ";
-				
+				String sql = "select * from member ";
+				sql += " where name=?";
 				preparedStatement = connection.prepareStatement(sql);
 				preparedStatement.setString(1, name);
 				resultSet = preparedStatement.executeQuery( );
 				if(resultSet.next( )) {
 					if(resultSet.getString("name").equals(name)) {
 						memberDTO.setName(resultSet.getString("name"));
-						
 					}
 				}
 			} catch(Exception e) {
