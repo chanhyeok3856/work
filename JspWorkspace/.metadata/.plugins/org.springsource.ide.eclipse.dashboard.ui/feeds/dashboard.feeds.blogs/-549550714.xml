@@ -1,0 +1,525 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Spring]]></title><description><![CDATA[Level up your Java code and explore what Spring can do for you.]]></description><link>https://spring.io</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 25 Mar 2024 00:27:21 GMT</lastBuildDate><item><title><![CDATA[Reflectionless Templates With Spring]]></title><link>https://spring.io/blog/2024/03/22/reflectionless-templates-with-spring</link><guid isPermaLink="true">https://spring.io/blog/2024/03/22/reflectionless-templates-with-spring</guid><dc:creator><![CDATA[Dave Syer]]></dc:creator><pubDate>Fri, 22 Mar 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;A few Java libraries have shown up recently that use text templates, but compile to Java classes at build time. They can thus claim to some extent to be &quot;reflection free&quot;. Together with potential benefits of runtime performance, they promise to be easy to use and integrate with GraalVM native image compilation, so they are quite interesting for people just getting started with that stack in Spring Boot 3.x. We take a look at a selection of libraries (&lt;a href=&quot;https://github.com/jstachio/jstachio&quot;&gt;JStachio&lt;/a&gt;, &lt;a href=&quot;https://github.com/fizzed/rocker&quot;&gt;Rocker&lt;/a&gt;, &lt;a href=&quot;https://github.com/casid/jte&quot;&gt;JTE&lt;/a&gt; and &lt;a href=&quot;http://manifold.systems/manifold-templates.html&quot;&gt;ManTL&lt;/a&gt;) and how to get them running.&lt;/p&gt;
+&lt;p&gt;The source code for the samples is in &lt;a href=&quot;https://github.com/dsyer/java-template-demo&quot;&gt;GitHub&lt;/a&gt; and each template engine has its own branch. The sample is intentionally very simple and doesn&apos;t use all the features of the template engines. The focus is on how to integrate them with Spring Boot and GraalVM.&lt;/p&gt;
+&lt;h2 id=&quot;jstachio&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#jstachio&quot; aria-label=&quot;jstachio permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;JStachio&lt;/h2&gt;
+&lt;p&gt;Since it is my favourite, I will start with JStachio. It is very easy to use and has a very small footprint and is also very fast at runtime. The templates are plain text files written in &lt;a href=&quot;https://mustache.github.io/&quot;&gt;Mustache&lt;/a&gt; which are then compiled to Java classes at build time and rendered at runtime.&lt;/p&gt;
+&lt;p&gt;In the sample there is a template for the home page (&lt;code&gt;index.mustache&lt;/code&gt;) that just prints a greeting and a visitor count:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-html&quot;&gt;{{&amp;#x3C;layout}}{{$body}}
+Hello {{name}}!
+&amp;#x3C;br&gt;
+&amp;#x3C;br&gt;
+You are visitor number {{visits}}.
+{{/body}}
+{{/layout}}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;It uses a trivial &quot;layout&quot; template (&lt;code&gt;layout.mustache&lt;/code&gt;):&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-html&quot;&gt;&amp;#x3C;html&gt;
+  &amp;#x3C;head&gt;&amp;#x3C;/head&gt;
+  &amp;#x3C;body&gt;{{$body}}{{/body}}
+  &amp;#x3C;/body&gt;
+&amp;#x3C;/html&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;(The layout is not strictly necessary but it is a good way to show how to compose templates).&lt;/p&gt;
+&lt;p&gt;The JStachio APT processor will generate a Java class for each template it finds with a &lt;code&gt;@JStache&lt;/code&gt; annotation which is used to identify the template file in the source code. In this case we have:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;@JStache(path = &quot;index&quot;)
+public class DemoModel {
+	public String name;
+	public long visits;
+
+	public DemoModel(String name, long visits) {
+		this.name = name;
+		this.visits = visits;
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The &lt;code&gt;path&lt;/code&gt; attribute of the &lt;code&gt;@JStache&lt;/code&gt; annotation is the name of the template file without the extension (see below for how that gets stitched together). You could also use a Java record for the model which is neat, but since the other template engines don&apos;t support it we&apos;ll leave it out and make the samples more comparable.&lt;/p&gt;
+&lt;h3 id=&quot;build-configuration&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#build-configuration&quot; aria-label=&quot;build configuration permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Build Configuration&lt;/h3&gt;
+&lt;p&gt;To compile this to a Java class, you need to add some configuration to the compiler plugin in &lt;code&gt;pom.xml&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-xml&quot;&gt;&amp;#x3C;plugin&gt;
+	&amp;#x3C;artifactId&gt;maven-compiler-plugin&amp;#x3C;/artifactId&gt;
+	&amp;#x3C;configuration&gt;
+		&amp;#x3C;annotationProcessorPaths&gt;
+			&amp;#x3C;annotationProcessorPath&gt;
+				&amp;#x3C;groupId&gt;io.jstach&amp;#x3C;/groupId&gt;
+				&amp;#x3C;artifactId&gt;jstachio-apt&amp;#x3C;/artifactId&gt;
+				&amp;#x3C;version&gt;${jstachio.version}&amp;#x3C;/version&gt;
+			&amp;#x3C;/annotationProcessorPath&gt;
+		&amp;#x3C;/annotationProcessorPaths&gt;
+	&amp;#x3C;/configuration&gt;
+&amp;#x3C;/plugin&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;JStachio comes with some Spring Boot integration, so you only need to add it to the classpath:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-xml&quot;&gt;&amp;#x3C;dependency&gt;
+	&amp;#x3C;groupId&gt;io.jstach&amp;#x3C;/groupId&gt;
+	&amp;#x3C;artifactId&gt;jstachio-spring-boot-starter-webmvc&amp;#x3C;/artifactId&gt;
+	&amp;#x3C;version&gt;${jstachio.version}&amp;#x3C;/version&gt;
+&amp;#x3C;/dependency&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&quot;controller&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#controller&quot; aria-label=&quot;controller permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Controller&lt;/h3&gt;
+&lt;p&gt;You can use the template in a controller, for example:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;@GetMapping(&quot;/&quot;)
+public View view() {
+	visitsRepository.add();
+	return JStachioModelView.of(new DemoModel(&quot;World&quot;, visitsRepository.get()));
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This controller returns a &lt;code&gt;View&lt;/code&gt; constructed from a &lt;code&gt;DemoModel&lt;/code&gt;. It could also just return the &lt;code&gt;DemoModel&lt;/code&gt; directly and Spring Boot will wrap it in a &lt;code&gt;JStachioModelView&lt;/code&gt; automatically.&lt;/p&gt;
+&lt;h3 id=&quot;jstachio-configuration&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#jstachio-configuration&quot; aria-label=&quot;jstachio configuration permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;JStachio Configuration&lt;/h3&gt;
+&lt;p&gt;There is also global configuration in the &lt;code&gt;DemoApplication&lt;/code&gt; class:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;@JStachePath(prefix = &quot;templates/&quot;, suffix = &quot;.mustache&quot;)
+@SpringBootApplication
+public class DemoApplication {
+	...
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;and a &lt;code&gt;package-info.java&lt;/code&gt; file that points back to it (you need one of these per Java package that contains &lt;code&gt;@JStache&lt;/code&gt; models):&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;@JStacheConfig(using = DemoApplication.class)
+package demo;
+...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&quot;running-the-sample&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#running-the-sample&quot; aria-label=&quot;running the sample permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Running the Sample&lt;/h3&gt;
+&lt;p&gt;Run the application with &lt;code&gt;./mvnw spring-boot:run&lt;/code&gt; (or in the IDE from the &lt;code&gt;main&lt;/code&gt; method) and you should see the home page at &lt;code&gt;http://localhost:8080/&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;The generated sources after compilation are in &lt;code&gt;target/generated-sources/annotations&lt;/code&gt; and you can see the generated Java class for the &lt;code&gt;DemoModel&lt;/code&gt; there:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ tree target/generated-sources/annotations/
+target/generated-sources/annotations/
+└── demo
+    └── DemoModelRenderer.java
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The sample also includes a &lt;a href=&quot;https://docs.spring.io/spring-boot/docs/3.2.3/maven-plugin/reference/htmlsingle/#run.test-run-goal&quot;&gt;test main&lt;/a&gt; so you can run from the command line with &lt;code&gt;./mvnw spring-boot:test-run&lt;/code&gt; or via the test main in the IDE, and the application will restart when you make changes in the IDE. One of the disadvantages of the build-time compilation is that you have to force a recompile to see changes in the templates. The IDE won&apos;t do that automatically, so you might have to use another tool to trigger a recompile. I have had some success with using this to force the model class to recompile when the template changes:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ while inotifywait src/main/resources/templates -e close_write; do \
+  sleep 1; \
+  find src/main/java -name \*Model.java -exec touch {} \;; \
+done
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The &lt;code&gt;inotifywait&lt;/code&gt; command is a tool that waits for a file to be closed after a write. It is easy to install and use on any Linux distribution or on a Mac.&lt;/p&gt;
+&lt;h3 id=&quot;native-image&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#native-image&quot; aria-label=&quot;native image permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Native Image&lt;/h3&gt;
+&lt;p&gt;A native image can be generated with no additional configuration using &lt;code&gt;./mvnw -P native spring-boot:build-image&lt;/code&gt; (or using the &lt;code&gt;native-image&lt;/code&gt; plugin directly). The image starts up in less than 0.1s:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ docker run -p 8080:8080 demo:0.0.1-SNAPSHOT
+
+  .   ____          _            __ _ _
+ /\\ / ___&apos;_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | &apos;_ | &apos;_| | &apos;_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  &apos;  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.4)
+
+2024-03-22T12:23:45.403Z  INFO 1 --- [           main] demo.DemoApplication                     : Starting AOT-processed DemoApplication using Java 17.0.10 with PID 1 (/workspace/demo.DemoApplication started by cnb in /workspace)
+2024-03-22T12:23:45.403Z  INFO 1 --- [           main] demo.DemoApplication                     : No active profile set, falling back to 1 default profile: &quot;default&quot;
+2024-03-22T12:23:45.418Z  INFO 1 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-03-22T12:23:45.419Z  INFO 1 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-03-22T12:23:45.419Z  INFO 1 --- [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.19]
+2024-03-22T12:23:45.429Z  INFO 1 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-03-22T12:23:45.429Z  INFO 1 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 26 ms
+2024-03-22T12:23:45.462Z  INFO 1 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path &apos;&apos;
+2024-03-22T12:23:45.462Z  INFO 1 --- [           main] demo.DemoApplication                     : Started DemoApplication in 0.069 seconds (process running for 0.073)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&quot;rocker&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#rocker&quot; aria-label=&quot;rocker permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Rocker&lt;/h2&gt;
+&lt;p&gt;Rocker can be used in a similar way to JStachio. The templates are written in a custom language that is like HTML with additional Java features (a bit like JSP). The home page looks like this (&lt;code&gt;demo.rocker.html&lt;/code&gt;):&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-html&quot;&gt;@import demo.DemoModel
+
+@args(DemoModel model)
+
+@templates.layout.template(&quot;Demo&quot;) -&gt; {
+	&amp;#x3C;h1&gt;Demo&amp;#x3C;/h1&gt;
+	&amp;#x3C;p&gt;Hello @model.name!&amp;#x3C;/p&gt;
+	&amp;#x3C;br&gt;
+	&amp;#x3C;br&gt;
+	&amp;#x3C;p&gt;You are visitor number @model.visits.&amp;#x3C;/p&gt;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;It imports the &lt;code&gt;DemoModel&lt;/code&gt; object - the implementation is identical to the JStachio sample. The template also refers directly to its layout (calling a static method on &lt;code&gt;templates.layout&lt;/code&gt;). The layout is a separate template file (&lt;code&gt;layout.rocker.html&lt;/code&gt;):&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-html&quot;&gt;@args (String title, RockerBody content)
+
+&amp;#x3C;html&gt;
+    &amp;#x3C;head&gt;
+        &amp;#x3C;title&gt;@title&amp;#x3C;/title&gt;
+    &amp;#x3C;/head&gt;
+    &amp;#x3C;body&gt;
+    @content
+    &amp;#x3C;/body&gt;
+&amp;#x3C;/html&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&quot;build-configuration-1&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#build-configuration-1&quot; aria-label=&quot;build configuration 1 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Build Configuration&lt;/h3&gt;
+&lt;p&gt;Rocker needs an APT processor and some manual addition of the generated sources to the build input. It can all be configured in the &lt;code&gt;pom.xml&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-xml&quot;&gt;&amp;#x3C;plugin&gt;
+	&amp;#x3C;groupId&gt;com.fizzed&amp;#x3C;/groupId&gt;
+	&amp;#x3C;artifactId&gt;rocker-maven-plugin&amp;#x3C;/artifactId&gt;
+	&amp;#x3C;version&gt;1.2.1&amp;#x3C;/version&gt;
+	&amp;#x3C;executions&gt;
+		&amp;#x3C;execution&gt;
+			&amp;#x3C;?m2e execute onConfiguration,onIncremental?&gt;
+			&amp;#x3C;id&gt;generate-rocker-templates&amp;#x3C;/id&gt;
+			&amp;#x3C;phase&gt;generate-sources&amp;#x3C;/phase&gt;
+			&amp;#x3C;goals&gt;
+				&amp;#x3C;goal&gt;generate&amp;#x3C;/goal&gt;
+			&amp;#x3C;/goals&gt;
+			&amp;#x3C;configuration&gt;
+				&amp;#x3C;javaVersion&gt;${java.version}&amp;#x3C;/javaVersion&gt;
+				&amp;#x3C;templateDirectory&gt;src/main/resources&amp;#x3C;/templateDirectory&gt;
+				&amp;#x3C;outputDirectory&gt;target/generated-sources/rocker&amp;#x3C;/outputDirectory&gt;
+				&amp;#x3C;discardLogicWhitespace&gt;true&amp;#x3C;/discardLogicWhitespace&gt;
+				&amp;#x3C;targetCharset&gt;UTF-8&amp;#x3C;/targetCharset&gt;
+				&amp;#x3C;postProcessing&gt;
+					&amp;#x3C;param&gt;com.fizzed.rocker.processor.LoggingProcessor&amp;#x3C;/param&gt;
+					&amp;#x3C;param&gt;com.fizzed.rocker.processor.WhitespaceRemovalProcessor&amp;#x3C;/param&gt;
+				&amp;#x3C;/postProcessing&gt;
+			&amp;#x3C;/configuration&gt;
+		&amp;#x3C;/execution&gt;
+	&amp;#x3C;/executions&gt;
+&amp;#x3C;/plugin&gt;
+&amp;#x3C;plugin&gt;
+	&amp;#x3C;groupId&gt;org.codehaus.mojo&amp;#x3C;/groupId&gt;
+	&amp;#x3C;artifactId&gt;build-helper-maven-plugin&amp;#x3C;/artifactId&gt;
+	&amp;#x3C;executions&gt;
+		&amp;#x3C;execution&gt;
+			&amp;#x3C;phase&gt;generate-sources&amp;#x3C;/phase&gt;
+			&amp;#x3C;goals&gt;
+				&amp;#x3C;goal&gt;add-source&amp;#x3C;/goal&gt;
+			&amp;#x3C;/goals&gt;
+			&amp;#x3C;configuration&gt;
+				&amp;#x3C;sources&gt;
+					&amp;#x3C;source&gt;${project.build.directory}/generated-sources/rocker&amp;#x3C;/source&gt;
+				&amp;#x3C;/sources&gt;
+			&amp;#x3C;/configuration&gt;
+		&amp;#x3C;/execution&gt;
+	&amp;#x3C;/executions&gt;
+&amp;#x3C;/plugin&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&quot;controller-1&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#controller-1&quot; aria-label=&quot;controller 1 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Controller&lt;/h3&gt;
+&lt;p&gt;The controller implementation is very conventional - it constructs a model and returns the name of the &quot;demo&quot; view:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;@GetMapping(&quot;/&quot;)
+public String view(Model model) {
+	visitsRepository.add();
+	model.addAttribute(&quot;arguments&quot;, Map.of(&quot;model&quot;, new DemoModel(&quot;mystérieux visiteur&quot;, visitsRepository.get())));
+	return &quot;demo&quot;;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We are using a naming convention for &quot;arguments&quot; as a special model attribute. This is a detail of the &lt;code&gt;View&lt;/code&gt; implementation that we will see later.&lt;/p&gt;
+&lt;h3 id=&quot;rocker-configuration&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#rocker-configuration&quot; aria-label=&quot;rocker configuration permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Rocker Configuration&lt;/h3&gt;
+&lt;p&gt;Rocker doesn&apos;t come with its own Spring Boot integration but it&apos;s not hard to implement, and you only have to do it once. The sample contains a &lt;code&gt;View&lt;/code&gt; implementation, plus a &lt;code&gt;ViewResolver&lt;/code&gt; and some configuration in &lt;code&gt;RockerAutoConfiguration&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;@Configuration
+public class RockerAutoConfiguration {
+	@Bean
+	public ViewResolver rockerViewResolver() {
+		return new RockerViewResolver();
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The &lt;code&gt;RockerViewResolver&lt;/code&gt; is a &lt;code&gt;ViewResolver&lt;/code&gt; that uses the Rocker template engine to render the templates. The &lt;code&gt;View&lt;/code&gt; implementation is a wrapper around the Rocker template class:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;public class RockerViewResolver implements ViewResolver, Ordered {
+
+	private String prefix = &quot;templates/&quot;;
+	private String suffix = &quot;.rocker.html&quot;;
+
+	@Override
+	@Nullable
+	public View resolveViewName(String viewName, Locale locale) throws Exception {
+		RockerView view = new RockerView(prefix + viewName + suffix);
+		return view;
+	}
+
+	@Override
+	public int getOrder() {
+		return Ordered.LOWEST_PRECEDENCE - 10;
+	}
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If you look at the implementation of &lt;code&gt;RockerView&lt;/code&gt; you will see that it is a wrapper around the Rocker template class, and that it contains some reflection code to find the template parameter names. This could be a problem for the native image, so it is not ideal, but we will see how to fix it later. Rocker internally also uses reflection to bind the template parameters to the model, so it is not completely reflection free anyway.&lt;/p&gt;
+&lt;h3 id=&quot;running-the-sample-1&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#running-the-sample-1&quot; aria-label=&quot;running the sample 1 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Running the Sample&lt;/h3&gt;
+&lt;p&gt;If you run the sample with &lt;code&gt;./mvnw spring-boot:run&lt;/code&gt; you will see the home page at &lt;code&gt;http://localhost:8080/&lt;/code&gt;. The generated source code comes out as one Java class per template in &lt;code&gt;target/generated-sources/rocker/&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ tree target/generated-sources/rocker/
+target/generated-sources/rocker/
+└── templates
+    ├── demo.java
+    └── layout.java
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&quot;native-image-1&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#native-image-1&quot; aria-label=&quot;native image 1 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Native Image&lt;/h3&gt;
+&lt;p&gt;The native image would need some additional configuration to permit the reflection during rendering. We had a few attempts at this and it quickly became apparent that reflection is used all over the internals of Rocker and it would be a lot of effort to get it to work with GraalVM. Maybe worth coming back to one day.&lt;/p&gt;
+&lt;h2 id=&quot;jte&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#jte&quot; aria-label=&quot;jte permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;JTE&lt;/h2&gt;
+&lt;p&gt;(The JTE sample is a direct copy from the project documentation. The other samples in this document only have the structure they do because they mirror this one.)&lt;/p&gt;
+&lt;p&gt;Like Rocker, JTE has a template language similar to HTML with additional Java features. The templates in the project documentation are in a &lt;code&gt;jte&lt;/code&gt; directory alongside &lt;code&gt;java&lt;/code&gt;, so we adopt the same convention. The home page looks like this (&lt;code&gt;demo.jte&lt;/code&gt;):&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;@import demo.DemoModel
+
+@param DemoModel model
+
+Hello ${model.name}!
+&amp;#x3C;br&gt;
+&amp;#x3C;br&gt;
+You are visitor number ${model.visits}.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;There is no layout template in this sample because JTE doesn&apos;t explicitly support composition of templates. The &lt;code&gt;DemoModel&lt;/code&gt; is similar to the one we used for the other samples.&lt;/p&gt;
+&lt;h3 id=&quot;build-configuration-2&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#build-configuration-2&quot; aria-label=&quot;build configuration 2 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Build Configuration&lt;/h3&gt;
+&lt;p&gt;In the &lt;code&gt;pom.xml&lt;/code&gt; you need to add the JTE compiler plugin:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-xml&quot;&gt;&amp;#x3C;plugin&gt;
+	&amp;#x3C;groupId&gt;gg.jte&amp;#x3C;/groupId&gt;
+	&amp;#x3C;artifactId&gt;jte-maven-plugin&amp;#x3C;/artifactId&gt;
+	&amp;#x3C;version&gt;${jte.version}&amp;#x3C;/version&gt;
+	&amp;#x3C;configuration&gt;
+		&amp;#x3C;sourceDirectory&gt;${basedir}/src/main/jte&amp;#x3C;/sourceDirectory&gt;
+		&amp;#x3C;contentType&gt;Html&amp;#x3C;/contentType&gt;
+		&amp;#x3C;binaryStaticContent&gt;true&amp;#x3C;/binaryStaticContent&gt;
+	&amp;#x3C;/configuration&gt;
+	&amp;#x3C;executions&gt;
+		&amp;#x3C;execution&gt;
+			&amp;#x3C;?m2e execute onConfiguration,onIncremental?&gt;
+			&amp;#x3C;phase&gt;generate-sources&amp;#x3C;/phase&gt;
+			&amp;#x3C;goals&gt;
+				&amp;#x3C;goal&gt;generate&amp;#x3C;/goal&gt;
+			&amp;#x3C;/goals&gt;
+		&amp;#x3C;/execution&gt;
+	&amp;#x3C;/executions&gt;
+&amp;#x3C;/plugin&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;along with some source and resource copying:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-xml&quot;&gt;&amp;#x3C;plugin&gt;
+	&amp;#x3C;groupId&gt;org.codehaus.mojo&amp;#x3C;/groupId&gt;
+	&amp;#x3C;artifactId&gt;build-helper-maven-plugin&amp;#x3C;/artifactId&gt;
+	&amp;#x3C;executions&gt;
+		&amp;#x3C;execution&gt;
+			&amp;#x3C;phase&gt;generate-sources&amp;#x3C;/phase&gt;
+			&amp;#x3C;goals&gt;
+				&amp;#x3C;goal&gt;add-source&amp;#x3C;/goal&gt;
+			&amp;#x3C;/goals&gt;
+			&amp;#x3C;configuration&gt;
+				&amp;#x3C;sources&gt;
+					&amp;#x3C;source&gt;${project.build.directory}/generated-sources/jte&amp;#x3C;/source&gt;
+				&amp;#x3C;/sources&gt;
+			&amp;#x3C;/configuration&gt;
+		&amp;#x3C;/execution&gt;
+	&amp;#x3C;/executions&gt;
+&amp;#x3C;/plugin&gt;
+
+&amp;#x3C;plugin&gt;
+	&amp;#x3C;artifactId&gt;maven-resources-plugin&amp;#x3C;/artifactId&gt;
+	&amp;#x3C;version&gt;3.0.2&amp;#x3C;/version&gt;
+	&amp;#x3C;executions&gt;
+		&amp;#x3C;execution&gt;
+			&amp;#x3C;id&gt;copy-resources&amp;#x3C;/id&gt;
+			&amp;#x3C;phase&gt;process-classes&amp;#x3C;/phase&gt;
+			&amp;#x3C;goals&gt;
+				&amp;#x3C;goal&gt;copy-resources&amp;#x3C;/goal&gt;
+			&amp;#x3C;/goals&gt;
+			&amp;#x3C;configuration&gt;
+				&amp;#x3C;outputDirectory&gt;${project.build.outputDirectory}&amp;#x3C;/outputDirectory&gt;
+				&amp;#x3C;resources&gt;
+					&amp;#x3C;resource&gt;
+						&amp;#x3C;directory&gt;${basedir}/target/generated-sources/jte&amp;#x3C;/directory&gt;
+						&amp;#x3C;includes&gt;
+							&amp;#x3C;include&gt;**/*.bin&amp;#x3C;/include&gt;
+						&amp;#x3C;/includes&gt;
+						&amp;#x3C;filtering&gt;false&amp;#x3C;/filtering&gt;
+					&amp;#x3C;/resource&gt;
+				&amp;#x3C;/resources&gt;
+			&amp;#x3C;/configuration&gt;
+		&amp;#x3C;/execution&gt;
+	&amp;#x3C;/executions&gt;
+&amp;#x3C;/plugin&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The runtime dependencies are:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-xml&quot;&gt;&amp;#x3C;dependency&gt;
+	&amp;#x3C;groupId&gt;gg.jte&amp;#x3C;/groupId&gt;
+	&amp;#x3C;artifactId&gt;jte&amp;#x3C;/artifactId&gt;
+	&amp;#x3C;version&gt;${jte.version}&amp;#x3C;/version&gt;
+&amp;#x3C;/dependency&gt;
+&amp;#x3C;dependency&gt;
+	&amp;#x3C;groupId&gt;gg.jte&amp;#x3C;/groupId&gt;
+	&amp;#x3C;artifactId&gt;jte-spring-boot-starter-3&amp;#x3C;/artifactId&gt;
+	&amp;#x3C;version&gt;${jte.version}&amp;#x3C;/version&gt;
+&amp;#x3C;/dependency&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&quot;controller-2&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#controller-2&quot; aria-label=&quot;controller 2 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Controller&lt;/h3&gt;
+&lt;p&gt;The controller implementation is very conventional - in fact it is identical to the one we used for Rocker.&lt;/p&gt;
+&lt;h3 id=&quot;jte-configuration&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#jte-configuration&quot; aria-label=&quot;jte configuration permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;JTE Configuration&lt;/h3&gt;
+&lt;p&gt;JTE comes with its own Spring Boot autoconfiguration (we added it in the &lt;code&gt;pom.xml&lt;/code&gt;), so you almost don&apos;t need to do anything else. There is one tiny thing you need to do to make it work with Spring Boot 3.x, which is to add a property to the &lt;code&gt;application.properties&lt;/code&gt; file. For development time, especially if you are using &lt;a href=&quot;https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#using.devtools&quot;&gt;Spring Boot Devtools&lt;/a&gt;, you would want:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;gg.jte.developmentMode=true
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;In production, switch that off with a Spring profile and use &lt;code&gt;gg.jte.usePrecompiledTemplates=true&lt;/code&gt; instead.&lt;/p&gt;
+&lt;h3 id=&quot;running-the-sample-2&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#running-the-sample-2&quot; aria-label=&quot;running the sample 2 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Running the Sample&lt;/h3&gt;
+&lt;p&gt;If you run the sample with &lt;code&gt;./mvnw spring-boot:run&lt;/code&gt; you will see the home page at &lt;code&gt;http://localhost:8080/&lt;/code&gt;. The generated source code comes out as one Java class per template in &lt;code&gt;target/generated-sources/jte/&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ tree target/generated-sources/jte/
+target/generated-sources/jte/
+└── gg
+    └── jte
+        └── generated
+            └── precompiled
+                ├── JtedemoGenerated.bin
+                └── JtedemoGenerated.java
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The &lt;code&gt;.bin&lt;/code&gt; file is an efficient binary representation of the text template that is used at runtime, so it needs to be added to the classpath.&lt;/p&gt;
+&lt;h3 id=&quot;native-image-2&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#native-image-2&quot; aria-label=&quot;native image 2 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Native Image&lt;/h3&gt;
+&lt;p&gt;A native image can be generated with some additional configuration. We need to make sure the &lt;code&gt;.bin&lt;/code&gt; files are available and also that the generated Java classes can be reflected on:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;@SpringBootApplication
+@ImportRuntimeHints(DemoRuntimeHints.class)
+public class DemoApplication {
+	...
+}
+
+class DemoRuntimeHints implements RuntimeHintsRegistrar {
+
+	@Override
+	public void registerHints(RuntimeHints hints, @Nullable ClassLoader classLoader) {
+		hints.resources().registerPattern(&quot;**/*.bin&quot;);
+		hints.reflection().registerType(JtedemoGenerated.class, MemberCategory.INVOKE_DECLARED_CONSTRUCTORS, MemberCategory.INVOKE_DECLARED_METHODS);
+	}
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;So JTE is not completely reflection free, but it is possible to configure it quite easily to work with GraalVM native.&lt;/p&gt;
+&lt;h2 id=&quot;mantl&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#mantl&quot; aria-label=&quot;mantl permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;ManTL&lt;/h2&gt;
+&lt;p&gt;ManTL (Manifold Template Language) is another template engine with Java-like syntax. The templates are compiled to Java classes at build time like with the other samples. The home page looks like this (&lt;code&gt;Demo.html.mtl&lt;/code&gt;):&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-html&quot;&gt;&amp;#x3C;%@ import demo.DemoModel %&gt;
+
+&amp;#x3C;%@ params(DemoModel model) %&gt;
+
+Hello ${model.name}!
+&amp;#x3C;br&gt;
+&amp;#x3C;br&gt;
+You are visitor number ${model.visits}.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;where &lt;code&gt;DemoModel&lt;/code&gt; is the same as in the other samples.&lt;/p&gt;
+&lt;h3 id=&quot;build-configuration-3&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#build-configuration-3&quot; aria-label=&quot;build configuration 3 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Build Configuration&lt;/h3&gt;
+&lt;p&gt;Manifold is a bit different to the other examples in that it uses a JDK compiler plugin, as opposed to an APT processor. The configuration in &lt;code&gt;pom.xml&lt;/code&gt; is a bit more complex. There is the &lt;code&gt;maven-compiler-plugin&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-xml&quot;&gt;&amp;#x3C;plugin&gt;
+	&amp;#x3C;groupId&gt;org.apache.maven.plugins&amp;#x3C;/groupId&gt;
+	&amp;#x3C;artifactId&gt;maven-compiler-plugin&amp;#x3C;/artifactId&gt;
+	&amp;#x3C;version&gt;3.8.0&amp;#x3C;/version&gt;
+	&amp;#x3C;configuration&gt;
+		&amp;#x3C;compilerArgs&gt;
+			&amp;#x3C;arg&gt;-Xplugin:Manifold&amp;#x3C;/arg&gt;
+		&amp;#x3C;/compilerArgs&gt;
+		&amp;#x3C;annotationProcessorPaths&gt;
+			&amp;#x3C;path&gt;
+				&amp;#x3C;groupId&gt;systems.manifold&amp;#x3C;/groupId&gt;
+				&amp;#x3C;artifactId&gt;manifold-templates&amp;#x3C;/artifactId&gt;
+				&amp;#x3C;version&gt;${manifold.version}&amp;#x3C;/version&gt;
+			&amp;#x3C;/path&gt;
+		&amp;#x3C;/annotationProcessorPaths&gt;
+	&amp;#x3C;/configuration&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;and the runtime dependency:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-xml&quot;&gt;&amp;#x3C;dependency&gt;
+	&amp;#x3C;groupId&gt;systems.manifold&amp;#x3C;/groupId&gt;
+	&amp;#x3C;artifactId&gt;manifold-templates-rt&amp;#x3C;/artifactId&gt;
+	&amp;#x3C;version&gt;${manifold.version}&amp;#x3C;/version&gt;
+&amp;#x3C;/dependency&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&quot;controller-3&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#controller-3&quot; aria-label=&quot;controller 3 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Controller&lt;/h3&gt;
+&lt;p&gt;Our controller in this sample looks more like the JStachio one than the Rocker/JTE one:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;@GetMapping(&quot;/&quot;)
+public View view(Model model, HttpServletResponse response) {
+	visitsRepository.add();
+	return new StringView(() -&gt; Demo.render(new DemoModel(&quot;mystérieux visiteur&quot;, visitsRepository.get())));
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;where &lt;code&gt;StringView&lt;/code&gt; is a convenience class that wraps the template and renders it:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-java&quot;&gt;public class StringView implements View {
+
+	private final Supplier&amp;#x3C;String&gt; output;
+
+	public StringView(Supplier&amp;#x3C;String&gt; output) {
+		this.output = output;
+	}
+
+	@Override
+	public void render(Map&amp;#x3C;String, ?&gt; model, HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		String result = output.get();
+		response.setContentType(MediaType.TEXT_HTML_VALUE);
+		response.setCharacterEncoding(StandardCharsets.UTF_8.name());
+		response.setContentLength(result.getBytes().length);
+
+		response.getOutputStream().write(result.getBytes());
+		response.flushBuffer();
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&quot;running-the-sample-3&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#running-the-sample-3&quot; aria-label=&quot;running the sample 3 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Running the Sample&lt;/h3&gt;
+&lt;p&gt;You can build and run the application on the command line using &lt;code&gt;./mvnw spring-boot:run&lt;/code&gt; and inspect the result on &lt;code&gt;http://localhost:8080&lt;/code&gt;. The generated source code comes out as a class and ancillary stuff per template:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ tree target/classes/templates/
+target/classes/templates/
+├── Demo$LayoutOverride.class
+├── Demo.class
+└── Demo.html.mtl
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;ManTL only works in IntelliJ after installing a special plugin, and not at all in Eclipse or NetBeans or VSCode. You may be able to run the main method from those IDEs, but the code that refers to templates will have compiler errors because the compiler plugin is missing.&lt;/p&gt;
+&lt;h3 id=&quot;native-image-3&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#native-image-3&quot; aria-label=&quot;native image 3 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Native Image&lt;/h3&gt;
+&lt;p&gt;The compiler plugin is not supported by GraalVM, so you can&apos;t use ManTL with GraalVM native images.&lt;/p&gt;
+&lt;h2 id=&quot;summary&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#summary&quot; aria-label=&quot;summary permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Summary&lt;/h2&gt;
+&lt;p&gt;All the template engines we looked at here are reflection free in the sense that the templates are compiled to Java classes at build time. They are all easy to use and integrate with Spring, and they all have or can be provided with some kind of Spring Boot autoconfiguration. JStachio is the most lightweight and fastest at runtime, and it has the best support for GraalVM native images. Rocker is also very fast at runtime, but it uses reflection internally and it is not easy to get it to work with GraalVM. JTE is a bit more complex to configure, but it is also very fast at runtime and it is easy to get it to work with GraalVM. ManTL is the most complex to configure and it doesn&apos;t work with GraalVM at all. It also only works with IntelliJ as an IDE.&lt;/p&gt;
+&lt;p&gt;If you would like to see more samples then the each of the template engines has its own documentation, so follow the links above. My own work on JStachio has produced a few additional examples, for example the &lt;a href=&quot;https://github.com/spring-petclinic/spring-petclinic-mustache/tree/jstache&quot;&gt;Mustache PetClinic&lt;/a&gt;, and also a &lt;a href=&quot;https://github.com/dsyer/spring-todo-mvc/tree/jstachio&quot;&gt;Todo MVC&lt;/a&gt; implementation, originally by &lt;a href=&quot;https://github.com/odrotbohm&quot;&gt;Ollie Drotbohm&lt;/a&gt; and adapted to various different template engines.&lt;/p&gt;
+&lt;p&gt;Dave Syer&lt;br&gt;
+London 2024&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Spring Modulith 1.2 M3 released]]></title><link>https://spring.io/blog/2024/03/22/spring-modulith-1-2-m3-released</link><guid isPermaLink="true">https://spring.io/blog/2024/03/22/spring-modulith-1-2-m3-released</guid><dc:creator><![CDATA[Oliver Drotbohm]]></dc:creator><pubDate>Fri, 22 Mar 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;I am happy to announce the availability of Spring Modulith 1.2 M3. It contains a couple of dependency upgrades, bug fixes but the following new features primarily:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://docs.spring.io/spring-modulith/reference/1.2/fundamentals.html#modules.advanced.open&quot;&gt;Support for open application modules&lt;/a&gt; – Application modules can now be declared as open, which gives other modules full access to the open module&apos;s internals. Primarily intended for scenarios in which Spring Modulith is introduced in existing, sub-optimally structured projects.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://docs.spring.io/spring-modulith/reference/1.2/fundamentals.html#modules.named-interfaces&quot;&gt;Support for package info types&lt;/a&gt; – Kotlin does not directly support annotating packages as it doesn&apos;t know an equivalent of &lt;code&gt;package-info.java&lt;/code&gt;. Package-level configuration annotations such as &lt;code&gt;@ApplicationModule&lt;/code&gt; or &lt;code&gt;@NamedInterface&lt;/code&gt; can now be used on types annotated with &lt;code&gt;@PackageInfo&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;@ApplicationModuleListener&lt;/code&gt; now exposes &lt;code&gt;@EventListener&lt;/code&gt;&apos;s &lt;code&gt;condition&lt;/code&gt; attribute.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;For more details check out the full &lt;a href=&quot;https://github.com/spring-projects/spring-modulith/releases/tag/1.2.0-M3&quot;&gt;change log&lt;/a&gt; and the &lt;a href=&quot;https://docs.spring.io/spring-modulith/reference/1.2/index.html&quot;&gt;reference documentation&lt;/a&gt;.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Spring Boot 3.3.0-M3 available now]]></title><link>https://spring.io/blog/2024/03/22/spring-boot-3-3-0-m3-available-now</link><guid isPermaLink="true">https://spring.io/blog/2024/03/22/spring-boot-3-3-0-m3-available-now</guid><dc:creator><![CDATA[Phil Webb]]></dc:creator><pubDate>Fri, 22 Mar 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;On behalf of the team and everyone who has contributed, I&apos;m happy to announce that Spring Boot &lt;code&gt;3.3.0-M3&lt;/code&gt; has been released and is now available from &lt;a href=&quot;https://repo.spring.io/milestone&quot;&gt;https://repo.spring.io/milestone&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;This release includes &lt;a href=&quot;https://github.com/spring-projects/spring-boot/releases/tag/v3.3.0-M3&quot;&gt;70 enhancements, documentation improvements, dependency upgrades, and bug fixes&lt;/a&gt;. Notable new features include:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Support for CDS archives&lt;/li&gt;
+&lt;li&gt;Base64 Resources&lt;/li&gt;
+&lt;li&gt;SBOM Actuator Endpoint&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Please see the &lt;a href=&quot;https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-3.3.0-M3-Release-Notes&quot;&gt;release notes&lt;/a&gt; for more details and upgrade instructions.&lt;/p&gt;
+&lt;p&gt;NOTE: We are in the process of migrating the Spring Boot documentation to Antora. The docs for this release will be a little delayed.&lt;/p&gt;
+&lt;p&gt;Thanks to all those who have contributed with issue reports and pull requests.&lt;/p&gt;
+&lt;h3 id=&quot;how-can-you-help&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#how-can-you-help&quot; aria-label=&quot;how can you help permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;How can you help?&lt;/h3&gt;
+&lt;p&gt;If you&apos;re interested in helping out, check out the &lt;a href=&quot;https://github.com/spring-projects/spring-boot/labels/status%3A%20ideal-for-contribution&quot;&gt;&quot;ideal for contribution&quot; tag&lt;/a&gt; in the issue repository. If you have general questions, please ask on &lt;a href=&quot;https://stackoverflow.com&quot;&gt;stackoverflow.com&lt;/a&gt; using the &lt;a href=&quot;https://stackoverflow.com/tags/spring-boot&quot;&gt;&lt;code&gt;spring-boot&lt;/code&gt; tag&lt;/a&gt; or chat with the community on &lt;a href=&quot;https://gitter.im/spring-projects/spring-boot&quot;&gt;Gitter&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://spring.io/projects/spring-boot/&quot;&gt;Project Page&lt;/a&gt; | &lt;a href=&quot;https://github.com/spring-projects/spring-boot&quot;&gt;GitHub&lt;/a&gt; | &lt;a href=&quot;https://github.com/spring-projects/spring-boot/issues&quot;&gt;Issues&lt;/a&gt; | &lt;a href=&quot;https://stackoverflow.com/questions/tagged/spring-boot&quot;&gt;Stack Overflow&lt;/a&gt; | &lt;a href=&quot;https://gitter.im/spring-projects/spring-boot&quot;&gt;Gitter&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[A Bootiful Podcast: Stuart Marks (aka ”Dr. Deprecator”) on Java, its amazing features, and more]]></title><link>https://spring.io/blog/2024/03/21/a-bootiful-podcast-stuart-marks-aka-dr-deprecator-on-java-its-amazing</link><guid isPermaLink="true">https://spring.io/blog/2024/03/21/a-bootiful-podcast-stuart-marks-aka-dr-deprecator-on-java-its-amazing</guid><dc:creator><![CDATA[Josh Long]]></dc:creator><pubDate>Thu, 21 Mar 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Hi, Spring fans! Happy one-day-belated Java 22 release day to those who celebrate! To ring in the new release, we&apos;ve got an extra special and incredible discussion with a Java legend - somebody who&apos;s been involved in the Java community and work for &lt;em&gt;decades&lt;/em&gt; - Stuart Marks, or &quot;Dr. Deprecator,&quot; as he&apos;s affectionately known in the community.&lt;/p&gt;
+&lt;iframe title=&quot;Stuart Marks (aka ”Dr. Deprecator”) on Java, its amazing features, and more&quot; allowtransparency=&quot;true&quot; height=&quot;150&quot; width=&quot;100%&quot; style=&quot;border: none; min-width: min(100%, 430px);height:150px;&quot; scrolling=&quot;no&quot; data-name=&quot;pb-iframe-player&quot; src=&quot;https://www.podbean.com/player-v2/?i=f3xsx-15ba0e1-pb&amp;from=pb6admin&amp;share=1&amp;download=1&amp;rtl=0&amp;fonts=Arial&amp;skin=1&amp;font-color=&amp;logo_link=episode_page&amp;btn-skin=7&quot; loading=&quot;lazy&quot;&gt;&lt;/iframe&gt;</content:encoded></item><item><title><![CDATA[Spring Shell 3.1.10 and 3.2.3 are now available]]></title><link>https://spring.io/blog/2024/03/21/spring-shell-3-1-10-and-3-2-3-are-now-available</link><guid isPermaLink="true">https://spring.io/blog/2024/03/21/spring-shell-3-1-10-and-3-2-3-are-now-available</guid><dc:creator><![CDATA[Janne Valkealahti]]></dc:creator><pubDate>Thu, 21 Mar 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;On behalf of the team and everyone who has contributed, I&apos;m happy to announce that Spring Shell &lt;code&gt;3.1.10&lt;/code&gt; and &lt;code&gt;3.2.3&lt;/code&gt; has been released and are now available from Maven Central.&lt;/p&gt;
+&lt;p&gt;Please see the &lt;a href=&quot;https://github.com/spring-projects/spring-shell/releases/tag/v3.1.10&quot;&gt;release notes 3.1.10&lt;/a&gt; and &lt;a href=&quot;https://github.com/spring-projects/spring-shell/releases/tag/v3.2.3&quot;&gt;release notes 3.2.3&lt;/a&gt; for more details.&lt;/p&gt;
+&lt;p&gt;Thanks to all those who have contributed with issue reports and pull requests.&lt;/p&gt;
+&lt;h3 id=&quot;how-can-you-help&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#how-can-you-help&quot; aria-label=&quot;how can you help permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;How can you help?&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://spring.io/projects/spring-shell/&quot;&gt;Project Page&lt;/a&gt; | &lt;a href=&quot;https://github.com/spring-projects/spring-shell&quot;&gt;GitHub&lt;/a&gt; | &lt;a href=&quot;https://github.com/spring-projects/spring-shell/issues&quot;&gt;Issues&lt;/a&gt; | &lt;a href=&quot;https://docs.spring.io/spring-shell/reference/index.html&quot;&gt;Documentation&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Spring Boot 3.2.4 available now]]></title><link>https://spring.io/blog/2024/03/21/spring-boot-3-2-4-available-now</link><guid isPermaLink="true">https://spring.io/blog/2024/03/21/spring-boot-3-2-4-available-now</guid><dc:creator><![CDATA[Andy Wilkinson]]></dc:creator><pubDate>Thu, 21 Mar 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;On behalf of the team and everyone who has contributed, I&apos;m happy to announce that Spring Boot &lt;code&gt;3.2.4&lt;/code&gt; has been released and is now available from Maven Central.&lt;/p&gt;
+&lt;p&gt;This release includes &lt;a href=&quot;https://github.com/spring-projects/spring-boot/releases/tag/v3.2.4&quot;&gt;41 bug fixes, documentation improvements, and dependency upgrades&lt;/a&gt;. Thanks to all those who have contributed with issue reports and pull requests.&lt;/p&gt;
+&lt;h3 id=&quot;how-can-you-help&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#how-can-you-help&quot; aria-label=&quot;how can you help permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;How can you help?&lt;/h3&gt;
+&lt;p&gt;If you&apos;re interested in helping out, check out the &lt;a href=&quot;https://github.com/spring-projects/spring-boot/labels/status%3A%20ideal-for-contribution&quot;&gt;&quot;ideal for contribution&quot; tag&lt;/a&gt; in the issue repository. If you have general questions, please ask on &lt;a href=&quot;https://stackoverflow.com&quot;&gt;stackoverflow.com&lt;/a&gt; using the &lt;a href=&quot;https://stackoverflow.com/tags/spring-boot&quot;&gt;&lt;code&gt;spring-boot&lt;/code&gt; tag&lt;/a&gt; or chat with the community on &lt;a href=&quot;https://gitter.im/spring-projects/spring-boot&quot;&gt;Gitter&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://spring.io/projects/spring-boot/&quot;&gt;Project Page&lt;/a&gt; | &lt;a href=&quot;https://github.com/spring-projects/spring-boot&quot;&gt;GitHub&lt;/a&gt; | &lt;a href=&quot;https://github.com/spring-projects/spring-boot/issues&quot;&gt;Issues&lt;/a&gt; | &lt;a href=&quot;https://docs.spring.io/spring-boot/docs/3.2.4/reference/html&quot;&gt;Documentation&lt;/a&gt; | &lt;a href=&quot;https://stackoverflow.com/questions/tagged/spring-boot&quot;&gt;Stack Overflow&lt;/a&gt; | &lt;a href=&quot;https://gitter.im/spring-projects/spring-boot&quot;&gt;Gitter&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Spring Boot 3.1.10 available now]]></title><link>https://spring.io/blog/2024/03/21/spring-boot-3-1-10-available-now</link><guid isPermaLink="true">https://spring.io/blog/2024/03/21/spring-boot-3-1-10-available-now</guid><dc:creator><![CDATA[Andy Wilkinson]]></dc:creator><pubDate>Thu, 21 Mar 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;On behalf of the team and everyone who has contributed, I&apos;m happy to announce that Spring Boot &lt;code&gt;3.1.10&lt;/code&gt; has been released and is now available from Maven Central.&lt;/p&gt;
+&lt;p&gt;This release includes &lt;a href=&quot;https://github.com/spring-projects/spring-boot/releases/tag/v3.1.10&quot;&gt;30 bug fixes, documentation improvements, and dependency upgrades&lt;/a&gt;. Thanks to all those who have contributed with issue reports and pull requests.&lt;/p&gt;
+&lt;h3 id=&quot;how-can-you-help&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#how-can-you-help&quot; aria-label=&quot;how can you help permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;How can you help?&lt;/h3&gt;
+&lt;p&gt;If you&apos;re interested in helping out, check out the &lt;a href=&quot;https://github.com/spring-projects/spring-boot/labels/status%3A%20ideal-for-contribution&quot;&gt;&quot;ideal for contribution&quot; tag&lt;/a&gt; in the issue repository. If you have general questions, please ask on &lt;a href=&quot;https://stackoverflow.com&quot;&gt;stackoverflow.com&lt;/a&gt; using the &lt;a href=&quot;https://stackoverflow.com/tags/spring-boot&quot;&gt;&lt;code&gt;spring-boot&lt;/code&gt; tag&lt;/a&gt; or chat with the community on &lt;a href=&quot;https://gitter.im/spring-projects/spring-boot&quot;&gt;Gitter&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://spring.io/projects/spring-boot/&quot;&gt;Project Page&lt;/a&gt; | &lt;a href=&quot;https://github.com/spring-projects/spring-boot&quot;&gt;GitHub&lt;/a&gt; | &lt;a href=&quot;https://github.com/spring-projects/spring-boot/issues&quot;&gt;Issues&lt;/a&gt; | &lt;a href=&quot;https://docs.spring.io/spring-boot/docs/3.1.10/reference/html&quot;&gt;Documentation&lt;/a&gt; | &lt;a href=&quot;https://stackoverflow.com/questions/tagged/spring-boot&quot;&gt;Stack Overflow&lt;/a&gt; | &lt;a href=&quot;https://gitter.im/spring-projects/spring-boot&quot;&gt;Gitter&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Spring Integration 6.3.0-M2, 6.2.3 & 6.1.7 Available Now]]></title><link>https://spring.io/blog/2024/03/20/spring-integration-6-3-0-m2-6-2-3-and-6-1-7-available-now</link><guid isPermaLink="true">https://spring.io/blog/2024/03/20/spring-integration-6-3-0-m2-6-2-3-and-6-1-7-available-now</guid><dc:creator><![CDATA[Artem Bilan]]></dc:creator><pubDate>Wed, 20 Mar 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Dear Spring community,&lt;/p&gt;
+&lt;p&gt;On behalf of Spring Integration team, it is my pleasure to announce &lt;code&gt;6.3.0-M2&lt;/code&gt; version of the project which is available from &lt;a href=&quot;https://repo.spring.io/milestone&quot;&gt;Spring Milestone Repository&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;In addition, bug fixes versions &lt;code&gt;6.1.7&lt;/code&gt; &amp;#x26; &lt;code&gt;6.2.3&lt;/code&gt; have been released as well into Maven Central.&lt;/p&gt;
+&lt;p&gt;The notable changes in &lt;code&gt;6.3&lt;/code&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Kotlin DSL is compatible now with upcoming &lt;a href=&quot;https://kotlinlang.org/docs/whatsnew-eap.html&quot;&gt;Kotlin 2.0&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The &lt;code&gt;spring-integration-security&lt;/code&gt; module has been removed altogether in favor of &lt;code&gt;SecurityContextChannelInterceptor&lt;/code&gt; &amp;#x26; &lt;code&gt;SecurityContextPropagationChannelInterceptor&lt;/code&gt; from the &lt;code&gt;spring-security-messaging&lt;/code&gt; module of Spring Security project&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The &lt;code&gt;ObservationPropagationChannelInterceptor&lt;/code&gt; is deprecated since it does not carry out a proper observation state between threads or even persistent store.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Instead, an observation has to be enabled on the &lt;code&gt;MessageChannel&lt;/code&gt; and respective &lt;code&gt;MessageHandler&lt;/code&gt; as a subscriber to this channel.
+This way a tracing information is propagated via message headers using &lt;code&gt;PRODUCER&lt;/code&gt; &amp;#x26; &lt;code&gt;CONSUMER&lt;/code&gt; kinds for spans.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;The &lt;code&gt;MessageHistory&lt;/code&gt; header is now mutable giving some performance improvement when we don&apos;t create a new message on every track&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The &lt;code&gt;MessageChannel&lt;/code&gt; implementations based on the &lt;code&gt;UnicastingDispatcher&lt;/code&gt; now can be configured with a &lt;code&gt;Predicate&amp;#x3C;Exception&gt; failoverStrategy&lt;/code&gt; for dynamic decision for the failover on the exception thrown from the current &lt;code&gt;MessageHandler&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The &lt;code&gt;Mqttv5PahoMessageDrivenChannelAdapter&lt;/code&gt; uses now subscription identifiers to support shared subscriptions&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;A new &lt;code&gt;MockIntegrationContext.substituteTriggerFor()&lt;/code&gt; API has been added for testing module to easily adjust time-based configurations during test.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Many thanks to everyone contributed!&lt;/p&gt;
+&lt;p&gt;See &lt;a href=&quot;https://docs.spring.io/spring-integration/reference/6.3/whats-new.html#whats-new&quot;&gt;What&apos;s New&lt;/a&gt; in the documentation and don&apos;t forget about a &lt;a href=&quot;https://github.com/spring-projects/spring-integration/wiki/Spring-Integration-6.2-to-6.3-Migration-Guide&quot;&gt;Migration Guide&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Cheers,
+Artem&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://projects.spring.io/spring-integration/&quot;&gt;Project Page&lt;/a&gt; | &lt;a href=&quot;https://github.com/spring-projects/spring-integration/issues&quot;&gt;GitHub Issues&lt;/a&gt; | &lt;a href=&quot;https://github.com/spring-projects/spring-integration/blob/main/CONTRIBUTING.adoc&quot;&gt;Contributing&lt;/a&gt; | &lt;a href=&quot;http://stackoverflow.com/questions/tagged/spring-integration&quot;&gt;Help&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Spring Session 3.2.2 and 3.1.5 are available now.]]></title><link>https://spring.io/blog/2024/03/20/spring-session-3-2-2-and-3-1-5-are-available-now</link><guid isPermaLink="true">https://spring.io/blog/2024/03/20/spring-session-3-2-2-and-3-1-5-are-available-now</guid><dc:creator><![CDATA[Marcus Hert Da Coregio]]></dc:creator><pubDate>Wed, 20 Mar 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;On behalf of the team and everyone who has contributed, I am pleased to announce that Spring Session 3.2.2 and 3.1.5 are available now. These releases are mostly composed of bug fixes, dependency upgrades and documentation improvements.&lt;/p&gt;
+&lt;p&gt;To learn more, please visit the releases page for &lt;a href=&quot;https://github.com/spring-projects/spring-session/releases/tag/3.2.2&quot;&gt;3.2.2&lt;/a&gt; and &lt;a href=&quot;https://github.com/spring-projects/spring-session/releases/tag/3.1.5&quot;&gt;3.1.5&lt;/a&gt;.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Spring Session 3.3.0-M3 available now]]></title><link>https://spring.io/blog/2024/03/20/spring-session-3-3-0-m3-available-now</link><guid isPermaLink="true">https://spring.io/blog/2024/03/20/spring-session-3-3-0-m3-available-now</guid><dc:creator><![CDATA[Marcus Hert Da Coregio]]></dc:creator><pubDate>Wed, 20 Mar 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;On behalf of the team and everyone who has contributed, it is my pleasure to announce the release of Spring Session 3.3.0-M3! The milestone release of Spring Session contains a few noteworthy new features:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Add Spring Session Backed implementation of &lt;code&gt;ReactiveSessionRegistry&lt;/code&gt; &lt;a href=&quot;https://github.com/spring-projects/spring-session/issues/2824&quot;&gt;#2824&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Allow &lt;code&gt;PlatformTransactionManager&lt;/code&gt; to be specified using &lt;code&gt;@SpringSessionTransactionManager&lt;/code&gt; &lt;a href=&quot;https://github.com/spring-projects/spring-session/issues/2821&quot;&gt;#2821&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;See the &lt;a href=&quot;https://github.com/spring-projects/spring-session/releases/tag/3.3.0-M3&quot;&gt;3.3.0-M3&lt;/a&gt; release notes for complete details.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://spring.io/projects/spring-session&quot;&gt;Project Page&lt;/a&gt; | &lt;a href=&quot;https://github.com/spring-projects/spring-session/issues&quot;&gt;GitHub Issues&lt;/a&gt;&lt;/p&gt;</content:encoded></item></channel></rss>
