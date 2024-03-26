@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
-  <display-name>Test</display-name>
- <session-config> 
-<session-timeout> 30 </session-timeout> 
-</session-config>
-  <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
-    <welcome-file>index.htm</welcome-file>
-    <welcome-file>index.jsp</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.htm</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
-  </welcome-file-list>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee"
+xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+id="WebApp_ID" version="3.0">
+<display-name>WebServerStudy</display-name>
+<jsp-config>
+<taglib>
+<!--태그 라이브러리 uri 속성값을 참조한다.-->
+<taglib-uri>http://minhaett.com</taglib-uri>
+<!--태그 라이브러리의 위치를 설정하여 참조한다.-->
+<taglib-location>/Tag/custom.tld</taglib-location>
+</taglib>
+</jsp-config>
 </web-app>
