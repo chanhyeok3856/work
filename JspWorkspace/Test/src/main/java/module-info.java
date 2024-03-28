@@ -4,6 +4,8 @@ module test {
 	requires cos;
 	requires java.desktop;
 	requires jai.core;
+	requires com.oracle.database.jdbc;
+	requires commons.logging;
 	
 	
 }
