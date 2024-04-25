@@ -11,7 +11,7 @@
 	</appender>
 	
 	<!-- Application Loggers -->
-	<logger name="min.spring.test">
+	<logger name="chan.spring.test">
 		<level value="info" />
 	</logger>
 	
