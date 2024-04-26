@@ -3,5 +3,5 @@
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 xsi:schemaLocation="http://www.springframework.org/schema/beans file:///C:/schema/spring-beans.xsd">
 <!-- 빈을 생성하고 관리한다. -->
-<bean class = "chan.spring.ioc.MessageKr" id=""></bean>
+<bean class = "chan.spring.scope.BeanScope" id="beanScope" scope="prototype"></bean>
 </beans>
