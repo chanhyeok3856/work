@@ -19,6 +19,7 @@ public class ScanCall {
 		 ScanService scanService = (ScanService) applicationContext.getBean("scanService");
 		 scanService.setScanDTO(scanDTO);
 		 System.out.println(scanService.getScanDTO());
+		 
 		
 	}
 

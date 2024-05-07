@@ -8,5 +8,4 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans file:///C:/schem
 
 <!-- 빈을 생성하고 관리한다. -->
 <context:component-scan base-package = "chan.spring.injection"/>
-
 </beans>

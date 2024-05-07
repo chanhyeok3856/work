@@ -4,6 +4,7 @@ module SpringStudy {
 	exports chan.spring.scope;
 	exports chan.spring.injection;
 	
+	requires jakarta.inject;
 	requires org.slf4j;
 	requires spring.beans;
 	requires spring.context;
@@ -11,4 +12,5 @@ module SpringStudy {
 	requires spring.web;
 	requires lombok;
 	opens bean;
+	opens chan.spring.injection;
 }
