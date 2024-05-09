@@ -8,11 +8,23 @@
 <!-- Enables the Spring MVC @Controller programming model -->
 <annotation-driven />
 <!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
-<resources mapping="/resources/**" location="/resources/" />
+<resources mapping="/resources/**" location="/resources/"/>
+<resources mapping="/css/**" location="/resources/"/>
+<resources mapping="/img/**" location="/resources/"/>
+<resources mapping="/js/**" location="/resources/"/>
 <!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 <beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-<beans:property name="prefix" value="/WEB-INF/views/" />
+<beans:property name="prefix" value="/WEB-INF/views/"/>
 <beans:property name="suffix" value=".jsp" />
 </beans:bean>
-<context:component-scan base-package="chan.spring.test" />
+<context:component-scan base-package="chan.spring.test"/>
+<context:component-scan base-package="chan.spring.web"/>
+<interceptors>
+<interceptor>
+<!-- 매핑 경로를 설정하며 view 디렉터리의 interceptor 디렉터리가 된다.-->
+<mapping path="/admin"/>
+<!-- 적용될 인터셉트를 설정한다.-->
+<beans:bean id="firstInterceptor" class="chan.spring.web.login.InterceptorLogin"/>
+</interceptor>
+</interceptors>
 </beans:beans>

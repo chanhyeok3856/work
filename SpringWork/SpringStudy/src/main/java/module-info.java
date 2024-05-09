@@ -11,6 +11,10 @@ module SpringStudy {
 	requires spring.core;
 	requires spring.web;
 	requires lombok;
+	requires spring.webmvc;
+	requires jakarta.servlet;
 	opens bean;
 	opens chan.spring.injection;
+	opens chan.spring.configuration.scope;
+	opens chan.spring.lombok;
 }
