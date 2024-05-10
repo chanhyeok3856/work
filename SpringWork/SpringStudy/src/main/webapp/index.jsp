@@ -4,11 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>부서 관리</title>
 </head>
 <body>
 <script type="text/javascript">
-location.href="./login"
+location.href="./DeptSelect"
 </script>
 </body>
 </html>

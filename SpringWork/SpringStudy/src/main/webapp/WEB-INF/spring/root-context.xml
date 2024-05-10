@@ -1,7 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans" 
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:context="http://www.springframework.org/schema/context"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans file:///C:/schema/spring-beans.xsd http://www.springframework.org/schema/context file:///C:/schema/spring-context.xsd">
-<!-- Root Context: defines shared resources visible to all other web components -->		
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context" xmlns:jdbc="http://www.springframework.org/
+schema/jdbc" xmlns:tx="http://www.springframework.org/schema/tx" xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring" xsi:schemaLocation="http://www.springframework.org/schema/beans file:///C:/schema/spring-beans.xsd 
+http://www.springframework.org/schema/context file:///C:/schema/spring-context.xsd http://www.springframework.org/schema/jdbc http://mybatis.org/schema/mybatis-spring file:///C:/schema/mybatis-spring.xsd">
+<!-- 빈의 등록 여부와 관계없이 어노테이션을 활성화한다.-->
+<context:component-scan base-package="min.spring.dept"/>
+<bean class="com.zaxxer.hikari.HikariDataSource" id="hikariDataSource" destroy-method="close">
+<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"/>
+<property name="jdbcUrl" value="jdbc:log4jdbc:oracle:thin:@127.0.0.1:1521:xe"/>
+<property name="username" value="scott"/>
+<property name="password" value="tiger"/>
+</bean>
+<!-- SqlSessionFactory 인터페이스를 생성하는 빈을 구현하고 팩토리에서 빈으로 호출한 결과를 반환한다.-->
+<bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactoryBean">
+<!-- DriverManagerDataSource 클래스를 참조하여 SqlSessionFactoryBean 클래스의 setDataSource 메서드 값을 호출한다.-->
+<property name="dataSource" ref="hikariDataSource"/>
+<!-- Configuration 설정 파일을 연결한다.-->
+<property name="configLocation" value="classpath:/configuration/config.xml"/>
+<!-- Mapper 설정 파일을 연결한다.-->
+<property name="mapperLocations" value="classpath:/mapper/mapper.xml"/>
+</bean>
+<!-- SqlSession 인터페이스의 인스턴스를 대체하여 SqlSession 인터페이스의 모든 기능을 구현한다.-->
+<bean class="org.mybatis.spring.SqlSessionTemplate" id="sqlSessionTemplate">
+<constructor-arg ref="sqlSessionFactoryBean"/>
+</bean>
+<!-- 트랜잭션이 종료할 때 정상 종료인 커밋인지 비정상 종료인 롤백인지를 결정한다.-->
+<bean class="org.springframework.jdbc.datasource.DataSourceTransactionManager" id="transactionManager">
+<!-- DriverManagerDataSource 클래스를 참조하여 DataSourceTransactionManager 클래스의 setDataSource 메서드 값을 호출한다.-->
+<property name="dataSource" ref="hikariDataSource"/>
+</bean>
+<!-- @Transactional 어노테이션을 사용할 수 있도록 설정한다.-->
+
 </beans>

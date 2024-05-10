@@ -19,6 +19,7 @@
 </beans:bean>
 <context:component-scan base-package="chan.spring.test"/>
 <context:component-scan base-package="chan.spring.web"/>
+<context:component-scan base-package="chan.spring.dept"/>
 <interceptors>
 <interceptor>
 <!-- 매핑 경로를 설정하며 view 디렉터리의 interceptor 디렉터리가 된다.-->

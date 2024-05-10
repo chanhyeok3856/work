@@ -19,7 +19,7 @@
 <div class="card">
 <div class="card-header"> <h4> ID 로그인 </h4> </div>
 <div class="card-body">
-<form action="/test/login_admin" method="post" id="signupForm">
+<form action="./login_admin" method="post" id="signupForm">
 <fieldset>
 <div class="form-group">
 <label for="id"> 아이디 </label>
