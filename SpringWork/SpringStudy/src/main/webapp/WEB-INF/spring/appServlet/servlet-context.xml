@@ -17,15 +17,23 @@
 <beans:property name="prefix" value="/WEB-INF/views/"/>
 <beans:property name="suffix" value=".jsp" />
 </beans:bean>
-<context:component-scan base-package="chan.spring.test"/>
+
+
 <context:component-scan base-package="chan.spring.web"/>
-<context:component-scan base-package="chan.spring.dept"/>
-<interceptors>
-<interceptor>
-<!-- 매핑 경로를 설정하며 view 디렉터리의 interceptor 디렉터리가 된다.-->
-<mapping path="/admin"/>
-<!-- 적용될 인터셉트를 설정한다.-->
-<beans:bean id="firstInterceptor" class="chan.spring.web.login.InterceptorLogin"/>
-</interceptor>
-</interceptors>
+<beans:bean class="org.springframework.web.multipart.support.StandardServletMultipartResolver" id="multipartResolver"/>
+<beans:bean id="javaMailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+<beans:property name="host" value="smtp.naver.com" />
+<beans:property name="port" value="465" />
+<beans:property name="username" value="songminhaett"/>
+<beans:property name="password" value="abcd1234"/>
+<!-- 세션에 대한 JavaMail의 보안 연결 TLS과 관련된 속성을 설정하며 해당 속성을 사용하여 새 세션이 생성된다.-->
+<beans:property name="javaMailProperties">
+<beans:props>
+<beans:prop key="mail.smtp.auth">true</beans:prop>
+<beans:prop key="mail.smtp.ssl.enable">true</beans:prop>
+<beans:prop key="mail.smtp.ssl.trust">smtp.naver.com</beans:prop>
+<beans:prop key="mail.smtp.ssl.protocols">TLSv1.2</beans:prop>
+</beans:props>
+</beans:property>
+</beans:bean>
 </beans:beans>

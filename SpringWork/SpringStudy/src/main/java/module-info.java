@@ -24,6 +24,9 @@ module SpringStudy {
 	requires spring.jdbc;
 	requires spring.tx;
 	requires transitive org.mybatis.spring;
+	requires net.coobird.thumbnailator;
+	requires spring.context.support;
+	requires jakarta.mail;
 	opens bean;
 	opens chan.spring.injection;
 	opens chan.spring.configuration.scope;

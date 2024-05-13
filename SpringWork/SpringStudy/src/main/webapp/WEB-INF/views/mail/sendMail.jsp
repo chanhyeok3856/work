@@ -4,11 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>부서 관리</title>
+<title>메일 전송</title>
 </head>
 <body>
-<script type="text/javascript">
-location.href="./sendMail"
-</script>
+${receiverMail }메일로 전송한 내용을 보낸 메일함에서 확인합니다.
+
 </body>
 </html>
