@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- https://mybatis.org/dtd/mybatis-3-config.dtd가 다운로드되지 않으면 <a> 태그로 다운해서 로컬로 등록한다.-->
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "file:///C:/schema/mybatis-3-config.dtd">
+<configuration>
+<!-- 별칭 환경을 설정한다.-->
+<typeAliases>
+<!-- DeptDTO 클래스에 대한 별칭을 설정한다.-->
+<typeAlias alias="DeptDTO" type="min.spring.dept.DeptDTO"/>
+</typeAliases>
+</configuration>

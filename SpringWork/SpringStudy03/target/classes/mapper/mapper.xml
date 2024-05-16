@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "file:///C:/schema/mybatis-3-mapper.dtd">
+<!-- 네임스페이스의 충돌을 방지하기 위해 설정한다.-->
+<mapper namespace="min.spring.dept">
+<!-- 전체 컬럼값을 조회하고 결과 저장은 DeptDTO 클래스로 설정한다.-->
+<select id="selectAll" resultType="DeptDTO">
+select deptno, dname, loc from dept
+</select>
+<!-- 개별 컬럼값을 조회하고 조회할 파라미터와 결과 저장은 DeptDTO 클래스로 설정한다.-->
+<select id="select" parameterType="DeptDTO" resultType="DeptDTO">
+select deptno, dname, loc from dept
+where deptno = #{deptno}
+</select>
+<!-- 컬럼값을 입력하고 입력할 파라미터는 DeptDTO 클래스로 설정한다.-->
+<insert id="insert" parameterType="DeptDTO">
+insert into dept (deptno, dname, loc)
+values(#{deptno}, #{dname}, #{loc})
+</insert>
+<!-- 컬럼값을 수정하고 수정할 파라미터는 DeptDTO 클래스로 설정한다.-->
+<update id="update" parameterType="DeptDTO">
+update dept set dname = #{dname}, loc=#{loc}
+where deptno = #{deptno}
+</update>
+<!-- 컬럼값을 삭제하고 삭제할 파라미터는 DeptDTO 클래스로 설정한다.-->
+<delete id="delete" parameterType="DeptDTO">
+delete from dept
+where deptno = #{deptno}
+</delete>
+</mapper>
