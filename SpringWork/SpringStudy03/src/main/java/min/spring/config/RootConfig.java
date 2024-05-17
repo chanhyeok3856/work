@@ -21,7 +21,7 @@ import com.zaxxer.hikari.HikariDataSource;
 @EnableTransactionManagement
 public class RootConfig {
 //데이터 소스 빈을 생성하고 이 메서드는 데이터베이스 연결 풀을 설정하는 HikariCP 라이브러리를 사용한다.
-/*@Bean
+@Bean
 public DataSource dataSource( ) {
 //HikariConfig 클래스의 객체를 생성한다.
 HikariConfig hikariConfig = new HikariConfig( );
@@ -58,5 +58,5 @@ DataSourceTransactionManager dataSourceTransactionManager = new DataSourceTransa
 dataSourceTransactionManager.setDataSource(dataSource);
 // 구성된 트랜잭션 관리자를 반환한다.
 return dataSourceTransactionManager;
-}*/
+}
 }

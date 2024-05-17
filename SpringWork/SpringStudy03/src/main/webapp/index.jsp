@@ -8,7 +8,7 @@
 </head>
 <body>
 <script type="text/javascript">
-location.href="./ajaxRequest"
+location.href="./jsonArrayJava"
 </script>
 </body>
 </html>

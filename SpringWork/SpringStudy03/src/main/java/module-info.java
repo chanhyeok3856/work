@@ -14,4 +14,5 @@ module SpringStudy {
 	requires spring.jdbc;
 	requires spring.tx;
 	requires lombok;
+	requires com.fasterxml.jackson.databind;
 }

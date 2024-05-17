@@ -16,6 +16,16 @@
 	<dependencies>
 		<!-- 관련 라이브러리들이 거의 다 존재하지 않는 것 같음 오류 나면 여기적혀있는 라이브러리들 관련해서 살펴볼 것 -->
 		<dependency>
+<groupId>com.fasterxml.jackson.core</groupId>
+<artifactId>jackson-core</artifactId>
+<version>2.16.1</version>
+</dependency>
+<dependency>
+<groupId>com.fasterxml.jackson.core</groupId>
+<artifactId>jackson-databind</artifactId>
+<version>2.16.1</version>
+</dependency>
+		<dependency>
     <groupId>org.apache.logging.log4j</groupId>
     <artifactId>log4j-core</artifactId>
     <version>2.17.1</version>

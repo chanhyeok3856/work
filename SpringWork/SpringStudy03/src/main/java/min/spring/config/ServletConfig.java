@@ -24,7 +24,7 @@ import java.util.Properties;
 //스프링 프레임워크의 웹 MVC설정을 지원한다
 @EnableWebMvc
 //특정 패키지 스캔해 컴포넌트, 서비스, 리포지토리 등을 자동으로 찾아 스프링 빈으로 등록한다
-@ComponentScan(basePackages = { "min.spring.test", "chan.spring.web.ajax" })
+@ComponentScan(basePackages = { "min.spring.test", "min.spring.web" })
 public class ServletConfig implements WebMvcConfigurer{
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry resourceHandlerRegistry) {
