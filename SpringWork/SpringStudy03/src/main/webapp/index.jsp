@@ -8,7 +8,7 @@
 </head>
 <body>
 <script type="text/javascript">
-location.href="./jsonArrayJava"
+location.href="./idSave"
 </script>
 </body>
 </html>

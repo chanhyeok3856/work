@@ -25,4 +25,4 @@ public void json_java(HttpServletResponse response) throws Exception{
 	response.setContentType("text/html; charset=UTF-8");
 	response.getWriter().println(Arrays.deepToString(jsonDTO));
 }
-}
+}     

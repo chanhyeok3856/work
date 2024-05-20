@@ -211,6 +211,11 @@
 			<version>4.13.1</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>chan.spring</groupId>
+			<artifactId>test</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
@@ -219,6 +224,9 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.8.1</version>
 				<configuration>
+					 <compilerArgs>
+                    <arg>-parameters</arg>
+                </compilerArgs>
 					<source>${maven.compiler.source}</source>
 					<target>${maven.compiler.target}</target>
 				</configuration>
