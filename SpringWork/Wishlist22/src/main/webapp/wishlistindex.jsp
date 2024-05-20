@@ -8,7 +8,7 @@
 </head>
 <body>
 <script type="text/javascript">
-location.href="./sendMail"
+location.href="./WishlistSelect"
 </script>
 </body>
 </html>

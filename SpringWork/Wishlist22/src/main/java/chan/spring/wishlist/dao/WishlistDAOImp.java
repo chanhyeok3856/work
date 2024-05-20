@@ -18,7 +18,7 @@ public class WishlistDAOImp implements WishlistDAO {
 	@Override
 	public List<WishlistDTO> selectAll() {
 		// TODO Auto-generated method stub
-		return sqlSessionTemplate.selectList("chan.wishlist.selectAll");
+		return sqlSessionTemplate.selectList("chan.spring.selectAll");
 	}
 
 	@Override

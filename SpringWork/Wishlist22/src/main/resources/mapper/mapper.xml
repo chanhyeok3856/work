@@ -3,7 +3,7 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "file:///C:/schema/mybatis-3-mapper.dtd">
 <!-- 네임스페이스의 충돌을 방지하기 위해 설정한다.-->
-<mapper namespace="chan.spring.wishlist">
+<mapper namespace="chan.spring">
 <!-- 전체 컬럼값을 조회하고 결과 저장은 DeptDTO 클래스로 설정한다.-->
 <select id="selectAll" resultType="WishlistDTO">
 select productnum, productname, userid from wishlist
@@ -18,11 +18,6 @@ where productnum = #{productnum}
 insert into wishlist (productnum, productname, userid)
 values(#{productnum}, #{productname}, #{userid})
 </insert>
-<!-- 컬럼값을 수정하고 수정할 파라미터는 DeptDTO 클래스로 설정한다.-->
-<update id="update" parameterType="WishlistDTO">
-update wishlist set productname = #{productname}, userid=#{userid}
-where productnum = #{productnum}
-</update>
 <!-- 컬럼값을 삭제하고 삭제할 파라미터는 DeptDTO 클래스로 설정한다.-->
 <delete id="delete" parameterType="WishlistDTO">
 delete from wishlist
